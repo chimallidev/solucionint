@@ -1,4 +1,4 @@
-package com.chimallidigital.solucionint.home
+package com.chimallidigital.solucionint.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
