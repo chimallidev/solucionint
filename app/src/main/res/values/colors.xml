@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+<!--solucionint-->
+    <color name="primary">#000000</color>
+    <color name="primary_dark">#131313</color>
+    <color name="secundario">#cf005c</color>
+    <color name="accent">#FFFFFF</color>
 </resources>
