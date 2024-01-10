@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/scientificArticlesFragment"
-        android:icon="@drawable/ic_prueba"
+        android:icon="@drawable/ic_scientific_articles"
         android:title="@string/menu_scientific_articles"/>
     <item
         android:id="@+id/timeMetersFragment"
-        android:icon="@drawable/ic_prueba"
+        android:icon="@drawable/ic_time_meters"
         android:title="@string/menu_time_meters"/>
     <item
         android:id="@+id/calculatorsFragment"
-        android:icon="@drawable/ic_prueba"
+        android:icon="@drawable/ic_calculators"
         android:title="@string/menu_calculators"/>
 
 </menu>
