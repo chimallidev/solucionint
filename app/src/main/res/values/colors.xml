@@ -8,4 +8,6 @@
     <color name="primary_dark">#161616</color>
     <color name="secundario">#cf005c</color>
     <color name="accent">#FFFFFF</color>
+
+    <color name="red">#C61313</color>
 </resources>
