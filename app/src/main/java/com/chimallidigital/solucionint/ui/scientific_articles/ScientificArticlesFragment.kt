@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -48,7 +49,9 @@ class ScientificArticlesFragment : Fragment() {
     }
 
     private fun initListener() {
-        scientificArticlesAdapter= ScientificArticlesAdapter()
+        scientificArticlesAdapter= ScientificArticlesAdapter(itemOnSelected = {
+            Toast.makeText(context, getString(it.category), Toast.LENGTH_LONG).show()
+        })
         binding.rvScientificArticlesFragment.apply {
             layoutManager= LinearLayoutManager(context)
             adapter= scientificArticlesAdapter

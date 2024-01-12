@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chimallidigital.solucionint.R
 import com.chimallidigital.solucionint.domain.model.scientific_articles.ScientificArticlesCategories
 
-class ScientificArticlesAdapter(private var scientificArticlesCategoriesList: List<ScientificArticlesCategories> = emptyList()) :
+class ScientificArticlesAdapter(private var scientificArticlesCategoriesList: List<ScientificArticlesCategories> = emptyList(),
+     private val itemOnSelected: (ScientificArticlesCategories) -> Unit) :
     RecyclerView.Adapter<ScientificArticlesViewHolder>() {
 
     fun updateList(list: List<ScientificArticlesCategories>){
@@ -23,6 +24,6 @@ class ScientificArticlesAdapter(private var scientificArticlesCategoriesList: Li
     override fun getItemCount() = scientificArticlesCategoriesList.size
 
     override fun onBindViewHolder(holder: ScientificArticlesViewHolder, position: Int) {
-        holder.render(scientificArticlesCategoriesList[position])
+        holder.render(scientificArticlesCategoriesList[position], itemOnSelected)
     }
 }
