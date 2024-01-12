@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="380dp"
+    android:layout_height="310dp"
+    android:layout_marginBottom="35dp"
+    app:cardCornerRadius="21dp"
+    app:cardElevation="21dp"
+    android:layout_marginHorizontal="14dp"
+    android:layout_marginTop="7dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardImage"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/frameTitulo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginHorizontal="7dp"
+                android:layout_marginTop="7dp"
+                app:cardBackgroundColor="@color/primary"
+                app:cardCornerRadius="21dp"
+                app:cardElevation="14dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_margin="7dp"
+                        app:cardCornerRadius="21dp">
+
+                        <ImageView
+                            android:id="@+id/ivRvScientificArticles"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            tools:background="@color/red">
+
+                        </ImageView>
+
+                    </androidx.cardview.widget.CardView>
+
+
+
+                </FrameLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+
+            <FrameLayout
+                android:id="@+id/frameTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardImage"
+                android:elevation="14dp">
+
+                <TextView
+                    android:id="@+id/tvRvScientificArticles"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="11dp"
+                    android:textColor="@color/secundario"
+                    android:textSize="24sp"
+                    tools:text="chimalli digital"
+                    android:fontFamily="@font/forced_square">
+
+                </TextView>
+
+            </FrameLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.cardview.widget.CardView>

@@ -7,4 +7,9 @@
     <string name="menu_scientific_articles">Artículos</string>
     <string name="menu_time_meters">Tiempo</string>
     <string name="menu_calculators">Calculadoras</string>
+
+<!--Categories-->
+    <string name="soluciones_inteligentes">Soluciones Inteligentes</string>
+    <string name="ponte_en_forma">Ponte en Forma</string>
+    <string name="recetas_de_cocina">Recetas de Cocina</string>
 </resources>
