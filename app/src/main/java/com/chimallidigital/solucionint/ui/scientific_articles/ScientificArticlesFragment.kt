@@ -10,8 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chimallidigital.solucionint.databinding.FragmentScientificArticlesBinding
+import com.chimallidigital.solucionint.domain.model.scientific_articles.ScientificArticlesCategories
+import com.chimallidigital.solucionint.domain.model.scientific_articles.ScientificArticlesCategories.*
+import com.chimallidigital.solucionint.domain.model.scientific_articles.ScientificArticlesCategoriesModel
 import com.chimallidigital.solucionint.ui.scientific_articles.adapter.ScientificArticlesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -45,7 +49,14 @@ class ScientificArticlesFragment : Fragment() {
 
     private fun initListener() {
         scientificArticlesAdapter = ScientificArticlesAdapter(itemOnSelected = {
-            Toast.makeText(context, getString(it.category), Toast.LENGTH_LONG).show()
+           val type= when(it){
+               Ponte_en_Forma -> ScientificArticlesCategoriesModel.Ponte_en_Forma
+               Recetas_de_Cocina -> ScientificArticlesCategoriesModel.Recetas_de_Cocina
+               SolucionesInteligentes -> ScientificArticlesCategoriesModel.Soluciones_Inteligentes
+           }
+            findNavController().navigate(
+                ScientificArticlesFragmentDirections
+                    .actionScientificArticlesFragmentToArticlesSelectorActivity(type))
         })
         binding.rvScientificArticlesFragment.apply {
             layoutManager = LinearLayoutManager(context)
