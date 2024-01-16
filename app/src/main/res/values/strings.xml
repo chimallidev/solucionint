@@ -12,4 +12,9 @@
     <string name="soluciones_inteligentes">Soluciones Inteligentes</string>
     <string name="ponte_en_forma">Ponte en Forma</string>
     <string name="recetas_de_cocina">Recetas de Cocina</string>
+
+<!--ArticlesSelector-->
+    <string name="de_selector">De</string>
+    <string name="btn_regresar">Regresar</string>
+    <string name="btn_entrar">Entrar</string>
 </resources>

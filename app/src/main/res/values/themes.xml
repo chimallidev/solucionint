@@ -6,4 +6,41 @@
 
     <style name="Theme.Solucionint" parent="Base.Theme.Solucionint" />
 
+<!--Tema titular barra ArticlesSelectorActivity-->
+    <style name="Barra_titular">
+        <item name="android:textSize">33sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/forced_square</item>
+        <item name="android:textColor">@color/secundario</item>
+    </style>
+    
+    <style name="Articles_Selector_Titles" parent="Barra_titular">
+        <item name="android:textSize">23sp</item>
+    </style>
+
+<!--Tema contador Articles Selector-->
+    <style name="Contador_selector">
+        <item name="android:textSize">40sp</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textColor">@color/chimalli</item>
+    </style>
+
+    <style name="de_selector" parent="Contador_selector">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/accent</item>
+
+    </style>
+
+    <style name="selector_maxim_number" parent="de_selector">
+        <item name="android:textColor">@color/secundario</item>
+    </style>
+
+    <style name="btn_regresar" parent="de_selector">
+    <item name="android:textSize">15sp</item>
+</style>
+
+    <style name="btn_entrar" parent="de_selector">
+        <item name="android:textSize">30sp</item>
+    </style>
+
 </resources>

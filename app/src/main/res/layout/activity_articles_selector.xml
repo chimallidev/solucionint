@@ -4,6 +4,337 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary"
     tools:context=".ui.selector.ArticlesSelectorActivity">
+
+    <FrameLayout
+        android:id="@+id/framelayoutBarraSuperior"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary_dark"
+        app:layout_constraintBottom_toTopOf="@id/constraintBodyArticlesSelector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvTitularCategoria_Selector"
+            style="@style/Barra_titular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            tools:text="Chimalli Digital" />
+
+    </FrameLayout>
+    <LinearLayout
+        android:id="@+id/btnBackFromArticlesSelectorToArticlesFragment"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="15dp"
+        app:cardBackgroundColor="@color/primary_dark"
+        android:orientation="horizontal">
+
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:src="@drawable/flecha_izquierda_black"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="-100dp">
+
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="-100dp"
+                android:text="@string/btn_regresar"
+                style="@style/btn_regresar"
+                android:gravity="center_vertical">
+
+            </TextView>
+
+
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintBodyArticlesSelector"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/framelayoutBarraSuperior"
+        android:layout_marginTop="25dp">
+
+        <LinearLayout
+            android:id="@+id/frameIvArticlesSelector"
+            android:layout_width="300dp"
+            android:layout_height="225dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/accent"
+            app:layout_constraintBottom_toTopOf="@id/tvArticlesSelector_ArticlesTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="@color/primary">
+
+                <ImageView
+                    android:id="@+id/ivArticlesSelector"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    tools:background="@color/red" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvArticlesSelector_ArticlesTitle"
+            style="@style/Articles_Selector_Titles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="21dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/frameIvArticlesSelector"
+            tools:text="Chimalli prueba Titulares soluciones inteligentes ponte en forma recetas de cocina 000"
+            android:textAlignment="center">
+
+        </TextView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintArticlesSelector_Contador"
+            android:layout_width="130dp"
+            android:layout_height="80dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvArticlesSelector_ArticlesTitle"
+            app:layout_constraintBottom_toTopOf="@id/cvMaximAmountArticles"
+            android:layout_marginTop="50dp"
+            android:background="@color/gray">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="5dp"
+                android:background="@color/primary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+                <TextView
+                    android:id="@+id/tvArticlesSelector_Contador"
+                    android:layout_width="120dp"
+                    android:layout_height="70dp"
+                    tools:text="001"
+                    style="@style/Contador_selector"
+                    android:textAlignment="center">
+
+                </TextView>
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/vidrio_contador">
+
+                </ImageView>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvMaximAmountArticles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/constraintArticlesSelector_Contador"
+            android:layout_marginTop="5dp"
+            app:cardBackgroundColor="@color/gray"
+            app:cardCornerRadius="15dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/de_selector"
+                    style="@style/de_selector"
+                    android:padding="4dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginLeft="7dp"
+                    android:textAllCaps="true">
+
+                </TextView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="2dp"
+                    app:cardBackgroundColor="@color/primary"
+                    android:layout_weight="2"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="8dp">
+
+                    <TextView
+                        android:id="@+id/tvSelectorMaximNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="000"
+                        style="@style/selector_maxim_number"
+                        android:padding="2dp"
+                        android:layout_marginHorizontal="3dp">
+
+                    </TextView>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:layout_width="310dp"
+            android:layout_height="75dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvMaximAmountArticles"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/shadow_btnLeft_ArticlesSelector"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="5dp"
+                app:cardBackgroundColor="@color/secundario_oscuro">
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/shadow_btnSearch_ArticlesSelector"
+                android:layout_width="140dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="5dp"
+                app:cardBackgroundColor="@color/accent_oscuro">
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/shadow_btnRight_ArticlesSelector"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                app:cardBackgroundColor="@color/secundario_oscuro">
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lfBotones"
+            android:layout_width="310dp"
+            android:layout_height="70dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvMaximAmountArticles"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnLeft_ArticlesSelector"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginRight="15dp"
+                app:cardBackgroundColor="@color/secundario">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/izquierda_solucionint">
+
+                </ImageView>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnSearch_ArticlesSelector"
+                android:layout_width="140dp"
+                android:layout_height="70dp"
+                app:cardBackgroundColor="@color/accent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_lupa">
+
+                </ImageView>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnRight_ArticlesSelector"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="15dp"
+                app:cardBackgroundColor="@color/secundario">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/derecha_solucionint">
+
+                </ImageView>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/shadow_btnEntrar_ArticlesSelector"
+            android:layout_width="350dp"
+            android:layout_height="70dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="5dp"
+            app:cardBackgroundColor="@color/chimalli_oscuro">
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnEntrar_ArticlesSelector"
+            android:layout_width="350dp"
+            android:layout_height="70dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="@color/chimalli">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_entrar"
+                style="@style/btn_entrar"
+                android:layout_gravity="center">
+
+            </TextView>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

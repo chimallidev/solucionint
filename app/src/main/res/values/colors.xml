@@ -7,7 +7,12 @@
     <color name="primary">#000000</color>
     <color name="primary_dark">#161616</color>
     <color name="secundario">#cf005c</color>
+    <color name="secundario_oscuro">#770035</color>
     <color name="accent">#FFFFFF</color>
-
+    <color name="accent_oscuro">#B6B6B6</color>
+    <color name="chimalli">#03989e</color>
+    <color name="chimalli_oscuro">#03575A</color>
     <color name="red">#C61313</color>
+
+    <color name="gray">#575757</color>
 </resources>
