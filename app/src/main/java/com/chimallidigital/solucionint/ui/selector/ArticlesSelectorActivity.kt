@@ -7,7 +7,6 @@ import android.view.animation.AlphaAnimation
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
-import androidx.navigation.NavController
 import androidx.navigation.navArgs
 import com.chimallidigital.solucionint.R
 import com.chimallidigital.solucionint.databinding.ActivityArticlesSelectorBinding
@@ -16,7 +15,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ArticlesSelectorActivity : AppCompatActivity() {
     private lateinit var binding: ActivityArticlesSelectorBinding
-    private lateinit var navController: NavController
     private val scientificArticlesSelectorViewModel: ArticlesSelectorViewModel by viewModels()
 
     private val args: ArticlesSelectorActivityArgs by navArgs()
