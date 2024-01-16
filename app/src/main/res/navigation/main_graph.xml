@@ -28,6 +28,7 @@
         android:name="com.chimallidigital.solucionint.ui.selector.ArticlesSelectorActivity"
         android:label="activity_articles_selector"
         tools:layout="@layout/activity_articles_selector" >
+
         <argument
             android:name="type"
             app:argType="com.chimallidigital.solucionint.domain.model.scientific_articles.ScientificArticlesCategoriesModel" />
