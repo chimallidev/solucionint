@@ -1,10 +1,10 @@
 package com.chimallidigital.solucionint.ui.selector
 
-import android.animation.Animator
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AlphaAnimation
@@ -12,23 +12,18 @@ import android.view.animation.BounceInterpolator
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
-import androidx.core.animation.doOnResume
 import androidx.core.animation.doOnStart
 import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.navArgs
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.chimallidigital.solucionint.R
 import com.chimallidigital.solucionint.databinding.ActivityArticlesSelectorBinding
 import com.chimallidigital.solucionint.domain.model.ArticlesSelector.CollectionArticles
-import com.chimallidigital.solucionint.domain.model.scientific_articles.ScientificArticlesCategoriesModel
 import com.chimallidigital.solucionint.domain.model.scientific_articles.ScientificArticlesCategoriesModel.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import kotlin.math.max
 
 @AndroidEntryPoint
 class ArticlesSelectorActivity : AppCompatActivity() {
@@ -84,28 +79,45 @@ class ArticlesSelectorActivity : AppCompatActivity() {
         binding.tvArticlesSelectorContador.text = countFormatted(itemCount + 1)
         binding.btnLeftArticlesSelector.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-
                 when (event?.action) {
                     MotionEvent.ACTION_DOWN -> {
                         btnPressed(
                             binding.btnLeftArticlesSelector,
                             binding.shadowBtnLeftArticlesSelector
                         )
+                    }
 
-
+                    MotionEvent.ACTION_MOVE -> {
+                        val x = event.getX()
+                        val y = event.getY()
+                        Log.i("x", "X= $x")
+                        Log.i("y", "Y= $y")
+                        if (x > -2f && x < 124f && y > 1f && y < 118f) {
+                        } else {
+                            btnAnimation(
+                                binding.btnLeftArticlesSelector,
+                                binding.shadowBtnLeftArticlesSelector
+                            )
+                        }
                     }
 
                     MotionEvent.ACTION_UP -> {
-                        animationsBtnLeft()
-                        btnAnimation(
-                            binding.btnLeftArticlesSelector,
-                            binding.shadowBtnLeftArticlesSelector
-                        )
+                        val x = event.getX()
+                        val y = event.getY()
+
+                        if (x > -2f && x < 124f && y > 1f && y < 118f) {
+                            animationsBtnLeft()
+                            btnAnimation(
+                                binding.btnLeftArticlesSelector,
+                                binding.shadowBtnLeftArticlesSelector
+                            )
+                        } else {
+                        }
+
                     }
                 }
                 return true
             }
-
         })
         binding.btnRightArticlesSelector.setOnClickListener { increaseCount(itemCount) }
     }
