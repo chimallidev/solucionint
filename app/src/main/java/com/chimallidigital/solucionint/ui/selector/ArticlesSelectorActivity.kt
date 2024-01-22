@@ -30,6 +30,7 @@ class ArticlesSelectorActivity : AppCompatActivity() {
     private lateinit var binding: ActivityArticlesSelectorBinding
     private val scientificArticlesSelectorViewModel: ArticlesSelectorViewModel by viewModels()
     private var itemCount: Int = 0
+    private var stateSelectorAnimation: Boolean = false
 
     private val args: ArticlesSelectorActivityArgs by navArgs()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,27 +47,34 @@ class ArticlesSelectorActivity : AppCompatActivity() {
     }
 
     private fun initUIState() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                scientificArticlesSelectorViewModel.articles.collect {
-                    initImageActiveSelector(it)
-                }
-            }
-        }
+        initImageActiveSelector()
     }
 
-    private fun initImageActiveSelector(articles: List<CollectionArticles>) {
-        val maxItems = articles.size
-        binding.tvSelectorMaximNumber.text = countFormatted(maxItems)
-        when (args.type) {
-            Soluciones_Inteligentes -> {
-                binding.ivArticlesSelector.setImageResource(articles.get(itemCount).img)
-                binding.tvArticlesSelectorArticlesTitle.text =
-                    getString(articles.get(itemCount).title)
+    private fun initImageActiveSelector() {
+        var maxItems: Int
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                when (args.type) {
+                    Soluciones_Inteligentes -> {
+                        scientificArticlesSelectorViewModel.articles.collect {
+                            maxItems = it.size
+                            runOnUiThread {printInitImageActiveSelector(it, maxItems)}
+                        }
+                    }
+                    Ponte_en_Forma -> {
+                        scientificArticlesSelectorViewModel.articlesPonteEnForma.collect {
+                            maxItems = it.size
+                            runOnUiThread {printInitImageActiveSelector(it, maxItems)}
+                        }
+                    }
+                    Recetas_de_Cocina -> {
+                        scientificArticlesSelectorViewModel.articlesRecetasDeCocina.collect {
+                            maxItems = it.size
+                            runOnUiThread {printInitImageActiveSelector(it, maxItems)}
+                        }
+                    }
+                }
             }
-
-            Ponte_en_Forma -> {}
-            Recetas_de_Cocina -> {}
         }
     }
 
@@ -92,12 +100,13 @@ class ArticlesSelectorActivity : AppCompatActivity() {
                         val y = event.getY()
                         Log.i("x", "X= $x")
                         Log.i("y", "Y= $y")
-                        if (x > -2f && x < 124f && y > 1f && y < 118f) {
+                        if (x > -11f && x < 130f && y > -9 && y < 139f) {
                         } else {
                             btnAnimation(
                                 binding.btnLeftArticlesSelector,
                                 binding.shadowBtnLeftArticlesSelector
                             )
+                            stateSelectorAnimation = true
                         }
                     }
 
@@ -105,13 +114,18 @@ class ArticlesSelectorActivity : AppCompatActivity() {
                         val x = event.getX()
                         val y = event.getY()
 
-                        if (x > -2f && x < 124f && y > 1f && y < 118f) {
+                        if (x > -11 && x < 130f && y > -9f && y < 139f && !stateSelectorAnimation) {
                             animationsBtnLeft()
                             btnAnimation(
                                 binding.btnLeftArticlesSelector,
                                 binding.shadowBtnLeftArticlesSelector
                             )
                         } else {
+                            btnAnimation(
+                                binding.btnLeftArticlesSelector,
+                                binding.shadowBtnLeftArticlesSelector
+                            )
+                            stateSelectorAnimation = false
                         }
 
                     }
@@ -119,30 +133,83 @@ class ArticlesSelectorActivity : AppCompatActivity() {
                 return true
             }
         })
-        binding.btnRightArticlesSelector.setOnClickListener { increaseCount(itemCount) }
+        binding.btnRightArticlesSelector.setOnTouchListener(object : View.OnTouchListener {
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                when (event?.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        btnPressed(
+                            binding.btnRightArticlesSelector,
+                            binding.shadowBtnRightArticlesSelector
+                        )
+                    }
+
+                    MotionEvent.ACTION_MOVE -> {
+                        val x = event.getX()
+                        val y = event.getY()
+                        Log.i("x", "X= $x")
+                        Log.i("y", "Y= $y")
+                        if (x > -11f && x < 130f && y > -9 && y < 139f) {
+                        } else {
+                            btnAnimation(
+                                binding.btnRightArticlesSelector,
+                                binding.shadowBtnRightArticlesSelector
+                            )
+                            stateSelectorAnimation = true
+                        }
+                    }
+
+                    MotionEvent.ACTION_UP -> {
+                        val x = event.getX()
+                        val y = event.getY()
+
+                        if (x > -11 && x < 130f && y > -9f && y < 139f && !stateSelectorAnimation) {
+                            animationsBtnRight()
+                            btnAnimation(
+                                binding.btnRightArticlesSelector,
+                                binding.shadowBtnRightArticlesSelector
+                            )
+                        } else {
+                            btnAnimation(
+                                binding.btnRightArticlesSelector,
+                                binding.shadowBtnRightArticlesSelector
+                            )
+                            stateSelectorAnimation = false
+                        }
+
+                    }
+                }
+                return true
+            }
+        })
     }
-
+    
     private fun increaseCount(increaseCount: Int) {
+        var newItemRightCount: Int
+        var maxItemCount: Int
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                scientificArticlesSelectorViewModel.articles.collect {
-                    val maxItemCount = it.size
-                    var newItemCount: Int
-                    newItemCount = increaseCount
-                    newItemCount = if (increaseCount < maxItemCount) {
-                        increaseCount + 1
-                    } else {
-                        1
+            repeatOnLifecycle(Lifecycle.State.STARTED){
+                when(args.type){
+                    Soluciones_Inteligentes ->{
+                        scientificArticlesSelectorViewModel.articles.collect{
+                            maxItemCount= it.size
+                            newItemRightCount= increaseCountMechanism(it, increaseCount)
+                            runOnUiThread {printIncreaseDecrease(it,newItemRightCount, maxItemCount)}
+                        }
                     }
-                    runOnUiThread {
-                        itemCount = newItemCount
-                        binding.ivArticlesSelector.setImageResource(it.get(itemCount - 1).img)
-                        binding.tvArticlesSelectorArticlesTitle.text =
-                            getString(it.get(itemCount - 1).title)
-                        binding.tvArticlesSelectorContador.text = countFormatted(itemCount)
-                        binding.tvSelectorMaximNumber.text = countFormatted(maxItemCount)
+                    Ponte_en_Forma ->{
+                        scientificArticlesSelectorViewModel.articlesPonteEnForma.collect{
+                            maxItemCount= it.size
+                            newItemRightCount= increaseCountMechanism(it, increaseCount)
+                            runOnUiThread {printIncreaseDecrease(it,newItemRightCount, maxItemCount)}
+                        }
                     }
-
+                    Recetas_de_Cocina ->{
+                        scientificArticlesSelectorViewModel.articlesRecetasDeCocina.collect{
+                            maxItemCount= it.size
+                            newItemRightCount= increaseCountMechanism(it, increaseCount)
+                            runOnUiThread {printIncreaseDecrease(it,newItemRightCount, maxItemCount)}
+                        }
+                    }
                 }
             }
         }
@@ -197,6 +264,32 @@ class ArticlesSelectorActivity : AppCompatActivity() {
         }
     }
 
+    private fun animationsBtnRight() {
+        val imageSelector = binding.frameIvArticlesSelector
+
+        val rotationRightAnimation = AnimatorInflater.loadAnimator(
+            imageSelector.context,
+            R.animator.right_rotation
+        ) as AnimatorSet
+        val appearRightAnimation = AnimatorInflater.loadAnimator(
+            imageSelector.context,
+            R.animator.appear_image_animation
+        ) as AnimatorSet
+
+        rotationRightAnimation.setTarget(imageSelector)
+        appearRightAnimation.setTarget(imageSelector)
+
+        rotationRightAnimation.apply {
+            doOnStart { textTitleAnimation() }
+            doOnEnd { increaseCount(itemCount) }
+        }
+
+        AnimatorSet().apply {
+            playSequentially(rotationRightAnimation, appearRightAnimation)
+            start()
+        }
+    }
+
     private fun animationsBtnLeft() {
         val imageSelector = binding.frameIvArticlesSelector
 
@@ -229,31 +322,35 @@ class ArticlesSelectorActivity : AppCompatActivity() {
     }
 
     private fun decreaseCount(contadorDecrease: Int) {
+        var maxItemCount: Int
+        var newItemCount: Int
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                scientificArticlesSelectorViewModel.articles.collect {
-                    val maxItemCount = it.size
-                    var newItemCount: Int
-                    newItemCount = contadorDecrease
-                    newItemCount = if (contadorDecrease > 1) {
-                        contadorDecrease - 1
-                    } else {
-                        maxItemCount
+            repeatOnLifecycle(Lifecycle.State.STARTED){
+                when(args.type){
+                    Soluciones_Inteligentes ->{
+                        scientificArticlesSelectorViewModel.articles.collect{
+                            maxItemCount= it.size
+                            newItemCount= decreaseCountMechanism(it, contadorDecrease)
+                            runOnUiThread {printIncreaseDecrease(it, newItemCount, maxItemCount)}
+                        }
                     }
-                    runOnUiThread {
-                        itemCount = newItemCount
-
-                        binding.ivArticlesSelector.setImageResource(it.get(itemCount - 1).img)
-                        binding.tvArticlesSelectorArticlesTitle.text =
-                            getString(it.get(itemCount - 1).title)
-                        binding.tvArticlesSelectorContador.text = countFormatted(itemCount)
-                        binding.tvSelectorMaximNumber.text = countFormatted(maxItemCount)
+                    Ponte_en_Forma ->{
+                        scientificArticlesSelectorViewModel.articlesPonteEnForma.collect{
+                            maxItemCount= it.size
+                            newItemCount= decreaseCountMechanism(it, contadorDecrease)
+                            runOnUiThread {printIncreaseDecrease(it, newItemCount, maxItemCount)}
+                        }
                     }
-
+                    Recetas_de_Cocina ->{
+                        scientificArticlesSelectorViewModel.articlesRecetasDeCocina.collect{
+                            maxItemCount= it.size
+                            newItemCount= decreaseCountMechanism(it, contadorDecrease)
+                            runOnUiThread {printIncreaseDecrease(it, newItemCount, maxItemCount)}
+                        }
+                    }
                 }
             }
         }
-
     }
 
     private fun backAnimation() {
@@ -270,5 +367,43 @@ class ArticlesSelectorActivity : AppCompatActivity() {
             doOnEnd { onBackPressedDispatcher.onBackPressed() }
             start()
         }
+    }
+    private fun decreaseCountMechanism(lista: List<CollectionArticles>, contadorDecrease: Int): Int{
+        val articlesList= lista
+        val maxItemCount = articlesList.size
+        val newItemCount: Int
+
+        newItemCount = if (contadorDecrease > 1) {
+            contadorDecrease - 1
+        } else {
+            maxItemCount
+        }
+        return newItemCount
+    }
+    private fun increaseCountMechanism(lista: List<CollectionArticles>, increaseCount: Int): Int{
+        val articlesList= lista
+        val maxItemCount = articlesList.size
+        var newItemRightCount: Int
+        newItemRightCount = when (increaseCount) {
+            0 -> 2
+            in 1..maxItemCount - 1 -> increaseCount + 1
+            else -> 1
+        }
+        return newItemRightCount
+    }
+    private fun printInitImageActiveSelector(it: List<CollectionArticles>, maxItems: Int){
+        binding.ivArticlesSelector.setImageResource(it.get(itemCount).img)
+        binding.tvArticlesSelectorArticlesTitle.text =
+            getString(it.get(itemCount).title)
+        binding.tvSelectorMaximNumber.text = countFormatted(maxItems)
+    }
+    private fun printIncreaseDecrease(lista: List<CollectionArticles>, newItemCount: Int, maxItemCount: Int){
+        val articlesList= lista
+        itemCount = newItemCount
+        binding.ivArticlesSelector.setImageResource(articlesList.get(itemCount - 1).img)
+        binding.tvArticlesSelectorArticlesTitle.text =
+            getString(articlesList.get(itemCount - 1).title)
+        binding.tvArticlesSelectorContador.text = countFormatted(itemCount)
+        binding.tvSelectorMaximNumber.text = countFormatted(maxItemCount)
     }
 }

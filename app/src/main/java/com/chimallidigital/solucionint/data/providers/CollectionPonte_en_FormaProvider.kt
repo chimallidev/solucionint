@@ -4,65 +4,35 @@ import com.chimallidigital.solucionint.domain.model.ArticlesSelector.CollectionA
 import com.chimallidigital.solucionint.domain.model.ArticlesSelector.CollectionArticles.*
 import javax.inject.Inject
 
-class CollectionScientificArticlesProvider @Inject constructor(){
-    fun getArticles(): List<CollectionArticles>{
+class CollectionPonte_en_FormaProvider @Inject constructor(){
+
+    fun getPonteEnFormaArticlesProvider(): List<CollectionArticles>{
+
         return listOf(
-            Art066,
             Art065,
             Art064,
             Art063,
             Art062,
             Art061,
             Art060,
-            Art059,
-            Art058,
-            Art057,
             Art056,
-            Art055,
-            Art054,
             Art053,
             Art052,
-            Art051,
             Art050,
-            Art049,
-            Art048,
-            Art047,
-            Art046,
             Art045,
-            Art044,
             Art043,
             Art042,
             Art041,
             Art040,
-            Art039,
             Art038,
-            Art037,
-            Art036,
-            Art035,
-            Art034,
             Art033,
-            Art032,
-            Art031,
-            Art030,
-            Art029,
             Art028,
             Art027,
-            Art026,
-            Art025,
             Art024,
-            Art023,
             Art022,
             Art021,
-            Art020,
-            Art019,
             Art018,
             Art017,
-            Art016,
-            Art015,
-            Art014,
-            Art013,
-            Art012,
-            Art011,
             Art010,
             Art009,
             Art008,
@@ -74,5 +44,6 @@ class CollectionScientificArticlesProvider @Inject constructor(){
             Art002,
             Art001
         )
+
     }
 }
