@@ -129,6 +129,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvArticlesSelector_ArticlesTitle">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintVidrioContador"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="5dp"

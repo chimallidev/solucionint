@@ -42,5 +42,17 @@
     <style name="btn_entrar" parent="de_selector">
         <item name="android:textSize">30sp</item>
     </style>
+    <style name="dialogue_articles_selector" parent="de_selector">
+        <item name="android:backgroundTint">@color/secundario</item>
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:textColorHint">@color/secundario</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+    <style name="btn_articles_selector" parent="dialogue_articles_selector">
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:backgroundTint">@null</item>
+        <item name="android:textColorHint">@null</item>
+    </style>
 
 </resources>

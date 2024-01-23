@@ -156,5 +156,7 @@
     <string name="art065_url">https://solucionint.com/8-motivos-indiscutibles-rutina-ejercicio-fisico-si/</string>
     <string name="art066_url">https://solucionint.com/cacahuate-arachis-hipogaea-valor-nutricional-si/</string>
 
-
+<!--Dialogue_ArticlesSelectorActivity-->
+    <string name="hint_dialogue_selector">Número</string>
+    <string name="btn_dialogue_selector">Aceptar</string>
 </resources>
