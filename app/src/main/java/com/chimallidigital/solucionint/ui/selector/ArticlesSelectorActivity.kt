@@ -4,6 +4,7 @@ import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
@@ -12,32 +13,48 @@ import android.view.animation.AlphaAnimation
 import android.view.animation.BounceInterpolator
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
+import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.NavController
 import androidx.navigation.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.chimallidigital.solucionint.R
 import com.chimallidigital.solucionint.databinding.ActivityArticlesSelectorBinding
 import com.chimallidigital.solucionint.domain.model.ArticlesSelector.CollectionArticles
 import com.chimallidigital.solucionint.domain.model.scientific_articles.ScientificArticlesCategoriesModel.*
+import com.chimallidigital.solucionint.ui.selector.dialogue.DialogueArticlesSelectorAdapter
+import com.chimallidigital.solucionint.ui.solucionint_web.SolucionintWebActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ArticlesSelectorActivity : AppCompatActivity() {
+    companion object {
+        val URL = "URL"
+    }
+
     private lateinit var binding: ActivityArticlesSelectorBinding
     private val scientificArticlesSelectorViewModel: ArticlesSelectorViewModel by viewModels()
     private var itemCount: Int = 0
     private var stateSelectorAnimation: Boolean = false
     private var stateDialogAceptarSelector: Boolean = false
+    private lateinit var dialogueArticlesSelectorAdapter: DialogueArticlesSelectorAdapter
 
+    private lateinit var navController: NavController
     private val args: ArticlesSelectorActivityArgs by navArgs()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +66,6 @@ class ArticlesSelectorActivity : AppCompatActivity() {
     private fun initUI() {
         initUIState()
         initListeners()
-
     }
 
     private fun initUIState() {
@@ -88,7 +104,57 @@ class ArticlesSelectorActivity : AppCompatActivity() {
 
     @SuppressLint("ClickableViewAccesability")
     private fun initListeners() {
+        dialogueArticlesSelectorAdapter =
+            DialogueArticlesSelectorAdapter(itemOnSelected = { articulo ->
+                var maxItems: Int
+                lifecycleScope.launch {
+                    repeatOnLifecycle(Lifecycle.State.STARTED) {
+                        when (args.type) {
+                            Soluciones_Inteligentes -> {
+                                scientificArticlesSelectorViewModel.articles.collect {
+                                    maxItems = it.size
+                                    itemCount = it.indexOf(articulo) + 1
+                                    runOnUiThread {
+                                        binding.tvSelectorMaximNumber.text =
+                                            countFormatted(maxItems)
+                                        binding.tvArticlesSelectorContador.text =
+                                            countFormatted(itemCount)
+                                    }
+                                }
+                            }
 
+                            Ponte_en_Forma -> {
+                                scientificArticlesSelectorViewModel.articlesPonteEnForma.collect {
+                                    maxItems = it.size
+                                    itemCount = it.indexOf(articulo) + 1
+                                    runOnUiThread {
+                                        binding.tvSelectorMaximNumber.text =
+                                            countFormatted(maxItems)
+                                        binding.tvArticlesSelectorContador.text =
+                                            countFormatted(itemCount)
+                                    }
+                                }
+                            }
+
+                            Recetas_de_Cocina -> {
+                                scientificArticlesSelectorViewModel.articlesRecetasDeCocina.collect {
+                                    maxItems = it.size
+                                    itemCount = it.indexOf(articulo) + 1
+                                    runOnUiThread {
+                                        binding.tvSelectorMaximNumber.text =
+                                            countFormatted(maxItems)
+                                        binding.tvArticlesSelectorContador.text =
+                                            countFormatted(itemCount)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                binding.ivArticlesSelector.setImageResource(articulo.img)
+                binding.tvArticlesSelectorArticlesTitle.text =
+                    getString(articulo.title)
+            }, newLambda = { val lambda: () -> Unit })
         binding.tvTitularCategoriaSelector.text =
             getString(scientificArticlesSelectorViewModel.getCategoryName(args.type))
         binding.btnBackFromArticlesSelectorToArticlesFragment.setOnClickListener { backAnimation() }
@@ -190,6 +256,280 @@ class ArticlesSelectorActivity : AppCompatActivity() {
             }
         })
         binding.constraintVidrioContador.setOnClickListener { showDialogueContador() }
+        binding.btnSearchArticlesSelector.setOnTouchListener(object : View.OnTouchListener {
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                when (event?.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        btnPressed(
+                            binding.btnSearchArticlesSelector,
+                            binding.shadowBtnSearchArticlesSelector
+                        )
+                    }
+
+                    MotionEvent.ACTION_MOVE -> {
+                        val x = event.getX()
+                        val y = event.getY()
+
+                        if (x > -1f && x < 364f && y > -9 && y < 139f) {
+                        } else {
+                            btnAnimation(
+                                binding.btnSearchArticlesSelector,
+                                binding.shadowBtnSearchArticlesSelector
+                            )
+                            stateSelectorAnimation = true
+                        }
+                    }
+
+                    MotionEvent.ACTION_UP -> {
+                        val x = event.getX()
+                        val y = event.getY()
+
+                        if (x > -1f && x < 364f && y > -9f && y < 139f && !stateSelectorAnimation) {
+                            showDialogueSearch()
+                            btnAnimation(
+                                binding.btnSearchArticlesSelector,
+                                binding.shadowBtnSearchArticlesSelector
+                            )
+                        } else {
+                            btnAnimation(
+                                binding.btnSearchArticlesSelector,
+                                binding.shadowBtnSearchArticlesSelector
+                            )
+                            stateSelectorAnimation = false
+                        }
+
+                    }
+                }
+                return true
+            }
+        })
+        binding.btnEntrarArticlesSelector.setOnTouchListener(object : View.OnTouchListener {
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                when (event?.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        btnPressed(
+                            binding.btnEntrarArticlesSelector,
+                            binding.shadowBtnEntrarArticlesSelector
+                        )
+                    }
+
+                    MotionEvent.ACTION_MOVE -> {
+                        val x = event.getX()
+                        val y = event.getY()
+                        Log.i("nonna", "X= $x")
+                        Log.i("nonna", "Y= $y")
+                        if (x > -5f && x < 917f && y > 3f && y < 138f) {
+                        } else {
+                            btnAnimation(
+                                binding.btnEntrarArticlesSelector,
+                                binding.shadowBtnEntrarArticlesSelector
+                            )
+                            stateSelectorAnimation = true
+                        }
+                    }
+
+                    MotionEvent.ACTION_UP -> {
+                        val x = event.getX()
+                        val y = event.getY()
+
+                        if (x > -5f && x < 917f && y > 3f && y < 138f && !stateSelectorAnimation) {
+                            btnNavigate()
+                            btnAnimation(
+                                binding.btnEntrarArticlesSelector,
+                                binding.shadowBtnEntrarArticlesSelector
+                            )
+                        } else {
+                            btnAnimation(
+                                binding.btnEntrarArticlesSelector,
+                                binding.shadowBtnEntrarArticlesSelector
+                            )
+                            stateSelectorAnimation = false
+                        }
+                    }
+                }
+                return true
+            }
+        })
+    }
+
+    private fun btnNavigate() {
+        var url: String
+        val intent = Intent(this, SolucionintWebActivity::class.java)
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                when (args.type) {
+                    Soluciones_Inteligentes -> {
+                        scientificArticlesSelectorViewModel.articles.collect {
+                            url = getString(it.get(itemCount).url)
+                            runOnUiThread {
+                                intent.putExtra(URL, url)
+                            }
+                        }
+                    }
+
+                    Ponte_en_Forma -> {
+                        scientificArticlesSelectorViewModel.articlesPonteEnForma.collect {
+                            url = getString(it.get(itemCount).url)
+                            runOnUiThread {
+                                intent.putExtra(URL, url)
+                            }
+                        }
+                    }
+
+                    Recetas_de_Cocina -> {
+                        scientificArticlesSelectorViewModel.articlesRecetasDeCocina.collect {
+                            url = getString(it.get(itemCount).url)
+                            runOnUiThread {
+                                intent.putExtra(URL, url)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        startActivity(intent)
+    }
+
+    private fun showDialogueSearch() {
+        val dialogo = Dialog(this)
+        dialogo.setContentView(R.layout.dialogue_search_articles_selector)
+
+
+        val ivClosed: ImageView = dialogo.findViewById(R.id.ivClosed)
+        val svArticles: androidx.appcompat.widget.SearchView = dialogo.findViewById(R.id.svArticles)
+        val editText: EditText = svArticles.findViewById(androidx.appcompat.R.id.search_src_text)
+        editText.setTextColor(ContextCompat.getColor(editText.context, R.color.secundario))
+        editText.setHintTextColor(ContextCompat.getColor(editText.context, R.color.secundario))
+        editText.setBackgroundColor(ContextCompat.getColor(editText.context, R.color.accent))
+        editText.setLinkTextColor(ContextCompat.getColor(editText.context, R.color.gray))
+        val searchIcon: ImageView = svArticles.findViewById(androidx.appcompat.R.id.search_mag_icon)
+        searchIcon.setColorFilter(ContextCompat.getColor(editText.context, R.color.accent))
+        val searchClose: ImageView =
+            svArticles.findViewById(androidx.appcompat.R.id.search_close_btn)
+        searchClose.setColorFilter(ContextCompat.getColor(editText.context, R.color.accent))
+        val pbArticlesDialogue: ProgressBar = dialogo.findViewById(R.id.pbArticlesDialogue)
+        val rvArticlesDialogue: RecyclerView = dialogo.findViewById(R.id.rvArticlesDialogue)
+        val noEncontradoDialogue: CardView = dialogo.findViewById(R.id.cvNoEncontradoDialogue)
+        val lambdaHide: () -> Unit = {
+            dialogueArticlesSelectorAdapter.updateSelectorList(emptyList())
+            dialogo.hide()
+        }
+
+        rvArticlesDialogue.apply {
+            layoutManager = LinearLayoutManager(rvArticlesDialogue.context)
+            adapter = dialogueArticlesSelectorAdapter
+        }
+
+        svArticles.setOnQueryTextListener(object :
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchForTitle(
+                    query.orEmpty(),
+                    noEncontradoDialogue,
+                    rvArticlesDialogue,
+                    pbArticlesDialogue,
+                    lambdaHide
+                )
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?) = false
+
+        })
+
+        ivClosed.setOnClickListener {
+            dialogueArticlesSelectorAdapter.updateSelectorList(emptyList())
+            dialogo.hide()
+        }
+        dialogo.show()
+    }
+
+    private fun searchForTitle(
+        query: String?,
+        view: View,
+        view2: View,
+        view3: View,
+        lambdaHide: () -> Unit
+    ) {
+        view3.isVisible = true
+        var newList: List<CollectionArticles>
+        CoroutineScope(Dispatchers.IO).launch {
+            lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    when (args.type) {
+                        Soluciones_Inteligentes -> {
+                            scientificArticlesSelectorViewModel.articles.collect {
+                                newList = it.filter {
+                                    getString(it.title).lowercase()
+                                        .contains(query.toString().lowercase())
+                                }
+                                printrvDialogueArticlesSelector(
+                                    newList,
+                                    view,
+                                    view2,
+                                    view3,
+                                    lambdaHide
+                                )
+
+                            }
+                        }
+
+                        Ponte_en_Forma -> {
+                            scientificArticlesSelectorViewModel.articlesPonteEnForma.collect {
+                                newList = it.filter {
+                                    getString(it.title).lowercase()
+                                        .contains(query.toString().lowercase())
+                                }
+                                printrvDialogueArticlesSelector(
+                                    newList,
+                                    view,
+                                    view2,
+                                    view3,
+                                    lambdaHide
+                                )
+                            }
+                        }
+
+                        Recetas_de_Cocina -> {
+                            scientificArticlesSelectorViewModel.articlesRecetasDeCocina.collect {
+                                newList = it.filter {
+                                    getString(it.title).lowercase()
+                                        .contains(query.toString().lowercase())
+                                }
+                                printrvDialogueArticlesSelector(
+                                    newList,
+                                    view,
+                                    view2,
+                                    view3,
+                                    lambdaHide
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    private fun printrvDialogueArticlesSelector(
+        newList: List<CollectionArticles>,
+        view: View,
+        view2: View,
+        view3: View,
+        lambdaHide: () -> Unit
+    ) {
+        if (newList.isNotEmpty()) {
+            view2.isVisible = true
+            view.isVisible = false
+            view3.isVisible = false
+            dialogueArticlesSelectorAdapter.updateSelectorList(newList)
+            dialogueArticlesSelectorAdapter.initLambda(lambdaHide)
+        } else {
+            view2.isVisible = false
+            view.isVisible = true
+            view3.isVisible = false
+        }
     }
 
     @SuppressLint("ClickableViewAccesability")

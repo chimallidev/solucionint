@@ -46,6 +46,7 @@ android {
 }
 
 dependencies {
+    implementation("com.android.car.ui:car-ui-lib:2.6.0")
     val navVersion = "2.7.6"
     val daggerVersion = "2.50"
 

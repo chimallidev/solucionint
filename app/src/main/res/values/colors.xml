@@ -5,6 +5,7 @@
 
 <!--solucionint-->
     <color name="primary">#000000</color>
+    <color name="primary_alpha">#CC000000</color>
     <color name="primary_dark">#161616</color>
     <color name="primary_dark_alpha">#CC161616</color>
     <color name="secundario">#cf005c</color>

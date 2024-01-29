@@ -33,4 +33,9 @@
             android:name="type"
             app:argType="com.chimallidigital.solucionint.domain.model.scientific_articles.ScientificArticlesCategoriesModel" />
     </activity>
+    <activity
+        android:id="@+id/solucionintWebActivity"
+        android:name="com.chimallidigital.solucionint.ui.solucionint_web.SolucionintWebActivity"
+        android:label="activity_solucionint_web"
+        tools:layout="@layout/activity_solucionint_web" />
 </navigation>

@@ -8,14 +8,16 @@
 
 <!--Tema titular barra ArticlesSelectorActivity-->
     <style name="Barra_titular">
-        <item name="android:textSize">33sp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">@font/forced_square</item>
+        <item name="android:fontFamily">@font/symtext</item>
         <item name="android:textColor">@color/secundario</item>
     </style>
     
     <style name="Articles_Selector_Titles" parent="Barra_titular">
-        <item name="android:textSize">23sp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/symtext</item>
     </style>
 
 <!--Tema contador Articles Selector-->
@@ -55,4 +57,15 @@
         <item name="android:textColorHint">@null</item>
     </style>
 
+    <style name="rvItemArticles">
+        <item name="android:textColor">#cf005c</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:fontFamily">@font/symtext</item>
+    </style>
+    
+    <style name="no_existen_elementos" parent="Articles_Selector_Titles">
+        <item name="android:textSize">23sp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+    </style>
 </resources>

@@ -13,12 +13,12 @@
     <string name="ponte_en_forma">Ponte en Forma</string>
     <string name="recetas_de_cocina">Recetas de Cocina</string>
 
-<!--ArticlesSelector-->
+    <!--ArticlesSelector-->
     <string name="de_selector">De</string>
     <string name="btn_regresar">Regresar</string>
     <string name="btn_entrar">Entrar</string>
 
-<!--CollectionArticles-->
+    <!--CollectionArticles-->
     <string name="art001">¿Qué es la Obesidad?: causas, consecuencias y su tratamiento</string>
     <string name="art002">Científicos investigan los efectos de los ejercicios de fuerza en la grasa corporal</string>
     <string name="art003">Beneficios del ejercicio físico en adultos mayores</string>
@@ -85,8 +85,6 @@
     <string name="art064">HOMEOSTASIS: ¿QUÉ PASA CON LA GRASA CORPORAL DURANTE EL EJERCICIO FÍSICO?</string>
     <string name="art065">8 MOTIVOS INDISCUTIBLES PARA INICIAR UNA RUTINA DE EJERCICIO FÍSICO</string>
     <string name="art066">CACAHUATE (ARACHIS HIPOGAEA): UNA JOYA NUTRICIONAL QUE IMPACTA POSITIVAMENTE EN TU SALUD</string>
-
-
 
 
     <string name="art001_url">https://solucionint.com/obesidad-causas-consecuencias-tratamiento-si/</string>
@@ -156,7 +154,9 @@
     <string name="art065_url">https://solucionint.com/8-motivos-indiscutibles-rutina-ejercicio-fisico-si/</string>
     <string name="art066_url">https://solucionint.com/cacahuate-arachis-hipogaea-valor-nutricional-si/</string>
 
-<!--Dialogue_ArticlesSelectorActivity-->
+    <!--Dialogue_ArticlesSelectorActivity-->
     <string name="hint_dialogue_selector">Número</string>
     <string name="btn_dialogue_selector">Aceptar</string>
+
+    <string name="dialogue_no_encontrado">No existen artículos que coincidan con los parámetros de busqueda</string>
 </resources>
