@@ -6,6 +6,7 @@
 <!--solucionint-->
     <color name="primary">#000000</color>
     <color name="primary_alpha">#CC000000</color>
+    <color name="primary_alpha_two">#40000000</color>
     <color name="primary_dark">#161616</color>
     <color name="primary_dark_alpha">#CC161616</color>
     <color name="secundario">#cf005c</color>
@@ -17,4 +18,5 @@
     <color name="red">#C61313</color>
 
     <color name="gray">#575757</color>
+    <color name="gray_alpha">#70575757</color>
 </resources>

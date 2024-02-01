@@ -68,4 +68,7 @@
         <item name="android:textSize">23sp</item>
         <item name="android:lineSpacingExtra">2dp</item>
     </style>
+    <style name="loading" parent="Barra_titular">
+        <item name="android:textSize">30sp</item>
+    </style>
 </resources>

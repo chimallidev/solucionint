@@ -32,6 +32,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chimallidigital.solucionint.R
 import com.chimallidigital.solucionint.databinding.ActivityArticlesSelectorBinding
+import com.chimallidigital.solucionint.domain.StringsCollection.Companion.URL
 import com.chimallidigital.solucionint.domain.model.ArticlesSelector.CollectionArticles
 import com.chimallidigital.solucionint.domain.model.scientific_articles.ScientificArticlesCategoriesModel.*
 import com.chimallidigital.solucionint.ui.selector.dialogue.DialogueArticlesSelectorAdapter
@@ -43,9 +44,6 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ArticlesSelectorActivity : AppCompatActivity() {
-    companion object {
-        val URL = "URL"
-    }
 
     private lateinit var binding: ActivityArticlesSelectorBinding
     private val scientificArticlesSelectorViewModel: ArticlesSelectorViewModel by viewModels()
@@ -764,7 +762,7 @@ class ArticlesSelectorActivity : AppCompatActivity() {
             scaleX(1.0f)
             scaleY(1.0f)
             interpolator = BounceInterpolator()
-            withStartAction {
+            withEndAction {
                 view2.isInvisible = false
             }
             start()
