@@ -187,11 +187,11 @@ class ArticlesSelectorActivity : AppCompatActivity() {
                         val y = event.getY()
 
                         if (x > -11 && x < 130f && y > -9f && y < 139f && !stateSelectorAnimation) {
-                            animationsBtnLeft()
                             btnAnimation(
                                 binding.btnLeftArticlesSelector,
                                 binding.shadowBtnLeftArticlesSelector
                             )
+                            animationsBtnLeft()
                         } else {
                             btnAnimation(
                                 binding.btnLeftArticlesSelector,
@@ -235,11 +235,11 @@ class ArticlesSelectorActivity : AppCompatActivity() {
                         val y = event.getY()
 
                         if (x > -11 && x < 130f && y > -9f && y < 139f && !stateSelectorAnimation) {
-                            animationsBtnRight()
                             btnAnimation(
                                 binding.btnRightArticlesSelector,
                                 binding.shadowBtnRightArticlesSelector
                             )
+                            animationsBtnRight()
                         } else {
                             btnAnimation(
                                 binding.btnRightArticlesSelector,
@@ -283,11 +283,11 @@ class ArticlesSelectorActivity : AppCompatActivity() {
                         val y = event.getY()
 
                         if (x > -1f && x < 364f && y > -9f && y < 139f && !stateSelectorAnimation) {
-                            showDialogueSearch()
                             btnAnimation(
                                 binding.btnSearchArticlesSelector,
                                 binding.shadowBtnSearchArticlesSelector
                             )
+                            showDialogueSearch()
                         } else {
                             btnAnimation(
                                 binding.btnSearchArticlesSelector,
@@ -331,11 +331,11 @@ class ArticlesSelectorActivity : AppCompatActivity() {
                         val y = event.getY()
 
                         if (x > -5f && x < 917f && y > 3f && y < 138f && !stateSelectorAnimation) {
-                            btnNavigate()
                             btnAnimation(
                                 binding.btnEntrarArticlesSelector,
                                 binding.shadowBtnEntrarArticlesSelector
                             )
+                            btnNavigate()
                         } else {
                             btnAnimation(
                                 binding.btnEntrarArticlesSelector,
@@ -575,6 +575,10 @@ class ArticlesSelectorActivity : AppCompatActivity() {
                         val y = event.getY()
 
                         if (x > -10f && x < 394f && y > -5f && y < 90f && !stateDialogAceptarSelector) {
+                            btnAnimation(
+                                btnDialogueArticlesSelector,
+                                shadowBtnDialogueArticlesSelector
+                            )
 
                             val actualCountString = etDialogueCountSelector.text.toString()
 
@@ -670,10 +674,6 @@ class ArticlesSelectorActivity : AppCompatActivity() {
                             }
                             dialogo.hide()
 
-                            btnAnimation(
-                                btnDialogueArticlesSelector,
-                                shadowBtnDialogueArticlesSelector
-                            )
                         } else {
                             btnAnimation(
                                 btnDialogueArticlesSelector,
