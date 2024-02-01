@@ -79,7 +79,7 @@
                     android:textColor="@color/secundario"
                     android:textSize="24sp"
                     tools:text="chimalli digital"
-                    android:fontFamily="@font/forced_square">
+                    android:fontFamily="@font/symtext">
 
                 </TextView>
 
