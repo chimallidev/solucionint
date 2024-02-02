@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/flecha_back"
-            android:layout_margin="2dp">
+            android:padding="2dp">
 
         </ImageView>
 

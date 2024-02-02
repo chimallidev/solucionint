@@ -1,5 +1,6 @@
 package com.chimallidigital.solucionint.ui.solucionint_web
 
+import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
@@ -10,11 +11,13 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
+import android.view.animation.AnticipateOvershootInterpolator
 import android.view.animation.BounceInterpolator
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
 import androidx.core.view.isVisible
 import com.chimallidigital.solucionint.R
@@ -60,8 +63,9 @@ class SolucionintWebActivity : AppCompatActivity() {
             override fun onPageFinished(view: WebView, weburl: String) {
 //                Toast.makeText(this@MainActivity, "Your WebView is Loaded....",
 //                    Toast.LENGTH_LONG).show()
-                binding.cardLoading.isVisible = false
-                binding.webView.isVisible = true
+                val viewOne= binding.cardLoading
+                val viewTwo= binding.webView
+                changeScreenAnimation(viewOne, viewTwo)
             }
         }
         myWebView.webChromeClient = object : WebChromeClient() {
@@ -143,6 +147,55 @@ class SolucionintWebActivity : AppCompatActivity() {
             interpolator= BounceInterpolator()
             doOnStart { transitionColorStart(view) }
             playTogether(decreaseAnimationX, decreaseAnimationY)
+            start()
+        }
+    }
+    private fun changeScreenAnimation(view: View, view2: View){
+        val context1= view.context
+        val context2= view2.context
+        val transitionStart= AnimatorInflater.loadAnimator(
+            context1,
+            R.animator.transitions_start
+        ) as AnimatorSet
+        val transitionEnd= AnimatorInflater.loadAnimator(
+            context2,
+            R.animator.transitions_end
+        ) as AnimatorSet
+        transitionStart.apply {
+            setTarget(view)
+        }
+        transitionEnd.apply {
+            setTarget(view2)
+        }
+        val transitionsZoomOut= AnimatorInflater.loadAnimator(
+            context1,
+            R.animator.transitions_zoom_out
+        ) as AnimatorSet
+        val transitionsZoomIn= AnimatorInflater.loadAnimator(
+            context2,
+            R.animator.transitions_zoom_in
+        ) as AnimatorSet
+        transitionsZoomOut.apply {
+            setTarget(view)
+        }
+        transitionsZoomIn.apply {
+            setTarget(view2)
+        }
+        val animatorSet= AnimatorSet()
+        animatorSet.apply {
+            playTogether(transitionsZoomOut, transitionStart)
+            doOnEnd { view.isVisible = false }
+            interpolator= AnticipateOvershootInterpolator()
+        }
+        val animatorSet2= AnimatorSet()
+        animatorSet2.apply {
+            playTogether(transitionsZoomIn, transitionEnd)
+            doOnStart { view2.isVisible= true }
+            interpolator= AnticipateOvershootInterpolator()
+        }
+        val animatorSet3= AnimatorSet()
+        animatorSet3.apply {
+            playSequentially(animatorSet, animatorSet2)
             start()
         }
     }

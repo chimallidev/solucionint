@@ -77,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:padding="11dp"
                     android:textColor="@color/secundario"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     tools:text="chimalli digital"
                     android:fontFamily="@font/symtext">
 
