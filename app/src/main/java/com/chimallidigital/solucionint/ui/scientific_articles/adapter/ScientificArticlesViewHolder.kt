@@ -13,6 +13,7 @@ import com.chimallidigital.solucionint.domain.model.scientific_articles.Scientif
 
 class ScientificArticlesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val binding = ItemScientificArticlesBinding.bind(view)
+    val itemScientific = binding.itemScientificArticles
 
     fun render(
         scientificArticlesCategories: ScientificArticlesCategories,
