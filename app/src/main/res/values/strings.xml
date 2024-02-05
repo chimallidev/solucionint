@@ -18,6 +18,11 @@
     <string name="btn_regresar">Regresar</string>
     <string name="btn_entrar">Entrar</string>
 
+<!--URL Titulares Categorias Selector-->
+    <string name="url_soluciones_inteligentes">https://solucionint.com/</string>
+    <string name="url_ponte_en_forma">https://solucionint.com/ponte-en-forma-con-ejercicios-en-casa-y-al-aire-libre/</string>
+    <string name="url_recetas_de_cocina">https://solucionint.com/recetas-de-cocina-saludables-faciles-rapidas-caseras-y-economicas/</string>
+
     <!--CollectionArticles-->
     <string name="art001">¿Qué es la Obesidad?: causas, consecuencias y su tratamiento</string>
     <string name="art002">Científicos investigan los efectos de los ejercicios de fuerza en la grasa corporal</string>

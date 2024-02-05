@@ -2,9 +2,12 @@ package com.chimallidigital.solucionint.ui.selector
 
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.TransitionDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
@@ -348,6 +351,58 @@ class ArticlesSelectorActivity : AppCompatActivity() {
                 return true
             }
         })
+        binding.tvTitularCategoriaSelector.setOnClickListener { titularCategoriaAnimation(it) }
+    }
+
+    private fun titularNavigation(){
+        var url: String
+        val intent= Intent(this,SolucionintWebActivity::class.java)
+        url= when(args.type){
+            Soluciones_Inteligentes -> getString(R.string.url_soluciones_inteligentes)
+            Ponte_en_Forma -> getString(R.string.url_ponte_en_forma)
+            Recetas_de_Cocina -> getString(R.string.url_recetas_de_cocina)
+        }
+        intent.putExtra(URL, url)
+        startActivity(intent)
+    }
+
+    private fun titularCategoriaAnimation(view: View) {
+        val translationDissapear= AnimatorInflater.loadAnimator(
+            view.context,
+            R.animator.text_translation_dissapear
+        ) as AnimatorSet
+        val translationAppear= AnimatorInflater.loadAnimator(
+            view.context,
+            R.animator.text_translation_appear
+        ) as AnimatorSet
+        val recoveryPosition= AnimatorInflater.loadAnimator(
+            view.context,
+            R.animator.text_recovery_position
+        ) as AnimatorSet
+        val dissapear= ObjectAnimator.ofFloat(view, "alpha", 1.0f, 0.0f)
+        dissapear.apply {
+            duration= 100
+            doOnEnd { binding.tvTitularCategoriaSelector.setTextColor(getColor(R.color.secundario)) }
+        }
+        val appear= ObjectAnimator.ofFloat(view, "alpha", 0.0f, 1.0f)
+        appear.apply {
+            duration=100
+            doOnStart { binding.tvTitularCategoriaSelector.setTextColor(getColor(R.color.accent)) }
+        }
+        translationDissapear.apply {
+            setTarget(view)
+
+        }
+        translationAppear.apply {
+            setTarget(view)
+             }
+        recoveryPosition.apply { setTarget(view) }
+        val animatorSet= AnimatorSet()
+        animatorSet.apply {
+            playSequentially(translationDissapear,appear,dissapear,translationAppear, recoveryPosition)
+            doOnEnd { titularNavigation() }
+            start()
+        }
     }
 
     private fun btnNavigate() {
