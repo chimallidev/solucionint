@@ -17,7 +17,13 @@
         android:id="@+id/timeMetersFragment"
         android:name="com.chimallidigital.solucionint.ui.time_meters.TimeMetersFragment"
         android:label="fragment_time_meters"
-        tools:layout="@layout/fragment_time_meters" />
+        tools:layout="@layout/fragment_time_meters" >
+        <action
+            android:id="@+id/action_timeMetersFragment_to_cronometroActivity"
+            app:destination="@id/cronometroActivity"
+            app:enterAnim="@anim/car_ui_app_styled_view_enter_anim"
+            app:exitAnim="@anim/car_ui_app_styled_view_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/calculatorsFragment"
         android:name="com.chimallidigital.solucionint.ui.calculators.CalculatorsFragment"
@@ -38,4 +44,9 @@
         android:name="com.chimallidigital.solucionint.ui.solucionint_web.SolucionintWebActivity"
         android:label="activity_solucionint_web"
         tools:layout="@layout/activity_solucionint_web" />
+    <activity
+        android:id="@+id/cronometroActivity"
+        android:name="com.chimallidigital.solucionint.ui.cronometro.CronometroActivity"
+        android:label="activity_cronometro"
+        tools:layout="@layout/activity_cronometro" />
 </navigation>

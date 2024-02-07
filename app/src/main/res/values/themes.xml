@@ -71,4 +71,15 @@
     <style name="loading" parent="Barra_titular">
         <item name="android:textSize">30sp</item>
     </style>
+    <style name="time_meters_titulares">
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/symtext</item>
+    </style>
+    <style name="card_time_meters" parent="time_meters_titulares">
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">@color/accent</item>
+    </style>
+
 </resources>

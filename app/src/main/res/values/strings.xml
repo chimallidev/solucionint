@@ -18,7 +18,7 @@
     <string name="btn_regresar">Regresar</string>
     <string name="btn_entrar">Entrar</string>
 
-<!--URL Titulares Categorias Selector-->
+    <!--URL Titulares Categorias Selector-->
     <string name="url_soluciones_inteligentes">https://solucionint.com/</string>
     <string name="url_ponte_en_forma">https://solucionint.com/ponte-en-forma-con-ejercicios-en-casa-y-al-aire-libre/</string>
     <string name="url_recetas_de_cocina">https://solucionint.com/recetas-de-cocina-saludables-faciles-rapidas-caseras-y-economicas/</string>
@@ -164,4 +164,9 @@
     <string name="btn_dialogue_selector">Aceptar</string>
 
     <string name="dialogue_no_encontrado">No existen artículos que coincidan con los parámetros de busqueda</string>
+
+    <!--Time Meters-->
+    <string name="cronometro">Cronómetro</string>
+    <string name="temporizador">Temporizador</string>
+    <string name="tabata_timer">Tabata Timer</string>
 </resources>
