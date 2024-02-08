@@ -23,6 +23,7 @@ class TimeMetersViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val context = binding.tvTituloTimeMeters.context
 
         binding.tvTituloTimeMeters.text = context.getString(timeMetersCategories.titulo)
+        binding.ivTimeMeters.setImageResource(timeMetersCategories.img)
         binding.btnActivar.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(v: View?, event: MotionEvent?): Boolean {
                 when (event?.action) {
