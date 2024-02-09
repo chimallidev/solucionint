@@ -44,12 +44,14 @@ class CronometroActivity : AppCompatActivity() {
                     binding.tvMinutes.isVisible = false
                     binding.tvHours.isVisible = false
                     binding.tvSeconds.text = secondsFormatted(seconds)
+                    binding.tvUnitTypes.text= getString(R.string.seconds)
                 } else {
                     val time2 = String.format("%02d:%02d", minutes, seconds)
                     binding.tvSeconds.isVisible = false
                     binding.tvMinutes.isVisible = true
                     binding.tvHours.isVisible = false
                     binding.tvMinutes.text = time2
+                    binding.tvUnitTypes.text= getString(R.string.minutes)
                 }
             }
             if (hours > 0) {
@@ -58,6 +60,7 @@ class CronometroActivity : AppCompatActivity() {
                 binding.tvMinutes.isVisible = false
                 binding.tvHours.isVisible = true
                 binding.tvHours.text = time3
+                binding.tvUnitTypes.text= getString(R.string.hours)
             }
             if (timerSeconds>=359999){
                 stopTimer()
@@ -68,6 +71,7 @@ class CronometroActivity : AppCompatActivity() {
                 binding.tvHours.setTextColor(getColor(R.color.red))
                 binding.tvHours.text = time0
                 binding.tvFinDelMapa.isVisible=true
+                binding.tvUnitTypes.text= getString(R.string.infinito)
             }
             handler.postDelayed(this, 1000)
         }

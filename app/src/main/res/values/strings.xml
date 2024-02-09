@@ -181,6 +181,7 @@
     <string name="seconds">Segundos</string>
     <string name="hours">Horas</string>
     <string name="vacio">Vacío</string>
+    <string name="infinito">Infinito</string>
 
     <string name="fin_del_mapa">Has llegado al final del mapa</string>
 </resources>
