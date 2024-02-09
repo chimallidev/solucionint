@@ -137,6 +137,7 @@ class CronometroActivity : AppCompatActivity() {
             if (!isBTN1){
                 startTimer()
                 binding.tvBTN2.text= getString(R.string.btnSplit)
+                transitionColorBTNSplit(binding.constBTN2Background, binding.constShadowBTN2)
                 isBTN1=true
                 isBTN2= true
             }else{
@@ -160,6 +161,7 @@ class CronometroActivity : AppCompatActivity() {
             isRunning = true
 
             binding.tvBTN1.text= getString(R.string.btnStop)
+            transitionColorBTNStop(binding.constBTN1Background, binding.constShadowBTN1)
         }
     }
 
@@ -169,7 +171,9 @@ class CronometroActivity : AppCompatActivity() {
             isRunning = false
 
             binding.tvBTN1.text= getString(R.string.btnResume)
+            transitionColorBTNStartResume(binding.constBTN1Background, binding.constShadowBTN1)
             binding.tvBTN2.text= getString(R.string.btnRestart)
+            transitionColorBTNRestart(binding.constBTN2Background, binding.constShadowBTN2)
             isBTN2= false
         }
     }
@@ -220,6 +224,78 @@ class CronometroActivity : AppCompatActivity() {
             playTogether(decreaseAnimationX, decreaseAnimationY)
             start()
         }
+    }
+    private fun transitionColorBTNStop(view: View, view2: View){
+        val colors = arrayOf(
+            ColorDrawable(getColor(R.color.chimalli)),
+            ColorDrawable(getColor(R.color.red))
+        )
+        val shadowColors = arrayOf(
+            ColorDrawable(getColor(R.color.chimalli_oscuro)),
+            ColorDrawable(getColor(R.color.red_dark))
+        )
+        val transition = TransitionDrawable(colors)
+        view.background = transition
+        transition.startTransition(300)
+        val shadowTransition = TransitionDrawable(shadowColors)
+        view2.background = shadowTransition
+        shadowTransition.startTransition(300)
+        view.setBackgroundColor(getColor(R.color.red))
+        view2.setBackgroundColor(getColor(R.color.red_dark))
+    }
+    private fun transitionColorBTNStartResume(view: View, view2: View){
+        val colors = arrayOf(
+            ColorDrawable(getColor(R.color.red)),
+            ColorDrawable(getColor(R.color.chimalli))
+        )
+        val shadowColors = arrayOf(
+            ColorDrawable(getColor(R.color.red_dark)),
+            ColorDrawable(getColor(R.color.chimalli_oscuro))
+        )
+        val transition = TransitionDrawable(colors)
+        view.background = transition
+        transition.startTransition(300)
+        view.setBackgroundColor(getColor(R.color.chimalli))
+        val shadowTransition = TransitionDrawable(shadowColors)
+        view.background = transition
+        shadowTransition.startTransition(300)
+        view2.setBackgroundColor(getColor(R.color.chimalli_oscuro))
+    }
+    private fun transitionColorBTNSplit(view: View, view2: View){
+        val colors = arrayOf(
+            ColorDrawable(getColor(R.color.secundario)),
+            ColorDrawable(getColor(R.color.green))
+        )
+        val shadowColors = arrayOf(
+            ColorDrawable(getColor(R.color.secundario_oscuro)),
+            ColorDrawable(getColor(R.color.green_dark))
+        )
+        val transition = TransitionDrawable(colors)
+        view.background = transition
+        transition.startTransition(300)
+        view.setBackgroundColor(getColor(R.color.green))
+        val shadowTransition = TransitionDrawable(shadowColors)
+        view.background = transition
+        shadowTransition.startTransition(300)
+        view2.setBackgroundColor(getColor(R.color.green_dark))
+    }
+    private fun transitionColorBTNRestart(view: View, view2: View){
+        val colors = arrayOf(
+            ColorDrawable(getColor(R.color.green)),
+            ColorDrawable(getColor(R.color.secundario))
+        )
+        val shadowColors = arrayOf(
+            ColorDrawable(getColor(R.color.green_dark)),
+            ColorDrawable(getColor(R.color.secundario_oscuro))
+        )
+        val transition = TransitionDrawable(colors)
+        view.background = transition
+        transition.startTransition(300)
+        view.setBackgroundColor(getColor(R.color.secundario))
+        val shadowTransition = TransitionDrawable(shadowColors)
+        view.background = transition
+        shadowTransition.startTransition(300)
+        view2.setBackgroundColor(getColor(R.color.secundario_oscuro))
     }
 
     private fun transitionColorStart(view: View) {
