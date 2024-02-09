@@ -169,4 +169,18 @@
     <string name="cronometro">Cronómetro</string>
     <string name="temporizador">Temporizador</string>
     <string name="tabata_timer">Tabata Timer</string>
+
+<!--Cronometro-->
+    <string name="btnStart">Iniciar</string>
+    <string name="btnStop">Detener</string>
+    <string name="btnRestart">Reiniciar</string>
+    <string name="btnSplit">Dividir</string>
+    <string name="btnResume">Continuar</string>
+
+    <string name="minutes">Minutos</string>
+    <string name="seconds">Segundos</string>
+    <string name="hours">Horas</string>
+    <string name="vacio">Vacío</string>
+
+    <string name="fin_del_mapa">Has llegado al final del mapa</string>
 </resources>
