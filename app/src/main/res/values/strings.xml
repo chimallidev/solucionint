@@ -184,4 +184,9 @@
     <string name="infinito">Infinito</string>
 
     <string name="fin_del_mapa">Has llegado al final del mapa</string>
+
+<!--dialogue log split-->
+    <string name="dial_lap">Circuito</string>
+    <string name="dial_elapsed_time">Tiempo Transcurrido</string>
+    <string name="dial_total_time">Tiempo Total</string>
 </resources>

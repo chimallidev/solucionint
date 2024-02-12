@@ -3,6 +3,7 @@ package com.chimallidigital.solucionint.ui.cronometro
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.TransitionDrawable
 import android.os.Bundle
@@ -12,23 +13,39 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.BounceInterpolator
+import android.widget.ImageView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnStart
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.chimallidigital.solucionint.R
 import com.chimallidigital.solucionint.databinding.ActivityCronometroBinding
+import com.chimallidigital.solucionint.domain.model.Cronometro.Splits
+import com.chimallidigital.solucionint.ui.cronometro.dialogue.DialogueLogSplitAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CronometroActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCronometroBinding
+    private lateinit var dialogueLogSplitAdapter: DialogueLogSplitAdapter
+    private val cronometroViewModel: CronometroViewModel by viewModels()
     private var time: Int = 0
     private var lap: Int = 0
     private var stateAnimator = false
     private var isRunning = false
     private var timerSeconds = 0
-    private var isBTN1= false
-    private var isBTN2= false
+    private var isBTN1 = false
+    private var isBTN2 = false
+    private var timeSplit: String = "00:00:00"
+    private var countSplit: Int = 0
+    private var newlist: MutableList<Splits> = mutableListOf()
     private val handler = Handler(Looper.getMainLooper())
     private val runnable = object : Runnable {
         override fun run() {
@@ -44,14 +61,14 @@ class CronometroActivity : AppCompatActivity() {
                     binding.tvMinutes.isVisible = false
                     binding.tvHours.isVisible = false
                     binding.tvSeconds.text = secondsFormatted(seconds)
-                    binding.tvUnitTypes.text= getString(R.string.seconds)
+                    binding.tvUnitTypes.text = getString(R.string.seconds)
                 } else {
                     val time2 = String.format("%02d:%02d", minutes, seconds)
                     binding.tvSeconds.isVisible = false
                     binding.tvMinutes.isVisible = true
                     binding.tvHours.isVisible = false
                     binding.tvMinutes.text = time2
-                    binding.tvUnitTypes.text= getString(R.string.minutes)
+                    binding.tvUnitTypes.text = getString(R.string.minutes)
                 }
             }
             if (hours > 0) {
@@ -60,9 +77,9 @@ class CronometroActivity : AppCompatActivity() {
                 binding.tvMinutes.isVisible = false
                 binding.tvHours.isVisible = true
                 binding.tvHours.text = time3
-                binding.tvUnitTypes.text= getString(R.string.hours)
+                binding.tvUnitTypes.text = getString(R.string.hours)
             }
-            if (timerSeconds>=359999){
+            if (timerSeconds >= 359999) {
                 stopTimer()
                 val time0 = String.format("%02d:%02d:%02d", 99, 59, 59)
                 binding.tvSeconds.isVisible = false
@@ -70,9 +87,10 @@ class CronometroActivity : AppCompatActivity() {
                 binding.tvHours.isVisible = true
                 binding.tvHours.setTextColor(getColor(R.color.red))
                 binding.tvHours.text = time0
-                binding.tvFinDelMapa.isVisible=true
-                binding.tvUnitTypes.text= getString(R.string.infinito)
+                binding.tvFinDelMapa.isVisible = true
+                binding.tvUnitTypes.text = getString(R.string.infinito)
             }
+            timeSplit = String.format("%02d:%02d:%02d", hours, minutes, seconds)
             handler.postDelayed(this, 1000)
         }
     }
@@ -90,6 +108,7 @@ class CronometroActivity : AppCompatActivity() {
 
     @SuppressLint("ClickableViewAccesability")
     private fun initListeners() {
+        dialogueLogSplitAdapter = DialogueLogSplitAdapter()
         binding.tvUnitTypes.text = getString(R.string.seconds)
         binding.tvBTN1.text = getString(R.string.btnStart)
         binding.tvBTN2.text = getString(R.string.btnRestart)
@@ -133,26 +152,194 @@ class CronometroActivity : AppCompatActivity() {
                 return true
             }
         })
-        binding.constBTNStart.setOnClickListener {
-            if (!isBTN1){
-                startTimer()
-                binding.tvBTN2.text= getString(R.string.btnSplit)
-                transitionColorBTNSplit(binding.constBTN2Background, binding.constShadowBTN2)
-                isBTN1=true
-                isBTN2= true
-            }else{
-                stopTimer()
-                isBTN1=false
-            }
-            }
-        binding.constBTNRestart.setOnClickListener {
-            if (!isBTN2){
-                resetTimer()
-            }else{
+        binding.constBTNStart.setOnTouchListener(object : View.OnTouchListener {
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                when (event?.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        btnPressed(binding.constBTN1Background, binding.constShadowBTN1)
+                    }
 
+                    MotionEvent.ACTION_MOVE -> {
+                        val x = event.getX()
+                        val y = event.getY()
+                        Log.i("poppy_key", "X= $x")
+                        Log.i("poppy_key", "Y= $y")
+                        if (x > -5f && x < 682f && y > -6f && y < 402f) {
+                        } else {
+                            if (!stateAnimator) {
+                                btnAnimation(binding.constBTN1Background, binding.constShadowBTN1)
+                                stateAnimator = true
+                            } else {
+                            }
+                        }
+                    }
+
+                    MotionEvent.ACTION_UP -> {
+                        val x = event.getX()
+                        val y = event.getY()
+
+                        if (x > -5f && x < 682f && y > -6f && y < 402f && !stateAnimator) {
+                            btnAnimation(binding.constBTN1Background, binding.constShadowBTN1)
+                            if (!isBTN1) {
+                                startTimer()
+                                binding.tvBTN2.text = getString(R.string.btnSplit)
+                                transitionColorBTNSplit(
+                                    binding.constBTN2Background,
+                                    binding.constShadowBTN2
+                                )
+                                isBTN1 = true
+                                isBTN2 = true
+                            } else {
+                                stopTimer()
+                                isBTN1 = false
+                            }
+                        } else {
+                            stateAnimator = false
+                        }
+                    }
+                }
+                return true
+            }
+        })
+        binding.constBTNRestart.setOnTouchListener(object : View.OnTouchListener {
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                when (event?.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        btnPressed(binding.constBTN2Background, binding.constShadowBTN2)
+                    }
+
+                    MotionEvent.ACTION_MOVE -> {
+                        val x = event.getX()
+                        val y = event.getY()
+                        Log.i("poppy_key2", "X= $x")
+                        Log.i("poppy_key2", "Y= $y")
+                        if (x > -5f && x < 682f && y > -6f && y < 402f) {
+                        } else {
+                            if (!stateAnimator) {
+                                btnAnimation(binding.constBTN2Background, binding.constShadowBTN2)
+                                stateAnimator = true
+                            } else {
+                            }
+                        }
+                    }
+
+                    MotionEvent.ACTION_UP -> {
+                        val x = event.getX()
+                        val y = event.getY()
+
+                        if (x > -5f && x < 682f && y > -6f && y < 402f && !stateAnimator) {
+                            btnAnimation(binding.constBTN2Background, binding.constShadowBTN2)
+                            if (!isBTN2) {
+                                resetTimer()
+                                countSplit = 0
+                                binding.tvLap.text = secondsFormatted(countSplit)
+                                binding.tvUnitTypes.text = getString(R.string.seconds)
+                                binding.tvLogSplit.text = getString(R.string.vacio)
+                                dialogueLogSplitAdapter.updateList(mutableListOf())
+                                newlist = mutableListOf()
+                                timeSplit = "00:00:00"
+                                btnStart(binding.constLap, countSplit)
+                                btnBackUP(binding.constLap)
+                                btnEnd(binding.constLap, countSplit, true)
+                            } else {
+                                btnStart(binding.constLap, countSplit)
+                                countSplit++
+                                logSPlit(timeSplit, timerSeconds, countSplit)
+                                binding.tvLogSplit.text = timeSplit
+                                if (countSplit <= 99) {
+                                    binding.tvLap.text = secondsFormatted(countSplit)
+                                }
+                                btnEnd(binding.constLap, countSplit, false)
+                            }
+                        } else {
+                            stateAnimator = false
+                        }
+                    }
+                }
+                return true
+            }
+        })
+        binding.constElapsedTime.setOnClickListener { showDialogueLogSplit() }
+
+    }
+
+    private fun btnPressed(view: View, view2: View) {
+        view.animate().apply {
+            duration = 200
+            translationY(10f)
+            scaleX(0.9f)
+            scaleY(0.9f)
+            interpolator = BounceInterpolator()
+            withStartAction {
+                view2.isInvisible = true
+            }
+            start()
+        }
+    }
+
+    private fun btnAnimation(view: View, view2: View) {
+        view.animate().apply {
+            duration = 200
+            translationY(0f)
+            scaleX(1.0f)
+            scaleY(1.0f)
+            interpolator = BounceInterpolator()
+            withEndAction {
+                view2.isInvisible = false
+            }
+            start()
+        }
+    }
+
+    private fun showDialogueLogSplit() {
+        val dialogo = Dialog(this)
+        dialogo.setContentView(R.layout.dialogue_log_split)
+
+        val btnDLSBack: ImageView = dialogo.findViewById(R.id.btnDLSBack)
+        val rvDialogueLogSplit: RecyclerView = dialogo.findViewById(R.id.rvDialogueLogSplit)
+
+        btnDLSBack.setOnClickListener { dialogo.hide() }
+        rvDialogueLogSplit.apply {
+            layoutManager = LinearLayoutManager(rvDialogueLogSplit.context)
+            adapter = dialogueLogSplitAdapter
+        }
+        dialogo.show()
+    }
+
+    private fun logSPlit(totalTime: String, timerSeconds: Int, countSplit: Int) {
+        var elapsedTime: String
+        val hours = timerSeconds / 3600
+        val minutes = (timerSeconds % 3600) / 60
+        val seconds = timerSeconds % 60
+
+        var timerSecondsSave = timerSeconds
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                cronometroViewModel.splits.collect {
+                    if (newlist.isNotEmpty()) {
+                        val timerSecondsValue = newlist.get(newlist.size - 1).timerSeconds
+                        timerSecondsSave = timerSecondsSave - timerSecondsValue
+                        val hours2 = timerSecondsSave / 3600
+                        val minutes2 = (timerSecondsSave % 3600) / 60
+                        val seconds2 = timerSecondsSave % 60
+                        Log.i("poppy", timerSecondsSave.toString())
+                        elapsedTime = String.format("%02d:%02d:%02d", hours2, minutes2, seconds2)
+                    } else {
+                        elapsedTime = String.format("%02d:%02d:%02d", hours, minutes, seconds)
+                    }
+                    newlist.add(
+                        Splits(
+                            elapsedTime = elapsedTime,
+                            totalTime = totalTime,
+                            timerSeconds = timerSeconds,
+                            countSplit = countSplit
+                        )
+                    )
+                    Log.i("poppy", newlist.toString())
+                    dialogueLogSplitAdapter.updateList(newlist)
+                }
             }
         }
-
     }
 
     private fun startTimer() {
@@ -160,7 +347,7 @@ class CronometroActivity : AppCompatActivity() {
             handler.postDelayed(runnable, 1000)
             isRunning = true
 
-            binding.tvBTN1.text= getString(R.string.btnStop)
+            binding.tvBTN1.text = getString(R.string.btnStop)
             transitionColorBTNStop(binding.constBTN1Background, binding.constShadowBTN1)
         }
     }
@@ -170,11 +357,11 @@ class CronometroActivity : AppCompatActivity() {
             handler.removeCallbacks(runnable)
             isRunning = false
 
-            binding.tvBTN1.text= getString(R.string.btnResume)
+            binding.tvBTN1.text = getString(R.string.btnResume)
             transitionColorBTNStartResume(binding.constBTN1Background, binding.constShadowBTN1)
-            binding.tvBTN2.text= getString(R.string.btnRestart)
+            binding.tvBTN2.text = getString(R.string.btnRestart)
             transitionColorBTNRestart(binding.constBTN2Background, binding.constShadowBTN2)
-            isBTN2= false
+            isBTN2 = false
         }
     }
 
@@ -186,13 +373,60 @@ class CronometroActivity : AppCompatActivity() {
         binding.tvHours.isVisible = false
         binding.tvSeconds.text = secondsFormatted(timerSeconds)
         binding.tvHours.setTextColor(getColor(R.color.accent))
-        binding.tvFinDelMapa.isVisible=false
-        binding.tvBTN1.text= getString(R.string.btnStart)
+        binding.tvFinDelMapa.isVisible = false
+        binding.tvBTN1.text = getString(R.string.btnStart)
     }
 
     private fun secondsFormatted(time: Int): String {
         val timeFormatted = String.format("%02d", time)
         return timeFormatted
+    }
+
+    private fun btnStart(view: View, num: Int) {
+        val decreaseAnimationX = ObjectAnimator.ofFloat(view, "scaleX", 1.0f, 0.9f)
+
+        val decreaseAnimationY = ObjectAnimator.ofFloat(view, "scaleY", 1.0f, 0.9f)
+
+
+        val animatorSet = AnimatorSet()
+        animatorSet.apply {
+            duration = 300
+            interpolator = BounceInterpolator()
+            doOnStart {
+                if (num == 0) {
+                    transitionColorGrayTOChimalli(view)
+                } else {
+                    transitionColorSecundarioTOChimalli(view)
+                }
+            }
+            playTogether(decreaseAnimationX, decreaseAnimationY)
+            start()
+        }
+    }
+
+    private fun btnEnd(view: View, num: Int, status: Boolean) {
+        val increaseAnimationX = ObjectAnimator.ofFloat(view, "scaleX", 0.9f, 1.0f)
+        val increaseAnimationY = ObjectAnimator.ofFloat(view, "scaleY", 0.9f, 1.0f)
+
+
+        val animatorSet = AnimatorSet()
+        animatorSet.apply {
+            duration = 300
+            interpolator = BounceInterpolator()
+            doOnStart {
+                if (status) {
+                    transitionColorChimalliTOGray(view)
+                } else {
+                    if (num <= 99) {
+                        transitionColorChimalliTOSecundario(view)
+                    } else {
+                        transitionColorChimalliTORed(view)
+                    }
+                }
+            }
+            playTogether(increaseAnimationX, increaseAnimationY)
+            start()
+        }
     }
 
     private fun btnBackUP(view: View) {
@@ -225,7 +459,8 @@ class CronometroActivity : AppCompatActivity() {
             start()
         }
     }
-    private fun transitionColorBTNStop(view: View, view2: View){
+
+    private fun transitionColorBTNStop(view: View, view2: View) {
         val colors = arrayOf(
             ColorDrawable(getColor(R.color.chimalli)),
             ColorDrawable(getColor(R.color.red))
@@ -243,7 +478,8 @@ class CronometroActivity : AppCompatActivity() {
         view.setBackgroundColor(getColor(R.color.red))
         view2.setBackgroundColor(getColor(R.color.red_dark))
     }
-    private fun transitionColorBTNStartResume(view: View, view2: View){
+
+    private fun transitionColorBTNStartResume(view: View, view2: View) {
         val colors = arrayOf(
             ColorDrawable(getColor(R.color.red)),
             ColorDrawable(getColor(R.color.chimalli))
@@ -261,7 +497,8 @@ class CronometroActivity : AppCompatActivity() {
         shadowTransition.startTransition(300)
         view2.setBackgroundColor(getColor(R.color.chimalli_oscuro))
     }
-    private fun transitionColorBTNSplit(view: View, view2: View){
+
+    private fun transitionColorBTNSplit(view: View, view2: View) {
         val colors = arrayOf(
             ColorDrawable(getColor(R.color.secundario)),
             ColorDrawable(getColor(R.color.green))
@@ -279,7 +516,8 @@ class CronometroActivity : AppCompatActivity() {
         shadowTransition.startTransition(300)
         view2.setBackgroundColor(getColor(R.color.green_dark))
     }
-    private fun transitionColorBTNRestart(view: View, view2: View){
+
+    private fun transitionColorBTNRestart(view: View, view2: View) {
         val colors = arrayOf(
             ColorDrawable(getColor(R.color.green)),
             ColorDrawable(getColor(R.color.secundario))
@@ -318,5 +556,60 @@ class CronometroActivity : AppCompatActivity() {
         view.background = transition
         transition.startTransition(300)
         view.setBackgroundColor(getColor(R.color.gray_alpha))
+    }
+
+    private fun transitionColorGrayTOChimalli(view: View) {
+        val colors = arrayOf(
+            ColorDrawable(getColor(R.color.gray)),
+            ColorDrawable(getColor(R.color.chimalli))
+        )
+        val transition = TransitionDrawable(colors)
+        view.background = transition
+        transition.startTransition(400)
+        view.setBackgroundColor(getColor(R.color.chimalli))
+    }
+
+    private fun transitionColorSecundarioTOChimalli(view: View) {
+        val colors = arrayOf(
+            ColorDrawable(getColor(R.color.secundario)),
+            ColorDrawable(getColor(R.color.chimalli))
+        )
+        val transition = TransitionDrawable(colors)
+        view.background = transition
+        transition.startTransition(400)
+        view.setBackgroundColor(getColor(R.color.chimalli))
+    }
+
+    private fun transitionColorChimalliTORed(view: View) {
+        val colors = arrayOf(
+            ColorDrawable(getColor(R.color.chimalli)),
+            ColorDrawable(getColor(R.color.red))
+        )
+        val transition = TransitionDrawable(colors)
+        view.background = transition
+        transition.startTransition(400)
+        view.setBackgroundColor(getColor(R.color.red))
+    }
+
+    private fun transitionColorChimalliTOSecundario(view: View) {
+        val colors = arrayOf(
+            ColorDrawable(getColor(R.color.chimalli)),
+            ColorDrawable(getColor(R.color.secundario))
+        )
+        val transition = TransitionDrawable(colors)
+        view.background = transition
+        transition.startTransition(400)
+        view.setBackgroundColor(getColor(R.color.secundario))
+    }
+
+    private fun transitionColorChimalliTOGray(view: View) {
+        val colors = arrayOf(
+            ColorDrawable(getColor(R.color.chimalli)),
+            ColorDrawable(getColor(R.color.gray))
+        )
+        val transition = TransitionDrawable(colors)
+        view.background = transition
+        transition.startTransition(400)
+        view.setBackgroundColor(getColor(R.color.gray))
     }
 }

@@ -133,4 +133,14 @@
         <item name="android:textSize">30sp</item>
         <item name="android:textAlignment">center</item>
     </style>
+<!--dialogue log split-->
+    <style name="dialogue_log_split">
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="item_dialogue_log_split" parent="dialogue_log_split">
+        <item name="android:textSize">30sp</item>
+    </style>
 </resources>
