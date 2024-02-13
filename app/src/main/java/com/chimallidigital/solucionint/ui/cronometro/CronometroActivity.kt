@@ -1,5 +1,6 @@
 package com.chimallidigital.solucionint.ui.cronometro
 
+import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
@@ -16,6 +17,7 @@ import android.view.animation.BounceInterpolator
 import android.widget.ImageView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
@@ -62,33 +64,61 @@ class CronometroActivity : AppCompatActivity() {
                     binding.tvHours.isVisible = false
                     binding.tvSeconds.text = secondsFormatted(seconds)
                     binding.tvUnitTypes.text = getString(R.string.seconds)
+                    if (timerSeconds==59){
+                        dissappearCronometroAnim(binding.tvSeconds)
+                        dissappearCronometroAnim(binding.tvUnitTypes)
+                    }
                 } else {
                     val time2 = String.format("%02d:%02d", minutes, seconds)
-                    binding.tvSeconds.isVisible = false
-                    binding.tvMinutes.isVisible = true
+                    if (timerSeconds==60){
+                        binding.tvUnitTypes.text = getString(R.string.minutes)
+                        appearCronometroAnim(binding.tvUnitTypes)
+                        appearCronometroAnim(binding.tvMinutes)
+                    }
+                    binding.tvSeconds.isVisible=false
                     binding.tvHours.isVisible = false
+                    binding.tvMinutes.isVisible=true
                     binding.tvMinutes.text = time2
                     binding.tvUnitTypes.text = getString(R.string.minutes)
+                    if (timerSeconds==3599){
+                        dissappearCronometroAnim(binding.tvMinutes)
+                        dissappearCronometroAnim(binding.tvUnitTypes)
+                    }
                 }
             }
             if (hours > 0) {
                 val time3 = String.format("%02d:%02d:%02d", hours, minutes, seconds)
+                if (timerSeconds==3600){
+                    binding.tvUnitTypes.text = getString(R.string.hours)
+                    appearCronometroAnim(binding.tvHours)
+                    appearCronometroAnim(binding.tvUnitTypes)
+                }
+                binding.tvHours.isVisible=true
+                binding.tvMinutes.isVisible=false
                 binding.tvSeconds.isVisible = false
-                binding.tvMinutes.isVisible = false
-                binding.tvHours.isVisible = true
                 binding.tvHours.text = time3
                 binding.tvUnitTypes.text = getString(R.string.hours)
+                if (timerSeconds==35998){
+                    dissappearCronometroAnim(binding.tvHours)
+                }
             }
             if (timerSeconds >= 359999) {
-                stopTimer()
                 val time0 = String.format("%02d:%02d:%02d", 99, 59, 59)
-                binding.tvSeconds.isVisible = false
-                binding.tvMinutes.isVisible = false
-                binding.tvHours.isVisible = true
                 binding.tvHours.setTextColor(getColor(R.color.red))
                 binding.tvHours.text = time0
-                binding.tvFinDelMapa.isVisible = true
                 binding.tvUnitTypes.text = getString(R.string.infinito)
+                if (timerSeconds==359999){
+                    appearCronometroAnim(binding.tvHours)
+                    appearCronometroAnim(binding.tvFinDelMapa)
+                }
+                stopTimer()
+                isRunning=true
+                isBTN1=false
+                binding.tvSeconds.isVisible = false
+                binding.tvMinutes.isVisible = false
+                binding.tvHours.isVisible=true
+                binding.tvFinDelMapa.isVisible=true
+
             }
             timeSplit = String.format("%02d:%02d:%02d", hours, minutes, seconds)
             handler.postDelayed(this, 1000)
@@ -237,6 +267,11 @@ class CronometroActivity : AppCompatActivity() {
                                 binding.tvLogSplit.text = getString(R.string.vacio)
                                 dialogueLogSplitAdapter.updateList(mutableListOf())
                                 newlist = mutableListOf()
+                                appearCronometroAnim(binding.tvSeconds)
+                                appearCronometroAnim(binding.tvUnitTypes)
+                                appearCronometroAnim(binding.tvLogSplit)
+                                binding.tvMinutes.isVisible=false
+                                binding.tvHours.isVisible=false
                                 timeSplit = "00:00:00"
                                 btnStart(binding.constLap, countSplit)
                                 btnBackUP(binding.constLap)
@@ -245,7 +280,9 @@ class CronometroActivity : AppCompatActivity() {
                                 btnStart(binding.constLap, countSplit)
                                 countSplit++
                                 logSPlit(timeSplit, timerSeconds, countSplit)
+                                dissappearCronometroAnim(binding.tvLogSplit)
                                 binding.tvLogSplit.text = timeSplit
+                                appearCronometroAnim(binding.tvLogSplit)
                                 if (countSplit <= 99) {
                                     binding.tvLap.text = secondsFormatted(countSplit)
                                 }
@@ -261,6 +298,53 @@ class CronometroActivity : AppCompatActivity() {
         })
         binding.constElapsedTime.setOnClickListener { showDialogueLogSplit() }
 
+    }
+    private fun cronometroTimeAnim(view: View, view2: View){
+        val appear= AnimatorInflater.loadAnimator(
+            view.context,
+            R.animator.cronometro_appear
+        ) as AnimatorSet
+        val dissappear= AnimatorInflater.loadAnimator(
+            view.context,
+            R.animator.cronometro_dissapear
+        ) as AnimatorSet
+        appear.apply {
+            setTarget(view2)
+            doOnStart { view2.isVisible=true }
+        }
+        dissappear.apply {
+            setTarget(view)
+            doOnEnd { view.isVisible=false }
+        }
+        val animatorset= AnimatorSet()
+        animatorset.apply {
+            playSequentially(dissappear, appear)
+            start()
+        }
+    }
+    private fun appearCronometroAnim(view: View){
+        val appear= AnimatorInflater.loadAnimator(
+            view.context,
+            R.animator.cronometro_appear
+        ) as AnimatorSet
+        appear.apply {
+            setTarget(view)
+            doOnStart {
+                view.isVisible=true
+            }
+            start()
+        }
+    }
+    private fun dissappearCronometroAnim(view: View){
+        val dissappear= AnimatorInflater.loadAnimator(
+            view.context,
+            R.animator.cronometro_dissapear
+        ) as AnimatorSet
+        dissappear.apply {
+            doOnEnd { view.isInvisible }
+            setTarget(view)
+            start()
+        }
     }
 
     private fun btnPressed(view: View, view2: View) {
