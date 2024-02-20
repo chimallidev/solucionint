@@ -56,7 +56,9 @@ class TimeMetersFragment : Fragment() {
                 }
 
                 tabata_timer -> {}
-                temporizador -> {}
+                temporizador -> {
+                    findNavController().navigate(TimeMetersFragmentDirections.actionTimeMetersFragmentToTemporizadorActivity())
+                }
             }
         })
         binding.rvTimeMeters.apply {

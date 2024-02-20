@@ -8,17 +8,19 @@
     android:background="@color/primary">
     <androidx.cardview.widget.CardView
         android:id="@+id/cvCronometro"
-        android:layout_width="600dp"
-        android:layout_height="320dp"
+        android:layout_width="590dp"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/constBottom"
+        app:layout_constraintEnd_toStartOf="@id/constBTNS"
         app:cardBackgroundColor="@color/accent"
         app:cardElevation="21dp">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/primary"
-            android:layout_margin="8dp">
+            android:layout_margin="4dp">
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvBTNBack"
                 android:layout_width="55dp"
@@ -38,7 +40,7 @@
             <TextView
                 android:id="@+id/tvSeconds"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -86,7 +88,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constBottom"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cvCronometro"
@@ -198,6 +201,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constBTNS"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toEndOf="@id/cvCronometro"

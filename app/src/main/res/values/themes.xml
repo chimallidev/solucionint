@@ -2,9 +2,12 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Solucionint" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:statusBarColor">@null</item>
+
     </style>
 
-    <style name="Theme.Solucionint" parent="Base.Theme.Solucionint" />
+    <style name="Theme.Solucionint" parent="Base.Theme.Solucionint" >
+        <item name="colorPrimaryDark">@color/primary</item>
+    </style>
 
 <!--Tema titular barra ArticlesSelectorActivity-->
     <style name="Barra_titular">
@@ -86,19 +89,21 @@
 <style name="unit_types">
     <item name="android:textColor">@color/accent</item>
     <item name="android:fontFamily">@font/symtext</item>
-    <item name="android:layout_marginBottom">105dp</item>
-    <item name="android:textSize">260sp</item>
+    <item name="android:layout_marginTop">-100dp</item>
+    <item name="android:textSize">280sp</item>
     <item name="android:layout_marginStart">35dp</item>
 </style>
     <style name="minutes" parent="unit_types">
         <item name="android:layout_marginBottom">10dp</item>
-        <item name="android:textSize">145sp</item>
+        <item name="android:textSize">150sp</item>
         <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginTop">10dp</item>
     </style>
     <style name="hours" parent="unit_types">
         <item name="android:layout_marginBottom">12dp</item>
-        <item name="android:textSize">90sp</item>
+        <item name="android:textSize">100sp</item>
         <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginTop">-15dp</item>
     </style>
 <!--Tablero Bottom-->
     <style name="lap">
@@ -111,16 +116,16 @@
     <style name="elapsed_time" parent="lap">
         <item name="android:textColor">@color/secundario</item>
         <item name="android:textSize">37sp</item>
-        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
         <item name="android:layout_marginStart">10dp</item>
 
     </style>
     <style name="units_cronometro">
         <item name="android:textColor">@color/secundario</item>
-        <item name="android:textSize">40sp</item>
+        <item name="android:textSize">35sp</item>
         <item name="android:fontFamily">@font/symtext</item>
         <item name="android:layout_marginStart">5dp</item>
-        <item name="android:layout_marginBottom">15dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
     </style>
     <style name="btnStart" parent="lap">
         <item name="android:textSize">20sp</item>
@@ -142,5 +147,45 @@
     </style>
     <style name="item_dialogue_log_split" parent="dialogue_log_split">
         <item name="android:textSize">30sp</item>
+    </style>
+
+<!--Temporizador-->
+    <style name="Temporizador">
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:textSize">300sp</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_marginTop">-105dp</item>
+        <item name="android:layout_marginStart">40dp</item>
+    </style>
+    <style name="temp_minutes" parent="Temporizador">
+        <item name="android:textSize">190sp</item>
+        <item name="android:layout_marginTop">-10dp</item>
+        <item name="android:layout_marginStart">25dp</item>
+    </style>
+    <style name="temp_hours" parent="Temporizador">
+        <item name="android:textSize">124sp</item>
+        <item name="android:layout_marginTop">50dp</item>
+        <item name="android:layout_marginStart">17dp</item>
+    </style>
+    <style name="tempBTN">
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="units_temporizador" parent="units_cronometro">
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:textSize">35sp</item>
+    </style>
+    <style name="dialogue_ajustes_temporizador">
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="dialogue_temporizador_subtitulos" parent="dialogue_ajustes_temporizador">
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:textSize">22sp</item>
     </style>
 </resources>

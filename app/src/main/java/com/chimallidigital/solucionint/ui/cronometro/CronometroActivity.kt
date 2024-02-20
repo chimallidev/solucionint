@@ -299,29 +299,6 @@ class CronometroActivity : AppCompatActivity() {
         binding.constElapsedTime.setOnClickListener { showDialogueLogSplit() }
 
     }
-    private fun cronometroTimeAnim(view: View, view2: View){
-        val appear= AnimatorInflater.loadAnimator(
-            view.context,
-            R.animator.cronometro_appear
-        ) as AnimatorSet
-        val dissappear= AnimatorInflater.loadAnimator(
-            view.context,
-            R.animator.cronometro_dissapear
-        ) as AnimatorSet
-        appear.apply {
-            setTarget(view2)
-            doOnStart { view2.isVisible=true }
-        }
-        dissappear.apply {
-            setTarget(view)
-            doOnEnd { view.isVisible=false }
-        }
-        val animatorset= AnimatorSet()
-        animatorset.apply {
-            playSequentially(dissappear, appear)
-            start()
-        }
-    }
     private fun appearCronometroAnim(view: View){
         val appear= AnimatorInflater.loadAnimator(
             view.context,
