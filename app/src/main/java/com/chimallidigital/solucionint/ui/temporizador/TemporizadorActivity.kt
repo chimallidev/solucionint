@@ -24,7 +24,6 @@ import android.widget.ArrayAdapter
 import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.Spinner
-import android.widget.Switch
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
@@ -54,7 +53,8 @@ import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
-val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name="Settings")
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "Settings")
+
 @AndroidEntryPoint
 class TemporizadorActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTemporizadorBinding
@@ -69,8 +69,8 @@ class TemporizadorActivity : AppCompatActivity() {
     private var isFinishState = true
     private var switchState = false
     private var lastCount = false
-    private var firstTime= true
-    var savePosition: Int= 0
+    private var firstTime = true
+    var savePosition: Int = 0
     var track: Int = -1
     var mMediaPlayer: MediaPlayer? = null
     private val handler = Handler(Looper.getMainLooper())
@@ -175,28 +175,27 @@ class TemporizadorActivity : AppCompatActivity() {
         stateSettings()
         initUI()
     }
-    private suspend fun guardarPreferencias(key: String, value: Boolean){
-        dataStore.edit { Preferencias->
-            Preferencias[booleanPreferencesKey(key)]= value
+
+    private suspend fun guardarPreferencias(key: String, value: Boolean) {
+        dataStore.edit { Preferencias ->
+            Preferencias[booleanPreferencesKey(key)] = value
         }
     }
-    private suspend fun guardarIntPreferencias(key: String, value: Int){
-        dataStore.edit { Preferencias->
-            Preferencias[intPreferencesKey(key)]= value
+
+    private suspend fun guardarIntPreferencias(key: String, value: Int) {
+        dataStore.edit { Preferencias ->
+            Preferencias[intPreferencesKey(key)] = value
         }
     }
+
     private fun stateSettings() {
-//        val dialogo= Dialog(this)
-//        dialogo.setContentView(R.layout.dialogue_temporizador_ajustes)
-//
-//        val switch1: SwitchCompat= dialogo.findViewById(R.id.switch1)
         CoroutineScope(Dispatchers.IO).launch {
-            getSettings().filter { firstTime }.collectLatest { settingsModel->
-                if(settingsModel!=null){
+            getSettings().filter { firstTime }.collectLatest { settingsModel ->
+                if (settingsModel != null) {
                     runOnUiThread {
-                        switchState= settingsModel.vibracion_temporizador
-                        savePosition= settingsModel.sonido_temporizador
-                        track= settingsModel.track_temporizador
+                        switchState = settingsModel.vibracion_temporizador
+                        savePosition = settingsModel.sonido_temporizador
+                        track = settingsModel.track_temporizador
                     }
                 }
             }
@@ -918,12 +917,13 @@ class TemporizadorActivity : AppCompatActivity() {
         transition.startTransition(300)
         view.setBackgroundColor(getColor(R.color.gray_alpha))
     }
+
     private fun getSettings(): Flow<SettingsModel> {
-        return dataStore.data.map {Preferencias->
+        return dataStore.data.map { Preferencias ->
             SettingsModel(
-                Preferencias[intPreferencesKey(SONIDO_TEMPORIZADOR)]?: 0,
-                Preferencias[booleanPreferencesKey(VIBRACION_TEMPORIZADOR)]?: false,
-                Preferencias[intPreferencesKey(TRACK_TEMPORIZADOR)]?: -1
+                Preferencias[intPreferencesKey(SONIDO_TEMPORIZADOR)] ?: 0,
+                Preferencias[booleanPreferencesKey(VIBRACION_TEMPORIZADOR)] ?: false,
+                Preferencias[intPreferencesKey(TRACK_TEMPORIZADOR)] ?: -1
             )
         }
     }
