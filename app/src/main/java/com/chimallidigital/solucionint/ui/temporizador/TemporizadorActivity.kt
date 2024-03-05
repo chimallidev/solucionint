@@ -196,6 +196,7 @@ class TemporizadorActivity : AppCompatActivity() {
                         switchState = settingsModel.vibracion_temporizador
                         savePosition = settingsModel.sonido_temporizador
                         track = settingsModel.track_temporizador
+                        firstTime= !firstTime
                     }
                 }
             }

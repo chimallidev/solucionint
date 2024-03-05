@@ -28,6 +28,11 @@
             app:destination="@id/temporizadorActivity"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_timeMetersFragment_to_tabataTimerActivity2"
+            app:destination="@id/tabataTimerActivity"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/calculatorsFragment"
@@ -59,4 +64,9 @@
         android:name="com.chimallidigital.solucionint.ui.temporizador.TemporizadorActivity"
         android:label="activity_temporizador"
         tools:layout="@layout/activity_temporizador" />
+    <activity
+        android:id="@+id/tabataTimerActivity"
+        android:name="com.chimallidigital.solucionint.ui.tabata_timer.TabataTimerActivity"
+        android:label="activity_tabata_timer"
+        tools:layout="@layout/activity_tabata_timer" />
 </navigation>

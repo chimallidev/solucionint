@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -18,9 +17,15 @@
         android:theme="@style/Theme.Solucionint"
         tools:targetApi="31">
         <activity
+            android:name=".ui.tabata_timer_playing.TabataTimerPlayingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tabata_timer.TabataTimerActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.temporizador.TemporizadorActivity"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".ui.cronometro.CronometroActivity"
             android:exported="false"

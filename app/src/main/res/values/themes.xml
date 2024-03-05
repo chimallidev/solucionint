@@ -188,4 +188,39 @@
         <item name="android:textColor">@color/accent</item>
         <item name="android:textSize">22sp</item>
     </style>
+<!--Tabata Timer-->
+<!--timers barra superior-->
+    <style name="timers_barra_superior">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="subtitulos_barra_superior" parent="timers_barra_superior">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/accent</item>
+    </style>
+    <style name="boton_comenzar">
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+<!--RecyclerView Tabata Timer-->
+    <style name="item_titulo_tabata_timer">
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+    <style name="item_subtitulos_tabata_timer" parent="item_titulo_tabata_timer">
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="count_tabata_timer" parent="item_titulo_tabata_timer">
+        <item name="android:textSize">70sp</item>
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:layout_marginTop">-25dp</item>
+        <item name="android:layout_marginStart">11dp</item>
+    </style>
 </resources>

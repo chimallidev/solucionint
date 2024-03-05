@@ -55,7 +55,9 @@ class TimeMetersFragment : Fragment() {
                     findNavController().navigate(TimeMetersFragmentDirections.actionTimeMetersFragmentToCronometroActivity())
                 }
 
-                tabata_timer -> {}
+                tabata_timer -> {
+                    findNavController().navigate(TimeMetersFragmentDirections.actionTimeMetersFragmentToTabataTimerActivity2())
+                }
                 temporizador -> {
                     findNavController().navigate(TimeMetersFragmentDirections.actionTimeMetersFragmentToTemporizadorActivity())
                 }
