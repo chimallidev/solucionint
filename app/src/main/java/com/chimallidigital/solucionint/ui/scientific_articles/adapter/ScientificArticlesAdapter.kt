@@ -31,7 +31,6 @@ class ScientificArticlesAdapter(
     override fun getItemCount() = scientificArticlesCategoriesList.size
 
     override fun onBindViewHolder(holder: ScientificArticlesViewHolder, position: Int) {
-        val itemScientific =
             holder.render(scientificArticlesCategoriesList[position], itemOnSelected)
         holder.itemScientific.animation =
             AnimationUtils.loadAnimation(holder.itemView.context, R.anim.item_rv_anim)
