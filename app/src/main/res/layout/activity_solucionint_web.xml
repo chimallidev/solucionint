@@ -13,13 +13,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:cardBackgroundColor="@color/primary">
+        app:cardBackgroundColor="@color/secundario">
         <ProgressBar
             android:id="@+id/pbSolucionint"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
-            android:indeterminateTint="@color/secundario">
+            android:indeterminateTint="@color/accent">
 
         </ProgressBar>
         <TextView
@@ -29,7 +29,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="150dp"
             style="@style/Barra_titular"
-            tools:text="Cargando">
+            tools:text="Cargando"
+            android:textColor="@color/accent">
 
         </TextView>
 
@@ -53,7 +54,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="7dp"
-        app:cardBackgroundColor="@color/gray_alpha">
+        app:cardBackgroundColor="@color/primary_alpha">
 
         <ImageView
             android:layout_width="match_parent"

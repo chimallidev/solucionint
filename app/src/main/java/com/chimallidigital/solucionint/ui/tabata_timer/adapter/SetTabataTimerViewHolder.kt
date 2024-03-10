@@ -60,7 +60,6 @@ class SetTabataTimerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         contextSegundos.resources.getStringArray(com.chimallidigital.solucionint.R.array.Segundos)
     val sonidos =
         contextSonidos.resources.getStringArray(com.chimallidigital.solucionint.R.array.Sonidos)
-    var firstime = true
 
     fun render(
         setItemsCollection: SetItemsCollection,
@@ -111,7 +110,6 @@ class SetTabataTimerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         binding.tvTitulo.text = contexTitulo.getString(setItemsCollection.title)
         binding.ivItem.setImageResource(setItemsCollection.img)
-
         if (setItemsCollection.stateSetTiempo == 1) {
             binding.constEditText.isVisible = false
             binding.tvTiempo.isVisible = true
@@ -152,8 +150,6 @@ class SetTabataTimerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                 setItemsCollection,
                 timePosition
             )
-
-
             if (setItemsCollection.stateSonido == 1) {
                 binding.constSpinersSonido.isVisible = true
                 when (setItemsCollection) {

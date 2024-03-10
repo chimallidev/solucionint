@@ -17,6 +17,9 @@
         android:theme="@style/Theme.Solucionint"
         tools:targetApi="31">
         <activity
+            android:name=".ui.tabata_timer_playing.FinishTabataTimerActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.tabata_timer_playing.TabataTimerPlayingActivity"
             android:exported="false" />
         <activity

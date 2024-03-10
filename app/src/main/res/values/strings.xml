@@ -515,5 +515,12 @@
     <string name="descanso_entre_conjuntos">Descanso entre conjuntos</string>
 
     <string name="uno_numero">01</string>
+    <string name="proximo">Próximo</string>
+    <string name="pausar">Pausar</string>
+    <string name="continuar">Continuar</string>
+    <string name="reanudar">Reanudar</string>
+    <string name="finalizar">Finalizar</string>
+
+    <string name="finish_activity">Rutina completada</string>
 
 </resources>

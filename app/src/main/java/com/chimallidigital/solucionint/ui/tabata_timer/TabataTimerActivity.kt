@@ -29,6 +29,7 @@ import com.chimallidigital.solucionint.databinding.ActivityTabataTimerBinding
 import com.chimallidigital.solucionint.domain.StringsCollection.Companion.CICLOS
 import com.chimallidigital.solucionint.domain.StringsCollection.Companion.CONJUNTOS
 import com.chimallidigital.solucionint.domain.StringsCollection.Companion.ITEMS_LIST
+import com.chimallidigital.solucionint.domain.StringsCollection.Companion.TIEMPO_TOTAL
 import com.chimallidigital.solucionint.domain.StringsCollection.Companion.TT_COUNT_CICLOS
 import com.chimallidigital.solucionint.domain.StringsCollection.Companion.TT_COUNT_CONJUNTOS
 import com.chimallidigital.solucionint.domain.StringsCollection.Companion.TT_DESCANSO_ENTRE_CONJUNTOS_HORAS
@@ -118,7 +119,7 @@ class TabataTimerActivity : AppCompatActivity() {
     private var descansoEntreSegundos = 0
     private var countCiclos = 1
     private var countConjuntos = 1
-     var tiempoTotal = 0
+    var tiempoTotal = 0
     private var preparacionTiempo = 0
     private var ejercicioTiempo = 0
     private var descansoTiempo = 0
@@ -147,9 +148,8 @@ class TabataTimerActivity : AppCompatActivity() {
     private var positionTrackDescanso = 0
     private var positionTrackDescansoEntre = 0
     private var maxlimit = false
-    private var stateAnimator= false
-    private var stateNOSetEjComenzar= false
-
+    private var stateAnimator = false
+    private var stateNOSetEjComenzar = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -161,16 +161,19 @@ class TabataTimerActivity : AppCompatActivity() {
         stateSettingsTime()
         Log.i("faro", "El tiempo total despues de settingsState: $tiempoTotal")
     }
+
     override fun onBackPressed() {
         super.onBackPressed()
         // Your logic here
-        val intent= Intent(this, MainActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
+
     private fun initUI() {
         initListeners()
         initSetRecyclerView()
     }
+
     private fun initSetRecyclerView() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -205,12 +208,22 @@ class TabataTimerActivity : AppCompatActivity() {
                             guardarIntPreferencias(TT_DESCANSO_SEGUNDOS, descansoSegundos)
                             guardarIntPreferencias(TT_DESCANSO_TIEMPO, descansoTiempo)
                         }
-                        if (countConjuntos == 1) {
-                            tiempoTotal =
-                                preparacionTiempo + ((ejercicioTiempo + descansoTiempo) * countCiclos) * countConjuntos
+                        if (countConjuntos > 1) {
+                            if (countCiclos > 1) {
+                                tiempoTotal =
+                                    preparacionTiempo + ((((ejercicioTiempo + descansoTiempo) * (countCiclos - 1)) + ejercicioTiempo + descansoEntreTiempo) * (countConjuntos - 1)) +
+                                            (((ejercicioTiempo + descansoTiempo) * (countCiclos - 1)) + ejercicioTiempo)
+                            } else {
+                                tiempoTotal =
+                                    preparacionTiempo + ((ejercicioTiempo + descansoEntreTiempo) * (countConjuntos - 1)) + ejercicioTiempo
+                            }
                         } else {
-                            tiempoTotal =
-                                preparacionTiempo + ((ejercicioTiempo + descansoTiempo) * countCiclos) * countConjuntos + descansoEntreTiempo * (countConjuntos - 1)
+                            if (countCiclos > 1) {
+                                tiempoTotal =
+                                    preparacionTiempo + ((ejercicioTiempo + descansoTiempo) * (countCiclos - 1)) + ejercicioTiempo
+                            } else {
+                                tiempoTotal = preparacionTiempo + ejercicioTiempo
+                            }
                         }
                         CoroutineScope(Dispatchers.IO).launch {
                             guardarIntPreferencias(TT_TIEMPOTOTAL, tiempoTotal)
@@ -251,12 +264,22 @@ class TabataTimerActivity : AppCompatActivity() {
                             )
                             guardarIntPreferencias(TT_DESCANSO_ENTRE_TIEMPO, descansoEntreTiempo)
                         }
-                        if (countConjuntos == 1) {
-                            tiempoTotal =
-                                preparacionTiempo + ((ejercicioTiempo + descansoTiempo) * countCiclos) * countConjuntos
+                        if (countConjuntos > 1) {
+                            if (countCiclos > 1) {
+                                tiempoTotal =
+                                    preparacionTiempo + ((((ejercicioTiempo + descansoTiempo) * (countCiclos - 1)) + ejercicioTiempo + descansoEntreTiempo) * (countConjuntos - 1)) +
+                                            (((ejercicioTiempo + descansoTiempo) * (countCiclos - 1)) + ejercicioTiempo)
+                            } else {
+                                tiempoTotal =
+                                    preparacionTiempo + ((ejercicioTiempo + descansoEntreTiempo) * (countConjuntos - 1)) + ejercicioTiempo
+                            }
                         } else {
-                            tiempoTotal =
-                                preparacionTiempo + ((ejercicioTiempo + descansoTiempo) * countCiclos) * countConjuntos + descansoEntreTiempo * (countConjuntos - 1)
+                            if (countCiclos > 1) {
+                                tiempoTotal =
+                                    preparacionTiempo + ((ejercicioTiempo + descansoTiempo) * (countCiclos - 1)) + ejercicioTiempo
+                            } else {
+                                tiempoTotal = preparacionTiempo + ejercicioTiempo
+                            }
                         }
                         CoroutineScope(Dispatchers.IO).launch {
                             guardarIntPreferencias(TT_TIEMPOTOTAL, tiempoTotal)
@@ -287,12 +310,22 @@ class TabataTimerActivity : AppCompatActivity() {
                             guardarIntPreferencias(TT_EJERCICIO_SEGUNDOS, ejercicioSegundos)
                             guardarIntPreferencias(TT_EJERCICIO_TIEMPO, ejercicioTiempo)
                         }
-                        if (countConjuntos == 1) {
-                            tiempoTotal =
-                                preparacionTiempo + ((ejercicioTiempo + descansoTiempo) * countCiclos) * countConjuntos
+                        if (countConjuntos > 1) {
+                            if (countCiclos > 1) {
+                                tiempoTotal =
+                                    preparacionTiempo + ((((ejercicioTiempo + descansoTiempo) * (countCiclos - 1)) + ejercicioTiempo + descansoEntreTiempo) * (countConjuntos - 1)) +
+                                            (((ejercicioTiempo + descansoTiempo) * (countCiclos - 1)) + ejercicioTiempo)
+                            } else {
+                                tiempoTotal =
+                                    preparacionTiempo + ((ejercicioTiempo + descansoEntreTiempo) * (countConjuntos - 1)) + ejercicioTiempo
+                            }
                         } else {
-                            tiempoTotal =
-                                preparacionTiempo + ((ejercicioTiempo + descansoTiempo) * countCiclos) * countConjuntos + descansoEntreTiempo * (countConjuntos - 1)
+                            if (countCiclos > 1) {
+                                tiempoTotal =
+                                    preparacionTiempo + ((ejercicioTiempo + descansoTiempo) * (countCiclos - 1)) + ejercicioTiempo
+                            } else {
+                                tiempoTotal = preparacionTiempo + ejercicioTiempo
+                            }
                         }
                         Log.i(
                             "faro",
@@ -328,12 +361,22 @@ class TabataTimerActivity : AppCompatActivity() {
                             guardarIntPreferencias(TT_PREPARACION_SEGUNDOS, preparacionSegundos)
                             guardarIntPreferencias(TT_PREPARACION_TIEMPO, preparacionTiempo)
                         }
-                        if (countConjuntos == 1) {
-                            tiempoTotal =
-                                preparacionTiempo + ((ejercicioTiempo + descansoTiempo) * countCiclos) * countConjuntos
+                        if (countConjuntos > 1) {
+                            if (countCiclos > 1) {
+                                tiempoTotal =
+                                    preparacionTiempo + ((((ejercicioTiempo + descansoTiempo) * (countCiclos - 1)) + ejercicioTiempo + descansoEntreTiempo) * (countConjuntos - 1)) +
+                                            (((ejercicioTiempo + descansoTiempo) * (countCiclos - 1)) + ejercicioTiempo)
+                            } else {
+                                tiempoTotal =
+                                    preparacionTiempo + ((ejercicioTiempo + descansoEntreTiempo) * (countConjuntos - 1)) + ejercicioTiempo
+                            }
                         } else {
-                            tiempoTotal =
-                                preparacionTiempo + ((ejercicioTiempo + descansoTiempo) * countCiclos) * countConjuntos + descansoEntreTiempo * (countConjuntos - 1)
+                            if (countCiclos > 1) {
+                                tiempoTotal =
+                                    preparacionTiempo + ((ejercicioTiempo + descansoTiempo) * (countCiclos - 1)) + ejercicioTiempo
+                            } else {
+                                tiempoTotal = preparacionTiempo + ejercicioTiempo
+                            }
                         }
                         CoroutineScope(Dispatchers.IO).launch {
                             guardarIntPreferencias(TT_TIEMPOTOTAL, tiempoTotal)
@@ -360,12 +403,22 @@ class TabataTimerActivity : AppCompatActivity() {
                     CoroutineScope(Dispatchers.IO).launch {
                         guardarIntPreferencias(TT_COUNT_CICLOS, countCiclos)
                     }
-                    if (countConjuntos == 1) {
-                        tiempoTotal =
-                            preparacionTiempo + ((ejercicioTiempo + descansoTiempo) * countCiclos) * countConjuntos
+                    if (countConjuntos > 1) {
+                        if (countCiclos > 1) {
+                            tiempoTotal =
+                                preparacionTiempo + ((((ejercicioTiempo + descansoTiempo) * (countCiclos - 1)) + ejercicioTiempo + descansoEntreTiempo) * (countConjuntos - 1)) +
+                                        (((ejercicioTiempo + descansoTiempo) * (countCiclos - 1)) + ejercicioTiempo)
+                        } else {
+                            tiempoTotal =
+                                preparacionTiempo + ((ejercicioTiempo + descansoEntreTiempo) * (countConjuntos - 1)) + ejercicioTiempo
+                        }
                     } else {
-                        tiempoTotal =
-                            preparacionTiempo + ((ejercicioTiempo + descansoTiempo) * countCiclos) * countConjuntos + descansoEntreTiempo * (countConjuntos - 1)
+                        if (countCiclos > 1) {
+                            tiempoTotal =
+                                preparacionTiempo + ((ejercicioTiempo + descansoTiempo) * (countCiclos - 1)) + ejercicioTiempo
+                        } else {
+                            tiempoTotal = preparacionTiempo + ejercicioTiempo
+                        }
                     }
                     CoroutineScope(Dispatchers.IO).launch {
                         guardarIntPreferencias(TT_TIEMPOTOTAL, tiempoTotal)
@@ -389,12 +442,22 @@ class TabataTimerActivity : AppCompatActivity() {
                     CoroutineScope(Dispatchers.IO).launch {
                         guardarIntPreferencias(TT_COUNT_CONJUNTOS, countConjuntos)
                     }
-                    if (countConjuntos == 1) {
-                        tiempoTotal =
-                            preparacionTiempo + ((ejercicioTiempo + descansoTiempo) * countCiclos) * countConjuntos
+                    if (countConjuntos > 1) {
+                        if (countCiclos > 1) {
+                            tiempoTotal =
+                                preparacionTiempo + ((((ejercicioTiempo + descansoTiempo) * (countCiclos - 1)) + ejercicioTiempo + descansoEntreTiempo) * (countConjuntos - 1)) +
+                                        (((ejercicioTiempo + descansoTiempo) * (countCiclos - 1)) + ejercicioTiempo)
+                        } else {
+                            tiempoTotal =
+                                preparacionTiempo + ((ejercicioTiempo + descansoEntreTiempo) * (countConjuntos - 1)) + ejercicioTiempo
+                        }
                     } else {
-                        tiempoTotal =
-                            preparacionTiempo + ((ejercicioTiempo + descansoTiempo) * countCiclos) * countConjuntos + descansoEntreTiempo * (countConjuntos - 1)
+                        if (countCiclos > 1) {
+                            tiempoTotal =
+                                preparacionTiempo + ((ejercicioTiempo + descansoTiempo) * (countCiclos - 1)) + ejercicioTiempo
+                        } else {
+                            tiempoTotal = preparacionTiempo + ejercicioTiempo
+                        }
                     }
                     CoroutineScope(Dispatchers.IO).launch {
                         guardarIntPreferencias(TT_TIEMPOTOTAL, tiempoTotal)
@@ -480,7 +543,7 @@ class TabataTimerActivity : AppCompatActivity() {
                     Descanso -> {
                         when (state) {
                             0 -> {
-                                positionDescansoSegundos= position
+                                positionDescansoSegundos = position
                                 CoroutineScope(Dispatchers.IO).launch {
                                     guardarIntPreferencias(
                                         TT_POSITION_DESCANSO_SEGUNDOS,
@@ -683,7 +746,8 @@ class TabataTimerActivity : AppCompatActivity() {
 
                         if (x > -1f && x < 130f && y > -3f && y < 132f && !stateAnimator) {
                             btnAnimation(binding.backgroundBTNBack, binding.shadowBTNBack)
-                            val intentBack= Intent(binding.BTNBack.context, MainActivity::class.java)
+                            val intentBack =
+                                Intent(binding.BTNBack.context, MainActivity::class.java)
                             startActivity(intentBack)
                         } else {
                             stateAnimator = false
@@ -708,7 +772,10 @@ class TabataTimerActivity : AppCompatActivity() {
                         if (x > -1f && x < 130f && y > -3f && y < 132f) {
                         } else {
                             if (!stateAnimator) {
-                                btnAnimation(binding.backgroundBTNSETRestart, binding.shadowBTNSETRestart)
+                                btnAnimation(
+                                    binding.backgroundBTNSETRestart,
+                                    binding.shadowBTNSETRestart
+                                )
                                 stateAnimator = true
                             } else {
                             }
@@ -720,8 +787,11 @@ class TabataTimerActivity : AppCompatActivity() {
                         val y = event.getY()
 
                         if (x > -1f && x < 130f && y > -3f && y < 132f && !stateAnimator) {
-                            btnAnimation(binding.backgroundBTNSETRestart, binding.shadowBTNSETRestart)
-                            repeat(20){
+                            btnAnimation(
+                                binding.backgroundBTNSETRestart,
+                                binding.shadowBTNSETRestart
+                            )
+                            repeat(65){
                                 resetSettings()
                             }
                         } else {
@@ -747,7 +817,10 @@ class TabataTimerActivity : AppCompatActivity() {
                         if (x > -3f && x < 549f && y > -3f && y < 132f) {
                         } else {
                             if (!stateAnimator) {
-                                btnAnimation(binding.backgroundBTNComenzar, binding.shadowBTNComenzar)
+                                btnAnimation(
+                                    binding.backgroundBTNComenzar,
+                                    binding.shadowBTNComenzar
+                                )
                                 stateAnimator = true
                             } else {
                             }
@@ -763,6 +836,7 @@ class TabataTimerActivity : AppCompatActivity() {
                             if (tiempoTotal <= 360000) {
                                 newList = mutableListOf()
                                 createTabataList()
+                                Log.i("katyushaTabataList", "Tamaño de la lista: ${newList.size}")
                                 Log.i("katyushaTabataList", "Lista: $newList")
                                 maxlimit = false
                             }
@@ -790,6 +864,7 @@ class TabataTimerActivity : AppCompatActivity() {
         intent.putParcelableArrayListExtra(ITEMS_LIST, newList as ArrayList<out Parcelable>)
         intent.putExtra(CICLOS, countCiclos)
         intent.putExtra(CONJUNTOS, countConjuntos)
+        intent.putExtra(TIEMPO_TOTAL, tiempoTotal)
         startActivity(intent)
     }
 
@@ -815,10 +890,70 @@ class TabataTimerActivity : AppCompatActivity() {
         if (tiempoTotal <= 360000) {
             if (ejercicioTiempo > 0) {
                 if (preparacionTiempo > 0) {
-                    newList.add(ItemsCollection("preparacion", preparacionTiempo, false, -1))
+                    newList.add(ItemsCollection("preparación", preparacionTiempo, false, -1))
                 }
                 if (countConjuntos > 1) {
-                    repeat(countCiclos) {
+                    if (countCiclos > 1) {
+                        repeat(countConjuntos - 1) {
+                            repeat(countCiclos - 1) {
+                                newList.add(
+                                    ItemsCollection(
+                                        "ejercicio",
+                                        ejercicioTiempo,
+                                        vibrationStateEjercicio,
+                                        trackEjercicio
+                                    )
+                                )
+                                if (descansoTiempo > 0) {
+                                    newList.add(
+                                        ItemsCollection(
+                                            "descanso",
+                                            descansoTiempo,
+                                            vibrationStateDescanso,
+                                            trackDescanso
+                                        )
+                                    )
+                                }
+                            }
+                            newList.add(
+                                ItemsCollection(
+                                    "ejercicio",
+                                    ejercicioTiempo,
+                                    vibrationStateEjercicio,
+                                    trackEjercicio
+                                )
+                            )
+                            if (descansoEntreTiempo > 0) {
+                                newList.add(
+                                    ItemsCollection(
+                                        "descanso entre conjuntos",
+                                        descansoEntreTiempo,
+                                        vibrationStateDescansoEntre,
+                                        trackDescansoEntre
+                                    )
+                                )
+                            }
+                        }
+                        repeat(countCiclos - 1) {
+                            newList.add(
+                                ItemsCollection(
+                                    "ejercicio",
+                                    ejercicioTiempo,
+                                    vibrationStateEjercicio,
+                                    trackEjercicio
+                                )
+                            )
+                            if (descansoTiempo > 0) {
+                                newList.add(
+                                    ItemsCollection(
+                                        "descanso",
+                                        descansoTiempo,
+                                        vibrationStateDescanso,
+                                        trackDescanso
+                                    )
+                                )
+                            }
+                        }
                         newList.add(
                             ItemsCollection(
                                 "ejercicio",
@@ -827,29 +962,59 @@ class TabataTimerActivity : AppCompatActivity() {
                                 trackEjercicio
                             )
                         )
-                        if (descansoTiempo > 0) {
+
+                    } else {
+                        repeat(countConjuntos - 1) {
                             newList.add(
                                 ItemsCollection(
-                                    "descanso",
-                                    descansoTiempo,
-                                    vibrationStateDescanso,
-                                    trackDescanso
+                                    "ejercicio",
+                                    ejercicioTiempo,
+                                    vibrationStateEjercicio,
+                                    trackEjercicio
                                 )
                             )
-                        }
-                        if (descansoEntreTiempo > 0) {
-                            newList.add(
-                                ItemsCollection(
-                                    "descanso_entre_conjuntos",
-                                    descansoEntreTiempo,
-                                    vibrationStateDescansoEntre,
-                                    trackDescansoEntre
+                            if (descansoEntreTiempo > 0) {
+                                newList.add(
+                                    ItemsCollection(
+                                        "descanso entre conjuntos",
+                                        descansoEntreTiempo,
+                                        vibrationStateDescansoEntre,
+                                        trackDescansoEntre
+                                    )
                                 )
-                            )
+                            }
                         }
+                        newList.add(
+                            ItemsCollection(
+                                "ejercicio",
+                                ejercicioTiempo,
+                                vibrationStateEjercicio,
+                                trackEjercicio
+                            )
+                        )
                     }
                 } else {
-                    repeat(countCiclos) {
+                    if (countCiclos != 1) {
+                        repeat(countCiclos - 1) {
+                            newList.add(
+                                ItemsCollection(
+                                    "ejercicio",
+                                    ejercicioTiempo,
+                                    vibrationStateEjercicio,
+                                    trackEjercicio
+                                )
+                            )
+                            if (descansoTiempo > 0) {
+                                newList.add(
+                                    ItemsCollection(
+                                        "descanso",
+                                        descansoTiempo,
+                                        vibrationStateDescanso,
+                                        trackDescanso
+                                    )
+                                )
+                            }
+                        }
                         newList.add(
                             ItemsCollection(
                                 "ejercicio",
@@ -858,27 +1023,26 @@ class TabataTimerActivity : AppCompatActivity() {
                                 trackEjercicio
                             )
                         )
-                        if (descansoTiempo > 0) {
-                            newList.add(
-                                ItemsCollection(
-                                    "descanso",
-                                    descansoTiempo,
-                                    vibrationStateDescanso,
-                                    trackDescanso
-                                )
+                    } else {
+                        newList.add(
+                            ItemsCollection(
+                                "ejercicio",
+                                ejercicioTiempo,
+                                vibrationStateEjercicio,
+                                trackEjercicio
                             )
-                        }
+                        )
                     }
                 }
                 newList.add(ItemsCollection("Fin", 0, true, R.raw.success_fanfare_trumpets))
-                stateNOSetEjComenzar= false
+                stateNOSetEjComenzar = false
                 Log.i("tabata_newList", "Lista: $newList")
                 navigateToTabataTimerPlaying(newList)
             } else {
-                if (!stateNOSetEjComenzar){
+                if (!stateNOSetEjComenzar) {
                     Toast.makeText(this, "Ajusta la duración del ejercicio", Toast.LENGTH_LONG)
                         .show()
-                    stateNOSetEjComenzar= true
+                    stateNOSetEjComenzar = true
                 }
             }
 
@@ -963,11 +1127,11 @@ class TabataTimerActivity : AppCompatActivity() {
         }
     }
 
-    private fun stateSettings(){
+    private fun stateSettings() {
         CoroutineScope(Dispatchers.IO).launch {
             getSettings().filter { firstTime }.collectLatest { settings ->
                 if (settings != null) {
-                    withContext(Dispatchers.Main){
+                    withContext(Dispatchers.Main) {
                         Log.i("faro", "el tiempo total WithContext: $tiempoTotal")
                         preparacionHoras = settings.preparacion_horas
                         preparacionMinutos = settings.preparacion_minutos
@@ -1012,25 +1176,26 @@ class TabataTimerActivity : AppCompatActivity() {
                         firstTime = !firstTime
                         if (tiempoTotal <= 360000) {
                             formatTotalTime(tiempoTotal)
-                            maxlimit= false
+                            maxlimit = false
                         }
                         if (tiempoTotal > 360000 && !maxlimit) {
                             binding.tvTiempoTotal.text = "99:59:59"
-                            maxlimit=true
+                            maxlimit = true
                         }
                         settingsRV()
-                        binding.tvIntervalos.text= formatZeroZero(countCiclos)
-                        binding.tvConjuntos.text=formatZeroZero(countConjuntos)
+                        binding.tvIntervalos.text = formatZeroZero(countCiclos)
+                        binding.tvConjuntos.text = formatZeroZero(countConjuntos)
                     }
                 }
             }
         }
     }
-    private fun stateSettingsTime(){
+
+    private fun stateSettingsTime() {
         CoroutineScope(Dispatchers.IO).launch {
             getSettings().collect { settings ->
                 if (settings != null) {
-                    withContext(Dispatchers.Main){
+                    withContext(Dispatchers.Main) {
                         positionDescansoHoras = settings.positionDescansoHoras
                         positionDescansoMinutos = settings.positionDescansoMinutos
                         positionDescansoSegundos = settings.positionDescansoSegundos
@@ -1054,33 +1219,34 @@ class TabataTimerActivity : AppCompatActivity() {
     }
 
     private fun settingsRV() {
-                setTabataTimerAdapter.initSettingsRV(
-                    preparacionHoras,
-                    preparacionMinutos,
-                    preparacionMinutos,
-                    ejercicioHoras,
-                    ejercicioMinutos,
-                    ejercicioSegundos,
-                    descansoHoras,
-                    descansoMinutos,
-                    descansoSegundos,
-                    descansoEntreHoras,
-                    descansoEntreMinutos,
-                    descansoEntreSegundos,
-                    countCiclos,
-                    countConjuntos,
-                    trackEjercicio,
-                    trackDescanso,
-                    trackDescansoEntre,
-                    vibrationStateEjercicio,
-                    vibrationStateDescanso,
-                    vibrationStateDescansoEntre,
-                    positionTrackDescanso,
-                    positionTrackDescansoEntre,
-                    positionTrackEjercicio
-                )
+        setTabataTimerAdapter.initSettingsRV(
+            preparacionHoras,
+            preparacionMinutos,
+            preparacionMinutos,
+            ejercicioHoras,
+            ejercicioMinutos,
+            ejercicioSegundos,
+            descansoHoras,
+            descansoMinutos,
+            descansoSegundos,
+            descansoEntreHoras,
+            descansoEntreMinutos,
+            descansoEntreSegundos,
+            countCiclos,
+            countConjuntos,
+            trackEjercicio,
+            trackDescanso,
+            trackDescansoEntre,
+            vibrationStateEjercicio,
+            vibrationStateDescanso,
+            vibrationStateDescansoEntre,
+            positionTrackDescanso,
+            positionTrackDescansoEntre,
+            positionTrackEjercicio
+        )
     }
-    private fun settingsTimeRV(){
+
+    private fun settingsTimeRV() {
         setTabataTimerAdapter.initSettingsTime(
             positionPreparacionHoras,
             positionPreparacionMinutos,
@@ -1096,6 +1262,7 @@ class TabataTimerActivity : AppCompatActivity() {
             positionDescansoEntreSegundos
         )
     }
+
     private fun btnPressed(view: View, view2: View) {
         view.animate().apply {
             duration = 200
@@ -1123,7 +1290,8 @@ class TabataTimerActivity : AppCompatActivity() {
             start()
         }
     }
-    private fun resetSettings(){
+
+    private fun resetSettings() {
         preparacionHoras = 0
         preparacionMinutos = 0
         preparacionSegundos = 0
@@ -1194,24 +1362,33 @@ class TabataTimerActivity : AppCompatActivity() {
             guardarIntPreferencias(TT_POSITION_DESCANSO_MINUTOS, positionDescansoMinutos)
             guardarIntPreferencias(TT_POSITION_DESCANSO_SEGUNDOS, positionDescansoSegundos)
             guardarIntPreferencias(TT_POSITION_DESCANSO_ENTRE_HORAS, positionDescansoEntreHoras)
-            guardarIntPreferencias(TT_POSITION_DESCANSO_ENTRE_MINUTOS, positionDescansoEntreMinutos)
-            guardarIntPreferencias(TT_POSITION_DESCANSO_ENTRE_SEGUNDOS, positionDescansoEntreSegundos)
+            guardarIntPreferencias(
+                TT_POSITION_DESCANSO_ENTRE_MINUTOS,
+                positionDescansoEntreMinutos
+            )
+            guardarIntPreferencias(
+                TT_POSITION_DESCANSO_ENTRE_SEGUNDOS,
+                positionDescansoEntreSegundos
+            )
             guardarIntPreferencias(TT_POSITION_EJERCICIO_HORAS, positionEjercicioHoras)
             guardarIntPreferencias(TT_POSITION_EJERCICIO_MINUTOS, positionEjercicioMinutos)
             guardarIntPreferencias(TT_POSITION_EJERCICIO_SEGUNDOS, positionEjercicioSegundos)
             guardarIntPreferencias(TT_POSITION_PREPARACION_HORAS, positionPreparacionHoras)
             guardarIntPreferencias(TT_POSITION_PREPARACION_MINUTOS, positionPreparacionMinutos)
-            guardarIntPreferencias(TT_POSITION_PREPARACION_SEGUNDOS, positionPreparacionSegundos)
+            guardarIntPreferencias(
+                TT_POSITION_PREPARACION_SEGUNDOS,
+                positionPreparacionSegundos
+            )
             guardarIntPreferencias(TT_POSITION_TRACK_DESCANSO, positionTrackDescanso)
             guardarIntPreferencias(TT_POSITION_TRACK_DESCANSO_ENTRE, positionTrackDescansoEntre)
             guardarIntPreferencias(TT_POSITION_TRACK_EJERCICIO, positionTrackEjercicio)
         }
         settingsRV()
         settingsTimeRV()
-        val intent= Intent(this, TabataTimerActivity::class.java)
+        val intent = Intent(this, TabataTimerActivity::class.java)
         startActivity(intent)
         formatTotalTime(tiempoTotal)
-        binding.tvIntervalos.text= formatZeroZero(countCiclos)
-        binding.tvConjuntos.text=formatZeroZero(countConjuntos)
+        binding.tvIntervalos.text = formatZeroZero(countCiclos)
+        binding.tvConjuntos.text = formatZeroZero(countConjuntos)
     }
 }

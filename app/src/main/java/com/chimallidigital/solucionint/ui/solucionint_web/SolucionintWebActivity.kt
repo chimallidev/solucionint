@@ -200,17 +200,17 @@ class SolucionintWebActivity : AppCompatActivity() {
         }
     }
     private fun transitionColorStart(view: View){
-        val colors= arrayOf(ColorDrawable(getColor(R.color.gray_alpha)), ColorDrawable(getColor(R.color.gray)))
+        val colors= arrayOf(ColorDrawable(getColor(R.color.primary_alpha)), ColorDrawable(getColor(R.color.primary)))
         val transition= TransitionDrawable(colors)
         view.background= transition
         transition.startTransition(300)
-        view.setBackgroundColor(getColor(R.color.gray))
+        view.setBackgroundColor(getColor(R.color.primary))
     }
     private fun transitionColorEnd(view: View){
-        val colors= arrayOf(ColorDrawable(getColor(R.color.gray)), ColorDrawable(getColor(R.color.gray_alpha)))
+        val colors= arrayOf(ColorDrawable(getColor(R.color.primary)), ColorDrawable(getColor(R.color.primary_alpha)))
         val transition= TransitionDrawable(colors)
         view.background= transition
         transition.startTransition(300)
-        view.setBackgroundColor(getColor(R.color.gray_alpha))
+        view.setBackgroundColor(getColor(R.color.primary_alpha))
     }
 }
