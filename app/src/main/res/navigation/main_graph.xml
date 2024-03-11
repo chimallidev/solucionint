@@ -38,7 +38,13 @@
         android:id="@+id/calculatorsFragment"
         android:name="com.chimallidigital.solucionint.ui.calculators.CalculatorsFragment"
         android:label="fragment_calculators"
-        tools:layout="@layout/fragment_calculators" />
+        tools:layout="@layout/fragment_calculators" >
+        <action
+            android:id="@+id/action_calculatorsFragment_to_IMCcalculatorActivity"
+            app:destination="@id/IMCcalculatorActivity"
+            app:enterAnim="@anim/rv_dialogue_log_split_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
     <activity
         android:id="@+id/articlesSelectorActivity"
         android:name="com.chimallidigital.solucionint.ui.selector.ArticlesSelectorActivity"
@@ -69,4 +75,9 @@
         android:name="com.chimallidigital.solucionint.ui.tabata_timer.TabataTimerActivity"
         android:label="activity_tabata_timer"
         tools:layout="@layout/activity_tabata_timer" />
+    <activity
+        android:id="@+id/IMCcalculatorActivity"
+        android:name="com.chimallidigital.solucionint.ui.IMCcalculator.IMCcalculatorActivity"
+        android:label="activity_imccalculator"
+        tools:layout="@layout/activity_imccalculator" />
 </navigation>

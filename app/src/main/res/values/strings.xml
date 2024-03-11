@@ -522,5 +522,6 @@
     <string name="finalizar">Finalizar</string>
 
     <string name="finish_activity">Rutina completada</string>
+    <string name="IMC">IMC</string>
 
 </resources>
