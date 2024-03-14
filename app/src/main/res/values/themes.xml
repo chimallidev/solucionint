@@ -2,8 +2,329 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Solucionint" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:statusBarColor">@null</item>
+
     </style>
 
-    <style name="Theme.Solucionint" parent="Base.Theme.Solucionint" />
+    <style name="Theme.Solucionint" parent="Base.Theme.Solucionint" >
+        <item name="colorPrimaryDark">@color/primary</item>
+    </style>
 
+<!--Tema titular barra ArticlesSelectorActivity-->
+    <style name="Barra_titular">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textColor">@color/secundario</item>
+    </style>
+
+    <style name="Articles_Selector_Titles" parent="Barra_titular">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/symtext</item>
+    </style>
+
+<!--Tema contador Articles Selector-->
+    <style name="Contador_selector">
+        <item name="android:textSize">40sp</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textColor">@color/chimalli</item>
+    </style>
+
+    <style name="de_selector" parent="Contador_selector">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/accent</item>
+
+    </style>
+
+    <style name="selector_maxim_number" parent="de_selector">
+        <item name="android:textColor">@color/secundario</item>
+    </style>
+
+    <style name="btn_regresar" parent="de_selector">
+    <item name="android:textSize">15sp</item>
+</style>
+
+    <style name="btn_entrar" parent="de_selector">
+        <item name="android:textSize">30sp</item>
+    </style>
+    <style name="dialogue_articles_selector" parent="de_selector">
+        <item name="android:backgroundTint">@color/secundario</item>
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:textColorHint">@color/secundario</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+    <style name="btn_articles_selector" parent="dialogue_articles_selector">
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:backgroundTint">@null</item>
+        <item name="android:textColorHint">@null</item>
+    </style>
+
+    <style name="rvItemArticles">
+        <item name="android:textColor">#cf005c</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:fontFamily">@font/symtext</item>
+    </style>
+
+    <style name="no_existen_elementos" parent="Articles_Selector_Titles">
+        <item name="android:textSize">23sp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+    </style>
+    <style name="loading" parent="Barra_titular">
+        <item name="android:textSize">30sp</item>
+    </style>
+    <style name="time_meters_titulares">
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/symtext</item>
+    </style>
+    <style name="card_time_meters" parent="time_meters_titulares">
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">@color/accent</item>
+    </style>
+
+<!--Cronometro-->
+<style name="unit_types">
+    <item name="android:textColor">@color/accent</item>
+    <item name="android:fontFamily">@font/symtext</item>
+    <item name="android:layout_marginTop">-100dp</item>
+    <item name="android:textSize">280sp</item>
+    <item name="android:layout_marginStart">35dp</item>
+</style>
+    <style name="minutes" parent="unit_types">
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:textSize">150sp</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+    <style name="hours" parent="unit_types">
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:textSize">100sp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginTop">-15dp</item>
+    </style>
+<!--Tablero Bottom-->
+    <style name="lap">
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginStart">3dp</item>
+    </style>
+    <style name="elapsed_time" parent="lap">
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:textSize">37sp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+
+    </style>
+    <style name="units_cronometro">
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:textSize">35sp</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:layout_marginStart">5dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+    <style name="btnStart" parent="lap">
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="btnRestart" parent="btnStart">
+        <item name="android:textSize">19sp</item>
+    </style>
+    <style name="fin_del_mapa" parent="hours">
+        <item name="android:textColor">@color/red</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+<!--dialogue log split-->
+    <style name="dialogue_log_split">
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="item_dialogue_log_split" parent="dialogue_log_split">
+        <item name="android:textSize">30sp</item>
+    </style>
+
+<!--Temporizador-->
+    <style name="Temporizador">
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:textSize">300sp</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_marginTop">-105dp</item>
+        <item name="android:layout_marginStart">40dp</item>
+    </style>
+    <style name="temp_minutes" parent="Temporizador">
+        <item name="android:textSize">190sp</item>
+        <item name="android:layout_marginTop">-10dp</item>
+        <item name="android:layout_marginStart">25dp</item>
+    </style>
+    <style name="temp_hours" parent="Temporizador">
+        <item name="android:textSize">124sp</item>
+        <item name="android:layout_marginTop">50dp</item>
+        <item name="android:layout_marginStart">17dp</item>
+    </style>
+    <style name="tempBTN">
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="units_temporizador" parent="units_cronometro">
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:textSize">35sp</item>
+    </style>
+    <style name="dialogue_ajustes_temporizador">
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="dialogue_temporizador_subtitulos" parent="dialogue_ajustes_temporizador">
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+<!--Tabata Timer-->
+<!--timers barra superior-->
+    <style name="timers_barra_superior">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="subtitulos_barra_superior" parent="timers_barra_superior">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/accent</item>
+    </style>
+    <style name="boton_comenzar">
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+<!--RecyclerView Tabata Timer-->
+    <style name="item_titulo_tabata_timer">
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+    <style name="item_subtitulos_tabata_timer" parent="item_titulo_tabata_timer">
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="count_tabata_timer" parent="item_titulo_tabata_timer">
+        <item name="android:textSize">70sp</item>
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:layout_marginTop">-25dp</item>
+        <item name="android:layout_marginStart">11dp</item>
+    </style>
+
+    <style name="titulo_tabata_playing">
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="number_count_tabata" parent="titulo_tabata_playing">
+        <item name="android:textSize">30sp</item>
+    </style>
+    <style name="tabata_segundos" parent="titulo_tabata_playing">
+        <item name="android:textSize">220sp</item>
+    </style>
+    <style name="tabata_minutos" parent="titulo_tabata_playing">
+        <item name="android:textSize">90sp</item>
+    </style>
+    <style name="tabata_horas" parent="titulo_tabata_playing">
+        <item name="android:textSize">60sp</item>
+    </style>
+    <style name="tabata_contadores" parent="titulo_tabata_playing">
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="tabata_numeros_contadores" parent="titulo_tabata_playing">
+        <item name="android:textSize">42sp</item>
+        <item name="android:textColor">@color/chimalli</item>
+    </style>
+    <style name="tabata_numeros_contadores_secundario" parent="titulo_tabata_playing">
+        <item name="android:textSize">38sp</item>
+        <item name="android:textColor">@color/accent</item>
+    </style>
+    <style name="tabata_titulo_tiempo_total" parent="titulo_tabata_playing">
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="tabata_subs" parent="tabata_contadores">
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:textSize">19sp</item>
+    </style>
+    <style name="tabata_tiempo_total" parent="tabata_numeros_contadores">
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:textSize">34sp</item>
+    </style>
+    <style name="tabata_subs_secundario" parent="tabata_subs">
+        <item name="android:textColor">@color/secundario</item>
+    </style>
+<!--Finish Activity-->
+    <style name="finish_activity">
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textSize">42sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+<!--Calculators-->
+    <style name="IMC">
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:textSize">50sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="selecciona_calculator" parent="IMC">
+        <item name="android:textSize">42sp</item>
+        <item name="android:textColor">@color/accent</item>
+    </style>
+    <style name="casillero" parent="selecciona_calculator">
+        <item name="android:textSize">28sp</item>
+    </style>
+    <style name="subs_calculator_imc" parent="IMC">
+        <item name="android:textSize">32sp</item>
+    </style>
+    <style name="subs2_calculator_imc" parent="subs_calculator_imc">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/accent</item>
+    </style>
+    <style name="calculator_number_count" parent="subs2_calculator_imc">
+        <item name="android:textSize">50sp</item>
+    </style>
+    <style name="calcular_calculadora" parent="calculator_number_count">
+        <item name="android:textSize">35sp</item>
+    </style>
+    <style name="dialogue_calculator_IMC" parent="IMC">
+        <item name="android:textSize">25sp</item>
+    </style>
+    <style name="dialogue_et_calculator" parent="IMC">
+        <item name="android:textSize">25sp</item>
+        <item name="android:backgroundTint">@color/secundario</item>
+        <item name="android:textColorHint">@color/secundario</item>
+    </style>
+    <style name="dialogue_btn_aceptar" parent="dialogue_calculator_IMC">
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+<!--Resultados IMC-->
+    <style name="resultados_IMC">
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="numberIMC" parent="resultados_IMC">
+        <item name="android:textSize">80sp</item>
+    </style>
+    <style name="btn_regresar_resultados_imc" parent="resultados_IMC">
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textSize">30sp</item>
+    </style>
 </resources>

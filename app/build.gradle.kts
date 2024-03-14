@@ -4,6 +4,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -46,6 +47,7 @@ android {
 }
 
 dependencies {
+    implementation("com.android.car.ui:car-ui-lib:2.6.0")
     val navVersion = "2.7.6"
     val daggerVersion = "2.50"
 
@@ -61,6 +63,9 @@ dependencies {
     //DaggerHilt
     implementation("com.google.dagger:hilt-android:$daggerVersion")
     kapt("com.google.dagger:hilt-compiler:$daggerVersion")
+
+    //DataStore
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

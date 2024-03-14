@@ -3,13 +3,542 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-<!--BottomMenu-->
+    <!--BottomMenu-->
     <string name="menu_scientific_articles">Artículos</string>
     <string name="menu_time_meters">Tiempo</string>
     <string name="menu_calculators">Calculadoras</string>
 
-<!--Categories-->
+    <!--Categories-->
     <string name="soluciones_inteligentes">Soluciones Inteligentes</string>
     <string name="ponte_en_forma">Ponte en Forma</string>
     <string name="recetas_de_cocina">Recetas de Cocina</string>
+
+    <!--ArticlesSelector-->
+    <string name="de_selector">De</string>
+    <string name="btn_regresar">Regresar</string>
+    <string name="btn_entrar">Entrar</string>
+
+    <!--URL Titulares Categorias Selector-->
+    <string name="url_soluciones_inteligentes">https://solucionint.com/</string>
+    <string name="url_ponte_en_forma">https://solucionint.com/ponte-en-forma-con-ejercicios-en-casa-y-al-aire-libre/</string>
+    <string name="url_recetas_de_cocina">https://solucionint.com/recetas-de-cocina-saludables-faciles-rapidas-caseras-y-economicas/</string>
+
+    <!--CollectionArticles-->
+    <string name="art001">¿Qué es la Obesidad?: causas, consecuencias y su tratamiento</string>
+    <string name="art002">Científicos investigan los efectos de los ejercicios de fuerza en la grasa corporal</string>
+    <string name="art003">Beneficios del ejercicio físico en adultos mayores</string>
+    <string name="art004">¿Qué es la meditación?: origen y sus beneficios según la ciencia</string>
+    <string name="art005">Beneficios del ejercicio físico para la salud</string>
+    <string name="art006">Importancia del ejercicio físico para dormir mejor, conciliar el sueño, insomnio y somnolencia diurna en adultos mayores</string>
+    <string name="art007">Trastornos mentales: beneficios del ejercicio físico como tratamiento auxiliar</string>
+    <string name="art008">Metabolismo: la importancia del ejercicio físico y la dieta de restricción de calorías para bajar de peso</string>
+    <string name="art009">Suero oral que no lo es y bebidas que no son lo que dicen ser</string>
+    <string name="art010">Beneficios del omega 3 y el ejercicio físico de alta intensidad (HIIT) para bajar de peso</string>
+    <string name="art011">Sopas cremas que no son lo que crees o lo que han querido que creas</string>
+    <string name="art012">Caldo de albóndigas con verduras</string>
+    <string name="art013">Pozole blanco</string>
+    <string name="art014">Pescado a la veracruzana</string>
+    <string name="art015">Crema de elote</string>
+    <string name="art016">Chile o Pimiento: efectos, propiedades, beneficios del Capsicum y Capsaicinoides</string>
+    <string name="art017">¿Qué es el Trastorno Afectivo Estacional?</string>
+    <string name="art018">Suplementación con Glutamina: estudio científico realizado en jugadores de baloncesto</string>
+    <string name="art019">Microbiota Intestinal: ¿Somos lo que comemos?</string>
+    <string name="art020">Tacos de carne con papa y verduras</string>
+    <string name="art021">Triglicéridos y su metabolismo</string>
+    <string name="art022">Eje microbiota-intestino-cerebro: ¿Qué relación tienen los probióticos con nuestra salud mental?</string>
+    <string name="art023">Aguacate: beneficios, valor nutricional y propiedades</string>
+    <string name="art024">Beneficios de la suplementación con omega 3 en la microbiota intestinal, la salud física y mental</string>
+    <string name="art025">Higos cristalizados</string>
+    <string name="art026">Galletas: ten cuidado con ellas</string>
+    <string name="art027">¿Cómo prevenir la depresión mediante actividad física y ejercicio?: lo que dice la ciencia al respecto</string>
+    <string name="art028">Ejercicio Físico: un remedio natural para la depresión gracias a la plasticidad cerebral</string>
+    <string name="art029">Piña en Almíbar</string>
+    <string name="art030">Guiso de Lentejas Especiado con Arroz</string>
+    <string name="art031">El Té: una alternativa natural para tratar la indigestión y la acidez estomacal</string>
+    <string name="art032">Higo: su riqueza nutricional y sus beneficios para la salud y el bienestar</string>
+    <string name="art033">El colesterol: aliado y enemigo de tu cuerpo</string>
+    <string name="art034">¿Conoces los beneficios del aguacate Hass? Te sorprenderás</string>
+    <string name="art035">Galletas Marías</string>
+    <string name="art036">Calabacitas rancheras con puntas de filete</string>
+    <string name="art037">Pollo a la parrilla</string>
+    <string name="art038">¿Qué es la aterosclerosis? Conoce los principales factores de riesgo y cómo prevenirla</string>
+    <string name="art039">Los beneficios de la avena: una mirada científica a sus propiedades saludables</string>
+    <string name="art040">Cómo el ejercicio físico transforma tu cuerpo: el músculo esquelético y su relación con la quinurenina</string>
+    <string name="art041">Lavado de manos con jabón: la mejor defensa contra las infecciones respiratorias</string>
+    <string name="art042">Hipertensión arterial: la epidemia silenciosa</string>
+    <string name="art043">Alcohol, los peligros de comenzar a beber demasiado pronto: la relación entre la edad y los riesgos asociados a su consumo</string>
+    <string name="art044">Piña (Ananas Comosus): Potencia tu salud con su valor nutricional y beneficios</string>
+    <string name="art045">La conexión oculta ¿Qué relación tiene la enfermedad inflamatoria intestinal con la ansiedad, la depresión y el trastorno bipolar?</string>
+    <string name="art046">Rosca de Reyes</string>
+    <string name="art047">Chop Suey Marinero</string>
+    <string name="art048">Harina Integral para Hot Cakes</string>
+    <string name="art049">El poder de la piña: una solución deliciosa para protegerte del colesterol y adelgazar</string>
+    <string name="art050">Beneficios de la hidratación: ¡Salud en Acción! Un hábito que a tu vida le dará una transformación</string>
+    <string name="art051">Uvas: Salud y Nutrición, ¡Jugosas, dulces, maravillosas, deliciosas y de gran virtud!</string>
+    <string name="art052">Deterioro Cognitivo: para el cuidado de tu cerebro y salud mental ¡Un estilo de vida saludable es lo más racional!</string>
+    <string name="art053">Hiperhidratación: ¿Qué pasa si bebes mucha agua antes de hacer ejercicio? Consejos científicos para una óptima hidratación</string>
+    <string name="art054">Nutritivos Rábanos Rojos (Raphanus Sativus): Explorando sus beneficios para la salud</string>
+    <string name="art055">Fortalece tus defensas con uvas: ¡Escudo inmunológico que construyes, revitalizas y motivas!</string>
+    <string name="art056">Redes Neuronales: responsables del apego interpersonal y las adicciones</string>
+    <string name="art057">Pescado en Salsa de Cascabel</string>
+    <string name="art058">Concentrado para Refresco de Jengibre</string>
+    <string name="art059">Estofado Cremoso de Pollo</string>
+    <string name="art060">¿Qué es la fatiga? Descifrando como afecta nuestro cuerpo y el enigma detrás de sus 2 manifestaciones esenciales</string>
+    <string name="art061">BIOMARCADORES SANGUÍNEOS: ESENCIALES PARA OPTIMIZAR EL RENDIMIENTO EN EL DEPORTE</string>
+    <string name="art062">PROTEÍNAS PLASMATICAS: ¿TE INTERESA BAJAR DE PESO Y MEJORAR TU SALUD? CIENTIFICOS BUSCAN PATRONES QUE PODRÍAN AYUDARTE</string>
+    <string name="art063">MÚSCULO ESQUELÉTICO, MÁS ALLÁ DE LA FUERZA: METABOLISMO DEL EJERCICIO FÍSICO</string>
+    <string name="art064">HOMEOSTASIS: ¿QUÉ PASA CON LA GRASA CORPORAL DURANTE EL EJERCICIO FÍSICO?</string>
+    <string name="art065">8 MOTIVOS INDISCUTIBLES PARA INICIAR UNA RUTINA DE EJERCICIO FÍSICO</string>
+    <string name="art066">CACAHUATE (ARACHIS HIPOGAEA): UNA JOYA NUTRICIONAL QUE IMPACTA POSITIVAMENTE EN TU SALUD</string>
+
+
+    <string name="art001_url">https://solucionint.com/obesidad-causas-consecuencias-tratamiento-si/</string>
+    <string name="art002_url">https://solucionint.com/cientificos-ejercicios-de-fuerza-grasa-corporal-si/</string>
+    <string name="art003_url">https://solucionint.com/beneficios-ejercicio-fisico-adultos-mayores-si/</string>
+    <string name="art004_url">https://solucionint.com/meditacion-origen-beneficios-ciencia-si/</string>
+    <string name="art005_url">https://solucionint.com/beneficios-del-ejercicio-fisico-salud-si/</string>
+    <string name="art006_url">https://solucionint.com/ejercicio-dormir-sueno-insomnio-adultos-mayores-si/</string>
+    <string name="art007_url">https://solucionint.com/beneficios-ejercicio-fisico-trastornos-mentales-si/</string>
+    <string name="art008_url">https://solucionint.com/metabolismo-ejercicio-fisico-dieta-bajar-peso-si/</string>
+    <string name="art009_url">https://solucionint.com/suero-oral-bebidas-que-no-son-lo-que-dicen-ser-si/</string>
+    <string name="art010_url">https://solucionint.com/omega-3-ejercicio-alta-intensidad-hiit-bajar-peso/</string>
+    <string name="art011_url">https://solucionint.com/sopas-cremas-que-no-son-lo-que-crees-si/</string>
+    <string name="art012_url">https://solucionint.com/caldo-de-albondigas-con-verduras-si/</string>
+    <string name="art013_url">https://solucionint.com/pozole-blanco-si/</string>
+    <string name="art014_url">https://solucionint.com/pescado-a-la-veracruzana-si/</string>
+    <string name="art015_url">https://solucionint.com/crema-de-elote-si/</string>
+    <string name="art016_url">https://solucionint.com/chile-beneficios-capsicum-capsaicinoides-si/</string>
+    <string name="art017_url">https://solucionint.com/que-es-el-trastorno-afectivo-estacional-si/</string>
+    <string name="art018_url">https://solucionint.com/suplementacion-con-glutamina-baloncesto-si/</string>
+    <string name="art019_url">https://solucionint.com/microbiota-intestinal-somos-lo-que-comemos-si/</string>
+    <string name="art020_url">https://solucionint.com/tacos-de-carne-con-papa-y-verduras-si/</string>
+    <string name="art021_url">https://solucionint.com/trigliceridos-y-su-metabolismo/</string>
+    <string name="art022_url">https://solucionint.com/eje-microbiota-intestino-cerebro-salud-mental-si/</string>
+    <string name="art023_url">https://solucionint.com/aguacate-beneficios-valor-nutricional-si/</string>
+    <string name="art024_url">https://solucionint.com/beneficios-omega-3-microbiota-intestinal-salud-si/</string>
+    <string name="art025_url">https://solucionint.com/higos-cristalizados-si/</string>
+    <string name="art026_url">https://solucionint.com/galletas-ten-cuidado-con-ellas-si/</string>
+    <string name="art027_url">https://solucionint.com/prevenir-depresion-actividad-fisica-ejercicio-si/</string>
+    <string name="art028_url">https://solucionint.com/ejercicio-fisico-depresion-plasticidad-cerebral-si/</string>
+    <string name="art029_url">https://solucionint.com/pina-en-almibar-si/</string>
+    <string name="art030_url">https://solucionint.com/guiso-de-lentejas-especiado-con-arroz-si/</string>
+    <string name="art031_url">https://solucionint.com/el-te-natural-indigestion-acidez-estomacal-si/</string>
+    <string name="art032_url">https://solucionint.com/higo-nutricional-beneficios-salud-bienestar-si/</string>
+    <string name="art033_url">https://solucionint.com/colesterol-aliado-enemigo-cuerpo-si/</string>
+    <string name="art034_url">https://solucionint.com/conoces-beneficios-aguacate-hass-si/</string>
+    <string name="art035_url">https://solucionint.com/receta-galletas-marias-si/</string>
+    <string name="art036_url">https://solucionint.com/receta-calabacitas-rancheras-puntas-filete-si/</string>
+    <string name="art037_url">https://solucionint.com/receta-pollo-a-la-parrilla-si/</string>
+    <string name="art038_url">https://solucionint.com/aterosclerosis-factores-riesgo-prevenirla-si/</string>
+    <string name="art039_url">https://solucionint.com/beneficios-avena-propiedades-saludables-si/</string>
+    <string name="art040_url">https://solucionint.com/ejercicio-fisico-transforma-musculo-esqueletico-si/</string>
+    <string name="art041_url">https://solucionint.com/lavado-manos-defensa-infecciones-respiratorias-si/</string>
+    <string name="art042_url">https://solucionint.com/hipertension-arterial-la-epidemia-silenciosa-si/</string>
+    <string name="art043_url">https://solucionint.com/alcohol-peligros-comenzar-beber-edad-riesgos-si/</string>
+    <string name="art044_url">https://solucionint.com/pina-ananas-comosus-salud-valor-nutricional-si/</string>
+    <string name="art045_url">https://solucionint.com/enfermedad-inflamatoria-intestinal-ansiedad-depresion-bipolar-si/</string>
+    <string name="art046_url">https://solucionint.com/receta-rosca-de-reyes-si/</string>
+    <string name="art047_url">https://solucionint.com/receta-chop-suey-marinero-si/</string>
+    <string name="art048_url">https://solucionint.com/receta-harina-integral-para-hot-cakes-si/</string>
+    <string name="art049_url">https://solucionint.com/pina-solucion-protegerte-colesterol-adelgazar-si/</string>
+    <string name="art050_url">https://solucionint.com/beneficios-hidratacion-salud-habito-vida-si/</string>
+    <string name="art051_url">https://solucionint.com/uvas-salud-valor-nutricional-antioxidantes-si/</string>
+    <string name="art052_url">https://solucionint.com/deterioro-cognitivo-cerebro-salud-mental-si/</string>
+    <string name="art053_url">https://solucionint.com/hiperhidratacion-que-pasa-si-bebes-mucha-agua-si/</string>
+    <string name="art054_url">https://solucionint.com/nutritivos-rabanos-rojos-raphanus-sativus-salud-si/</string>
+    <string name="art055_url">https://solucionint.com/fortalece-defensas-uvas-escudo-inmunologico-si/</string>
+    <string name="art056_url">https://solucionint.com/redes-neuronales-apego-interpersonal-adicciones-si/</string>
+    <string name="art057_url">https://solucionint.com/pescado-en-salsa-de-cascabel-si/</string>
+    <string name="art058_url">https://solucionint.com/concentrado-para-refresco-de-jengibre-si/</string>
+    <string name="art059_url">https://solucionint.com/estofado-cremoso-de-pollo-si/</string>
+    <string name="art060_url">https://solucionint.com/que-es-la-fatiga-actividad-fisica-cognitiva-si/</string>
+    <string name="art061_url">https://solucionint.com/biomarcadores-sanguineos-rendimiento-deporte-si/</string>
+    <string name="art062_url">https://solucionint.com/proteinas-plasmaticas-bajar-peso-salud-patrones-si/</string>
+    <string name="art063_url">https://solucionint.com/musculo-esqueletico-metabolismo-ejercicio-si/</string>
+    <string name="art064_url">https://solucionint.com/homeostasis-grasa-corporal-durante-ejercicio-si/</string>
+    <string name="art065_url">https://solucionint.com/8-motivos-indiscutibles-rutina-ejercicio-fisico-si/</string>
+    <string name="art066_url">https://solucionint.com/cacahuate-arachis-hipogaea-valor-nutricional-si/</string>
+
+    <!--Dialogue_ArticlesSelectorActivity-->
+    <string name="hint_dialogue_selector">Número</string>
+    <string name="btn_dialogue_selector">Aceptar</string>
+
+    <string name="dialogue_no_encontrado">No existen artículos que coincidan con los parámetros de busqueda</string>
+
+    <!--Time Meters-->
+    <string name="cronometro">Cronómetro</string>
+    <string name="temporizador">Temporizador</string>
+    <string name="tabata_timer">Tabata Timer</string>
+
+    <!--Cronometro-->
+    <string name="btnStart">Iniciar</string>
+    <string name="btnStop">Detener</string>
+    <string name="btnRestart">Reiniciar</string>
+    <string name="btnSplit">Dividir</string>
+    <string name="btnResume">Continuar</string>
+
+    <string name="minutes">Minutos</string>
+    <string name="seconds">Segundos</string>
+    <string name="hours">Horas</string>
+    <string name="vacio">Vacío</string>
+    <string name="infinito">Infinito</string>
+
+    <string name="fin_del_mapa">Has llegado al final del mapa</string>
+
+    <!--dialogue log split-->
+    <string name="dial_lap">Circuito</string>
+    <string name="dial_elapsed_time">Tiempo Transcurrido</string>
+    <string name="dial_total_time">Tiempo Total</string>
+
+    <!--Temporizador-->
+    <!--Dialogue_ajustes_temporizador-->
+    <string name="ajustes">Ajustes</string>
+    <string name="tiempo">Tiempo</string>
+
+    <string-array name="Hours">
+        <item>Horas</item>
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item>
+        <item>59</item>
+        <item>60</item>
+        <item>61</item>
+        <item>62</item>
+        <item>63</item>
+        <item>64</item>
+        <item>65</item>
+        <item>66</item>
+        <item>67</item>
+        <item>68</item>
+        <item>69</item>
+        <item>70</item>
+        <item>71</item>
+        <item>72</item>
+        <item>73</item>
+        <item>74</item>
+        <item>75</item>
+        <item>76</item>
+        <item>77</item>
+        <item>78</item>
+        <item>79</item>
+        <item>80</item>
+        <item>81</item>
+        <item>82</item>
+        <item>83</item>
+        <item>84</item>
+        <item>85</item>
+        <item>86</item>
+        <item>87</item>
+        <item>88</item>
+        <item>89</item>
+        <item>90</item>
+        <item>91</item>
+        <item>92</item>
+        <item>93</item>
+        <item>94</item>
+        <item>95</item>
+        <item>96</item>
+        <item>97</item>
+        <item>98</item>
+        <item>99</item>
+    </string-array>
+    <string-array name="Minutos">
+        <item>Minutos</item>
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item>
+        <item>59</item>
+    </string-array>
+    <string-array name="Segundos">
+        <item>Segundos</item>
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item>
+        <item>59</item>
+    </string-array>
+    <string name="aceptar">Aceptar</string>
+    <string name="sonido">Sonido</string>
+    <string-array name="Sonidos">
+        <item>Ninguno</item>
+        <item>Analog Warm Pluck</item>
+        <item>Big Impact</item>
+        <item>Blaster 2</item>
+        <item>Brass Fail 1 c</item>
+        <item>Cartoon Jump</item>
+        <item>Copper Bell Ding 3</item>
+        <item>Cute Level Up 3</item>
+        <item>Digital Alarm Clock</item>
+        <item>Epic Extreme Hit</item>
+        <item>Epic Hybrid Logo</item>
+        <item>Epic Logo</item>
+        <item>Error 2</item>
+        <item>Error When Entering The Game Menu</item>
+        <item>Fail</item>
+        <item>Failure 1</item>
+        <item>Fight Deep Voice</item>
+        <item>Friend Request</item>
+        <item>Game Bonus</item>
+        <item>Game Level Complete</item>
+        <item>Game Over Arcade</item>
+        <item>Game Start</item>
+        <item>Going To The Next Level</item>
+        <item>Grand Final Orchestral Tutti</item>
+        <item>Growling Zombie</item>
+        <item>Interface Welcome</item>
+        <item>Invalid Selection</item>
+        <item>Level Up Bonus Sequence 2</item>
+        <item>Level Up Bonus Sequence 3</item>
+        <item>Level Up Enhancement 8 Bit Retro Sound Effect</item>
+        <item>Level Win</item>
+        <item>Lose Funny Retro Video Game</item>
+        <item>Message Incoming</item>
+        <item>Music Box For Suspenseful Stories</item>
+        <item>New Level</item>
+        <item>Next Level</item>
+        <item>Notification For Game Scenes</item>
+        <item>90s Game UI 12</item>
+        <item>90s Game UI 6</item>
+        <item>8 Bit Game 1</item>
+        <item>8 Bit Game 3</item>
+        <item>8 Bit Game 6</item>
+        <item>8 Bit Game 7</item>
+        <item>8 Bit Moonlight Sonata Music Loop</item>
+        <item>8 Bit Power Up</item>
+        <item>8 Bit Video Game Fail Version 2</item>
+        <item>Open The Can</item>
+        <item>Pig Level Win 2</item>
+        <item>Playful Casino Slot Machine Jackpot 3</item>
+        <item>Ready Fight</item>
+        <item>Robot Saying 1</item>
+        <item>Robot Saying 2</item>
+        <item>Robot Saying 3</item>
+        <item>Scary Swoosh</item>
+        <item>Sinus Bomb</item>
+        <item>Soft Bells</item>
+        <item>Space Line</item>
+        <item>Success Fanfare Trumpets</item>
+        <item>Suddenly</item>
+        <item>Three Two One Fight Deep Voice</item>
+        <item>Videogame Death Sound</item>
+        <item>Violin Lose 1</item>
+        <item>Violin Lose 4</item>
+        <item>Violin Lose 5</item>
+        <item>Violin Win 5</item>
+        <item>WinFantasia</item>
+        <item>WingGrandPiano</item>
+        <item>Winsquare</item>
+        <item>Wrong Answer</item>
+        <item>Wrong Buzzer</item>
+        <item>Wrong Place</item>
+    </string-array>
+    <string name="vibration">Vibración</string>
+
+    <!--Tabata Timer-->
+    <!--primera pantalla-->
+    <string name="tiempo_total">Tiempo Total</string>
+    <string name="conjuntos">Conjuntos</string>
+
+    <string name="comenzar">Comenzar</string>
+
+    <string name="preparacion">Preparación</string>
+    <string name="ejercicio">Ejercicio</string>
+    <string name="descanso">Descanso</string>
+    <string name="ciclos">Ciclos</string>
+    <string name="descanso_entre_conjuntos">Descanso entre conjuntos</string>
+
+    <string name="uno_numero">01</string>
+    <string name="proximo">Próximo</string>
+    <string name="pausar">Pausar</string>
+    <string name="continuar">Continuar</string>
+    <string name="reanudar">Reanudar</string>
+    <string name="finalizar">Finalizar</string>
+
+    <string name="finish_activity">Rutina completada</string>
+    <string name="IMC">IMC</string>
+
+    <string name="selecciona">Selecciona</string>
+    <string name="hombre">Hombre</string>
+    <string name="mujer">Mujer</string>
+
+    <string name="altura">Altura</string>
+    <string name="cm">cm</string>
+    <string name="peso">Peso</string>
+    <string name="kg">KG</string>
+    <string name="calcular">Calcular</string>
+    <string name="imc2">Índice de Masa Corporal</string>
+    <string name="bajo_peso">Bajo Peso</string>
+    <string name="peso_normal">Peso Normal</string>
+    <string name="sobrepeso">Sobrepeso</string>
+    <string name="obesidad_uno">Obesidad Grado Uno</string>
+    <string name="obesidad_dos">Obesidad Grado Dos</string>
+    <string name="obesidad_tres">Obesidad Grado Tres</string>
+    <string name="regresar">Regresar</string>
 </resources>

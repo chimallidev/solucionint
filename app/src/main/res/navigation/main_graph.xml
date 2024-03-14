@@ -8,15 +8,76 @@
         android:id="@+id/scientificArticlesFragment"
         android:name="com.chimallidigital.solucionint.ui.scientific_articles.ScientificArticlesFragment"
         android:label="fragment_scientific_articles"
-        tools:layout="@layout/fragment_scientific_articles" />
+        tools:layout="@layout/fragment_scientific_articles" >
+        <action
+            android:id="@+id/action_scientificArticlesFragment_to_articlesSelectorActivity"
+            app:destination="@id/articlesSelectorActivity" />
+    </fragment>
     <fragment
         android:id="@+id/timeMetersFragment"
         android:name="com.chimallidigital.solucionint.ui.time_meters.TimeMetersFragment"
         android:label="fragment_time_meters"
-        tools:layout="@layout/fragment_time_meters" />
+        tools:layout="@layout/fragment_time_meters" >
+        <action
+            android:id="@+id/action_timeMetersFragment_to_cronometroActivity"
+            app:destination="@id/cronometroActivity"
+            app:enterAnim="@anim/car_ui_app_styled_view_enter_anim"
+            app:exitAnim="@anim/car_ui_app_styled_view_exit_anim" />
+        <action
+            android:id="@+id/action_timeMetersFragment_to_temporizadorActivity"
+            app:destination="@id/temporizadorActivity"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_timeMetersFragment_to_tabataTimerActivity2"
+            app:destination="@id/tabataTimerActivity"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/calculatorsFragment"
         android:name="com.chimallidigital.solucionint.ui.calculators.CalculatorsFragment"
         android:label="fragment_calculators"
-        tools:layout="@layout/fragment_calculators" />
+        tools:layout="@layout/fragment_calculators" >
+        <action
+            android:id="@+id/action_calculatorsFragment_to_IMCcalculatorActivity"
+            app:destination="@id/IMCcalculatorActivity"
+            app:enterAnim="@anim/rv_dialogue_log_split_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+    <activity
+        android:id="@+id/articlesSelectorActivity"
+        android:name="com.chimallidigital.solucionint.ui.selector.ArticlesSelectorActivity"
+        android:label="activity_articles_selector"
+        tools:layout="@layout/activity_articles_selector" >
+
+        <argument
+            android:name="type"
+            app:argType="com.chimallidigital.solucionint.domain.model.scientific_articles.ScientificArticlesCategoriesModel" />
+    </activity>
+    <activity
+        android:id="@+id/solucionintWebActivity"
+        android:name="com.chimallidigital.solucionint.ui.solucionint_web.SolucionintWebActivity"
+        android:label="activity_solucionint_web"
+        tools:layout="@layout/activity_solucionint_web" />
+    <activity
+        android:id="@+id/cronometroActivity"
+        android:name="com.chimallidigital.solucionint.ui.cronometro.CronometroActivity"
+        android:label="activity_cronometro"
+        tools:layout="@layout/activity_cronometro" />
+    <activity
+        android:id="@+id/temporizadorActivity"
+        android:name="com.chimallidigital.solucionint.ui.temporizador.TemporizadorActivity"
+        android:label="activity_temporizador"
+        tools:layout="@layout/activity_temporizador" />
+    <activity
+        android:id="@+id/tabataTimerActivity"
+        android:name="com.chimallidigital.solucionint.ui.tabata_timer.TabataTimerActivity"
+        android:label="activity_tabata_timer"
+        tools:layout="@layout/activity_tabata_timer" />
+    <activity
+        android:id="@+id/IMCcalculatorActivity"
+        android:name="com.chimallidigital.solucionint.ui.IMCcalculator.IMCcalculatorActivity"
+        android:label="activity_imccalculator"
+        tools:layout="@layout/activity_imccalculator" />
 </navigation>
