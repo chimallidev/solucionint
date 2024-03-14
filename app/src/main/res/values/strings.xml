@@ -524,4 +524,21 @@
     <string name="finish_activity">Rutina completada</string>
     <string name="IMC">IMC</string>
 
+    <string name="selecciona">Selecciona</string>
+    <string name="hombre">Hombre</string>
+    <string name="mujer">Mujer</string>
+
+    <string name="altura">Altura</string>
+    <string name="cm">cm</string>
+    <string name="peso">Peso</string>
+    <string name="kg">KG</string>
+    <string name="calcular">Calcular</string>
+    <string name="imc2">Índice de Masa Corporal</string>
+    <string name="bajo_peso">Bajo Peso</string>
+    <string name="peso_normal">Peso Normal</string>
+    <string name="sobrepeso">Sobrepeso</string>
+    <string name="obesidad_uno">Obesidad Grado Uno</string>
+    <string name="obesidad_dos">Obesidad Grado Dos</string>
+    <string name="obesidad_tres">Obesidad Grado Tres</string>
+    <string name="regresar">Regresar</string>
 </resources>

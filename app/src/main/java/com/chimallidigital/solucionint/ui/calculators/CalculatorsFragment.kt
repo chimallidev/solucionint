@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.chimallidigital.solucionint.R
 import com.chimallidigital.solucionint.databinding.FragmentCalculatorsBinding
 import com.chimallidigital.solucionint.ui.IMCcalculator.IMCcalculatorActivity
+import java.text.DecimalFormat
 import java.util.Random
 
 
@@ -34,8 +35,9 @@ class CalculatorsFragment : Fragment() {
     private fun initListeners() {
         textAnimation(binding.tvIMC)
         initRotation(binding.ivIMC)
-        binding.ivIMC.setOnClickListener {animationZero(it)}
+        binding.ivIMC.setOnClickListener {navigationAnimation(it)}
     }
+
     private fun navigateTOIMCCalculator(){
         findNavController().navigate(CalculatorsFragmentDirections.actionCalculatorsFragmentToIMCcalculatorActivity())
     }

@@ -54,5 +54,7 @@ class StringsCollection(val string: String) {
         const val CICLOS="ciclos"
         const val CONJUNTOS="conjuntos"
         const val TIEMPO_TOTAL="tiempo_total"
+
+        const val RESULTADOS_IMC="resultados_imc"
     }
 }

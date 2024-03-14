@@ -23,6 +23,9 @@
     <color name="bronce">	#CD7F32</color>
     <color name="dorado">#FFD700</color>
 
+    <color name="azul">#6fafff</color>
+    <color name="amarillo">#fffd57</color>
+
     <color name="light_gray">#9F9F9F</color>
     <color name="gray">#575757</color>
     <color name="gray_black">#272727</color>

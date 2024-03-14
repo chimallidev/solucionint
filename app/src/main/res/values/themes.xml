@@ -281,4 +281,50 @@
         <item name="android:textSize">50sp</item>
         <item name="android:textAlignment">center</item>
     </style>
+    <style name="selecciona_calculator" parent="IMC">
+        <item name="android:textSize">42sp</item>
+        <item name="android:textColor">@color/accent</item>
+    </style>
+    <style name="casillero" parent="selecciona_calculator">
+        <item name="android:textSize">28sp</item>
+    </style>
+    <style name="subs_calculator_imc" parent="IMC">
+        <item name="android:textSize">32sp</item>
+    </style>
+    <style name="subs2_calculator_imc" parent="subs_calculator_imc">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/accent</item>
+    </style>
+    <style name="calculator_number_count" parent="subs2_calculator_imc">
+        <item name="android:textSize">50sp</item>
+    </style>
+    <style name="calcular_calculadora" parent="calculator_number_count">
+        <item name="android:textSize">35sp</item>
+    </style>
+    <style name="dialogue_calculator_IMC" parent="IMC">
+        <item name="android:textSize">25sp</item>
+    </style>
+    <style name="dialogue_et_calculator" parent="IMC">
+        <item name="android:textSize">25sp</item>
+        <item name="android:backgroundTint">@color/secundario</item>
+        <item name="android:textColorHint">@color/secundario</item>
+    </style>
+    <style name="dialogue_btn_aceptar" parent="dialogue_calculator_IMC">
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+<!--Resultados IMC-->
+    <style name="resultados_IMC">
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="numberIMC" parent="resultados_IMC">
+        <item name="android:textSize">80sp</item>
+    </style>
+    <style name="btn_regresar_resultados_imc" parent="resultados_IMC">
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textSize">30sp</item>
+    </style>
 </resources>
