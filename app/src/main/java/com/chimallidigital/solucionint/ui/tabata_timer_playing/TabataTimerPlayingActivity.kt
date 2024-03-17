@@ -382,7 +382,7 @@ class TabataTimerPlayingActivity : AppCompatActivity() {
             countCiclos00++
             binding.tvCiclosContador00.text = formatZeroZero(countCiclos00)
         }
-        if (position != 0 && itemsList.get(position - 1).tipo == "descanso entre conjuntos") {
+        if (position != 0 && countCiclos00>countCiclos) {
             countConjuntos00++
             countCiclos00 = 1
             binding.tvCiclosContador00.text = formatZeroZero(countCiclos00)
