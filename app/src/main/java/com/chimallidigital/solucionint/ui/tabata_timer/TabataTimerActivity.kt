@@ -158,8 +158,9 @@ class TabataTimerActivity : AppCompatActivity() {
         setContentView(binding.root)
         stateSettings()
         initUI()
-        stateSettingsTime()
-        Log.i("faro", "El tiempo total despues de settingsState: $tiempoTotal")
+        repeat(10){
+            stateSettingsTime()
+        }
     }
 
     override fun onBackPressed() {

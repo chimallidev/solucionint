@@ -50,7 +50,7 @@ class ArticlesSelectorActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityArticlesSelectorBinding
     private val scientificArticlesSelectorViewModel: ArticlesSelectorViewModel by viewModels()
-    private var itemCount: Int = 0
+    private var itemCount: Int = 1
     private var stateSelectorAnimation: Boolean = false
     private var stateDialogAceptarSelector: Boolean = false
     private lateinit var dialogueArticlesSelectorAdapter: DialogueArticlesSelectorAdapter
@@ -159,7 +159,7 @@ class ArticlesSelectorActivity : AppCompatActivity() {
         binding.tvTitularCategoriaSelector.text =
             getString(scientificArticlesSelectorViewModel.getCategoryName(args.type))
         binding.btnBackFromArticlesSelectorToArticlesFragment.setOnClickListener { backAnimation() }
-        binding.tvArticlesSelectorContador.text = countFormatted(itemCount + 1)
+        binding.tvArticlesSelectorContador.text = countFormatted(itemCount)
         binding.btnLeftArticlesSelector.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(v: View?, event: MotionEvent?): Boolean {
                 when (event?.action) {
@@ -339,6 +339,7 @@ class ArticlesSelectorActivity : AppCompatActivity() {
                                 binding.shadowBtnEntrarArticlesSelector
                             )
                             btnNavigate()
+                            Log.i("itemCount_selector", "itemCount= $itemCount")
                         } else {
                             btnAnimation(
                                 binding.btnEntrarArticlesSelector,
@@ -413,7 +414,7 @@ class ArticlesSelectorActivity : AppCompatActivity() {
                 when (args.type) {
                     Soluciones_Inteligentes -> {
                         scientificArticlesSelectorViewModel.articles.collect {
-                            url = getString(it.get(itemCount).url)
+                            url = getString(it.get(itemCount-1).url)
                             runOnUiThread {
                                 intent.putExtra(URL, url)
                             }
@@ -422,7 +423,7 @@ class ArticlesSelectorActivity : AppCompatActivity() {
 
                     Ponte_en_Forma -> {
                         scientificArticlesSelectorViewModel.articlesPonteEnForma.collect {
-                            url = getString(it.get(itemCount).url)
+                            url = getString(it.get(itemCount-1).url)
                             runOnUiThread {
                                 intent.putExtra(URL, url)
                             }
@@ -431,7 +432,7 @@ class ArticlesSelectorActivity : AppCompatActivity() {
 
                     Recetas_de_Cocina -> {
                         scientificArticlesSelectorViewModel.articlesRecetasDeCocina.collect {
-                            url = getString(it.get(itemCount).url)
+                            url = getString(it.get(itemCount-1).url)
                             runOnUiThread {
                                 intent.putExtra(URL, url)
                             }
@@ -760,6 +761,7 @@ class ArticlesSelectorActivity : AppCompatActivity() {
                                     newItemRightCount,
                                     maxItemCount
                                 )
+                                Log.i("itemCount_BTN_increase", "itemCount= $itemCount")
                             }
                         }
                     }
@@ -774,6 +776,7 @@ class ArticlesSelectorActivity : AppCompatActivity() {
                                     newItemRightCount,
                                     maxItemCount
                                 )
+                                Log.i("itemCount_BTN_increase", "itemCount= $itemCount")
                             }
                         }
                     }
@@ -788,6 +791,7 @@ class ArticlesSelectorActivity : AppCompatActivity() {
                                     newItemRightCount,
                                     maxItemCount
                                 )
+                                Log.i("itemCount_BTN_increase", "itemCount= $itemCount")
                             }
                         }
                     }
@@ -971,19 +975,25 @@ class ArticlesSelectorActivity : AppCompatActivity() {
     private fun increaseCountMechanism(lista: List<CollectionArticles>, increaseCount: Int): Int {
         val articlesList = lista
         val maxItemCount = articlesList.size
-        var newItemRightCount: Int
-        newItemRightCount = when (increaseCount) {
-            0 -> 2
-            in 1..maxItemCount - 1 -> increaseCount + 1
-            else -> 1
+        var newItemRightCount= increaseCount
+//        newItemRightCount = when (increaseCount) {
+//            0 -> 1
+//            in 2..maxItemCount - 1 -> increaseCount + 1
+//            else -> 1
+//        }
+        if (increaseCount<maxItemCount){
+            newItemRightCount++
+        }
+        if (increaseCount==maxItemCount){
+            newItemRightCount=1
         }
         return newItemRightCount
     }
 
     private fun printInitImageActiveSelector(it: List<CollectionArticles>, maxItems: Int) {
-        binding.ivArticlesSelector.setImageResource(it.get(itemCount).img)
+        binding.ivArticlesSelector.setImageResource(it.get(itemCount-1).img)
         binding.tvArticlesSelectorArticlesTitle.text =
-            getString(it.get(itemCount).title)
+            getString(it.get(itemCount-1).title)
         binding.tvSelectorMaximNumber.text = countFormatted(maxItems)
     }
 
