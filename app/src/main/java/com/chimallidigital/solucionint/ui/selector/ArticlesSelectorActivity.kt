@@ -976,11 +976,7 @@ class ArticlesSelectorActivity : AppCompatActivity() {
         val articlesList = lista
         val maxItemCount = articlesList.size
         var newItemRightCount= increaseCount
-//        newItemRightCount = when (increaseCount) {
-//            0 -> 1
-//            in 2..maxItemCount - 1 -> increaseCount + 1
-//            else -> 1
-//        }
+
         if (increaseCount<maxItemCount){
             newItemRightCount++
         }
