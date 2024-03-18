@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "146907189978",
+    "project_id": "solucionint-app",
+    "storage_bucket": "solucionint-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:146907189978:android:dee15da525d0fa4600cbe3",
+        "android_client_info": {
+          "package_name": "com.chimallidigital.solucionint"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD2ooHP52hdvMt5CgX124P33nbKVHCR6Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

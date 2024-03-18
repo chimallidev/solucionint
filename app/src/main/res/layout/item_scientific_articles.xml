@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/itemScientificArticles"
     android:layout_width="320dp"
-    android:layout_height="250dp"
-    android:layout_marginBottom="35dp"
+    android:layout_height="260dp"
+    android:layout_marginBottom="50dp"
     app:cardCornerRadius="21dp"
     app:cardElevation="21dp"
     android:layout_marginHorizontal="20dp"
-    android:layout_marginTop="7dp">
+    android:layout_marginTop="10dp"
+    android:layout_gravity="center|top">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
