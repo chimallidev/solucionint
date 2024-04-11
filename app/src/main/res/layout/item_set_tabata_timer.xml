@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/itemSetTabataTimer"
-    android:layout_width="350dp"
-    android:layout_height="440dp"
+    android:layout_width="match_parent"
+    android:layout_height="480dp"
     android:background="@color/accent"
     android:layout_marginTop="4dp"
     android:layout_marginBottom="10dp"
     android:layout_gravity="center|top"
-    android:layout_marginHorizontal="6dp">
+    android:layout_marginHorizontal="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
@@ -45,7 +45,7 @@
             <ImageView
                 android:id="@+id/ivItem"
                 android:layout_width="0dp"
-                android:layout_height="190dp"
+                android:layout_height="230dp"
                 android:layout_marginTop="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -212,19 +212,22 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvTiempo"
                 android:layout_marginTop="3dp"
-                android:visibility="visible">
+                android:visibility="visible"
+                android:layout_marginHorizontal="10dp">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constSpinner1"
-                    android:layout_width="80dp"
+                    android:layout_width="85dp"
                     android:layout_height="30dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:background="@color/primary"
-                    android:layout_marginStart="15dp">
+                    app:layout_constraintEnd_toStartOf="@id/dosPuntos"
+                    android:background="@color/primary">
+<!--                    android:layout_marginStart="15dp"-->
+
                     <Spinner
                         android:id="@+id/spinnerHoras"
-                        android:layout_width="0dp"
+                        android:layout_width="80dp"
                         android:layout_height="0dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -235,25 +238,27 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
                 <ImageView
                     android:id="@+id/dosPuntos"
-                    android:layout_width="15dp"
+                    android:layout_width="10dp"
                     android:layout_height="30dp"
                     app:layout_constraintStart_toEndOf="@id/constSpinner1"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/constSpinner2"
                     android:layout_marginStart="5dp"
                     android:src="@drawable/dos_puntos"/>
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constSpinner2"
-                    android:layout_width="80dp"
+                    android:layout_width="85dp"
                     android:layout_height="30dp"
                     app:layout_constraintStart_toEndOf="@id/dosPuntos"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/dosPuntos2"
                     android:background="@color/primary"
                     android:layout_marginStart="5dp">
                     <Spinner
                         android:id="@+id/spinnerMinutos"
-                        android:layout_width="0dp"
+                        android:layout_width="80dp"
                         android:layout_height="0dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -264,25 +269,27 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
                 <ImageView
                     android:id="@id/dosPuntos2"
-                    android:layout_width="15dp"
+                    android:layout_width="10dp"
                     android:layout_height="30dp"
                     app:layout_constraintStart_toEndOf="@id/constSpinner2"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/constSpinner3"
                     android:layout_marginStart="5dp"
                     android:src="@drawable/dos_puntos"/>
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constSpinner3"
-                    android:layout_width="80dp"
+                    android:layout_width="85dp"
                     android:layout_height="30dp"
                     app:layout_constraintStart_toEndOf="@id/dosPuntos2"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:background="@color/primary"
                     android:layout_marginStart="5dp">
                     <Spinner
                         android:id="@+id/spinnerSegundos"
-                        android:layout_width="0dp"
+                        android:layout_width="80dp"
                         android:layout_height="0dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -308,6 +315,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/constSpinnerSonido"
                     style="@style/item_subtitulos_tabata_timer"
                     android:text="@string/sonido"
                     android:layout_marginStart="17dp"/>
@@ -318,6 +326,7 @@
                     app:layout_constraintStart_toEndOf="@id/tvSonido"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/BTNPlaySonido"
                     android:background="@color/primary"
                     android:layout_marginStart="10dp">
                     <Spinner
@@ -335,6 +344,7 @@
                     android:id="@+id/BTNPlaySonido"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    app:layout_constraintStart_toEndOf="@id/constSpinnerSonido"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -389,6 +399,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/switchVibration"
                     style="@style/item_subtitulos_tabata_timer"
                     android:text="@string/vibration"
                     android:layout_marginStart="17dp"/>
@@ -399,6 +410,7 @@
                     app:layout_constraintStart_toEndOf="@id/tvVibration"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="7dp"
                     app:trackTint="@color/switch_track_tabata_timer"

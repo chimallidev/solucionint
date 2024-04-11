@@ -365,9 +365,8 @@ class IMCcalculatorActivity : AppCompatActivity() {
     }
     private fun calcularIMC(altura: Int, peso: Float): Float{
         var alturaMetros: Float= altura.toFloat()/100
-        var pesoRound= formatDecimal(peso).toFloat()
-        Log.i("calc_IMC", "pesoRound= $pesoRound alturaMetros= $alturaMetros")
-        var resIMC= (pesoRound)/(alturaMetros*alturaMetros)
+        Log.i("calc_IMC", "pesoRound= $peso alturaMetros= $alturaMetros")
+        var resIMC= (peso)/(alturaMetros*alturaMetros)
         val numDec= DecimalFormat("#0.00")
         val numero= numDec.format(resIMC).toFloat()
         return numero

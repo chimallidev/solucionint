@@ -5,21 +5,8 @@
       <entry key="TabataTimerPlayingActivity">
         <State />
       </entry>
-      <entry key="app">
-        <State>
-          <runningDeviceTargetSelectedWithDropDown>
-            <Target>
-              <type value="RUNNING_DEVICE_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="SERIAL_NUMBER" />
-                  <value value="VVB0221809001679" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-03-18T23:21:43.963157100Z" />
-        </State>
+      <entry key="solucionint">
+        <State />
       </entry>
     </value>
   </component>
