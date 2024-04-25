@@ -90,6 +90,10 @@
     <string name="art064">HOMEOSTASIS: ¿QUÉ PASA CON LA GRASA CORPORAL DURANTE EL EJERCICIO FÍSICO?</string>
     <string name="art065">8 MOTIVOS INDISCUTIBLES PARA INICIAR UNA RUTINA DE EJERCICIO FÍSICO</string>
     <string name="art066">CACAHUATE (ARACHIS HIPOGAEA): UNA JOYA NUTRICIONAL QUE IMPACTA POSITIVAMENTE EN TU SALUD</string>
+    <string name="art067">IMC: DESMITIFICANDO EL ÍNDICE DE MASA CORPORAL ¿ES REALMENTE UN INDICADOR PRECISO DE SALUD? Y ¿POR QUÉ ES TAN USADO?</string>
+    <string name="art068">SÍNDROME METABÓLICO: ¿QUÉ TAN MALO ES TENER SOBREPESO U OBESIDAD?</string>
+    <string name="art069">PERA (PYRUS COMMUNIS): ¿QUIERES PREVENIR ENFERMEDADES? descubre cómo su consumo puede ayudarte a mantenerte sano</string>
+    <string name="art070">EL RENACIMIENTO DE TU CUERPO: DESCUBRE CÓMO EL BEBER AGUA PUEDE TRANSFORMAR TU BIENESTAR</string>
 
 
     <string name="art001_url">https://solucionint.com/obesidad-causas-consecuencias-tratamiento-si/</string>
@@ -158,6 +162,10 @@
     <string name="art064_url">https://solucionint.com/homeostasis-grasa-corporal-durante-ejercicio-si/</string>
     <string name="art065_url">https://solucionint.com/8-motivos-indiscutibles-rutina-ejercicio-fisico-si/</string>
     <string name="art066_url">https://solucionint.com/cacahuate-arachis-hipogaea-valor-nutricional-si/</string>
+    <string name="art067_url">https://solucionint.com/imc-indice-masa-corporal-preciso-salud-por-que-si/</string>
+    <string name="art068_url">https://solucionint.com/sindrome-metabolico-sobrepeso-obesidad-si/</string>
+    <string name="art069_url">https://solucionint.com/pera-pyrus-communis-si/</string>
+    <string name="art070_url">https://solucionint.com/renacimiento-cuerpo-beber-agua-bienestar-si/</string>
 
     <!--Dialogue_ArticlesSelectorActivity-->
     <string name="hint_dialogue_selector">Número</string>
