@@ -94,7 +94,7 @@
     <string name="art068">SÍNDROME METABÓLICO: ¿QUÉ TAN MALO ES TENER SOBREPESO U OBESIDAD?</string>
     <string name="art069">PERA (PYRUS COMMUNIS): ¿QUIERES PREVENIR ENFERMEDADES? descubre cómo su consumo puede ayudarte a mantenerte sano</string>
     <string name="art070">EL RENACIMIENTO DE TU CUERPO: DESCUBRE CÓMO EL BEBER AGUA PUEDE TRANSFORMAR TU BIENESTAR</string>
-
+    <string name="art071">¡DULCE Y NUTRITIVA! LOS SECRETOS DE LA SANDÍA (CITRULLUS LANATUS) PARA UNA VIDA SALUDABLE</string>
 
     <string name="art001_url">https://solucionint.com/obesidad-causas-consecuencias-tratamiento-si/</string>
     <string name="art002_url">https://solucionint.com/cientificos-ejercicios-de-fuerza-grasa-corporal-si/</string>
@@ -166,6 +166,7 @@
     <string name="art068_url">https://solucionint.com/sindrome-metabolico-sobrepeso-obesidad-si/</string>
     <string name="art069_url">https://solucionint.com/pera-pyrus-communis-si/</string>
     <string name="art070_url">https://solucionint.com/renacimiento-cuerpo-beber-agua-bienestar-si/</string>
+    <string name="art071_url">https://solucionint.com/sandia-dulce-y-nutritiva-citrullus-lanatus-si/</string>
 
     <!--Dialogue_ArticlesSelectorActivity-->
     <string name="hint_dialogue_selector">Número</string>
