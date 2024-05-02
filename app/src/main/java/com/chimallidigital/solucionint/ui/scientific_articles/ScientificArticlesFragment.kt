@@ -1,5 +1,6 @@
 package com.chimallidigital.solucionint.ui.scientific_articles
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,12 @@ import com.chimallidigital.solucionint.domain.model.scientific_articles.Scientif
 import com.chimallidigital.solucionint.domain.model.scientific_articles.ScientificArticlesCategories.*
 import com.chimallidigital.solucionint.domain.model.scientific_articles.ScientificArticlesCategoriesModel
 import com.chimallidigital.solucionint.ui.scientific_articles.adapter.ScientificArticlesAdapter
+import com.google.android.gms.ads.AdError
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

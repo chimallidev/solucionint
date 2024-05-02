@@ -3,6 +3,7 @@ package com.chimallidigital.solucionint.ui.ResultadoIMC
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.ContextMenu
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.BounceInterpolator
@@ -10,9 +11,16 @@ import androidx.core.view.isInvisible
 import com.chimallidigital.solucionint.R
 import com.chimallidigital.solucionint.databinding.ActivityResultadosImcactivityBinding
 import com.chimallidigital.solucionint.domain.StringsCollection.Companion.RESULTADOS_IMC
+import com.google.android.gms.ads.AdError
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 
 class ResultadosIMCActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResultadosImcactivityBinding
+    private var intersticial: InterstitialAd? = null
 
     private var stateAnimator= false
 
@@ -20,7 +28,31 @@ class ResultadosIMCActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityResultadosImcactivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        initAds()
         initUI()
+        showAds()
+        initAds()
+    }
+    private fun initAds() {
+        var adRequest: AdRequest = AdRequest.Builder().build()
+
+        InterstitialAd.load(
+            this,
+            "ca-app-pub-3940256099942544/1033173712",
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdLoaded(intersticialAd: InterstitialAd) {
+                    intersticial = intersticialAd
+                }
+
+                override fun onAdFailedToLoad(p0: LoadAdError) {
+                    intersticial = null
+                }
+            })
+    }
+
+    fun showAds() {
+        intersticial?.show(this)
     }
 
     private fun initUI() {
@@ -29,6 +61,17 @@ class ResultadosIMCActivity : AppCompatActivity() {
     }
 
     private fun initListeners(imc: Float) {
+        intersticial?.fullScreenContentCallback = object : FullScreenContentCallback() {
+            override fun onAdDismissedFullScreenContent() {
+            }
+
+            override fun onAdFailedToShowFullScreenContent(p0: AdError) {
+            }
+
+            override fun onAdShowedFullScreenContent() {
+                intersticial = null
+            }
+        }
         when(imc){
             in 0f.. 18.4f->{
                 binding.tvTitulo.text= getString(R.string.bajo_peso)

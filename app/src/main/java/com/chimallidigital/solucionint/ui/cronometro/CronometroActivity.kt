@@ -30,14 +30,22 @@ import com.chimallidigital.solucionint.R
 import com.chimallidigital.solucionint.databinding.ActivityCronometroBinding
 import com.chimallidigital.solucionint.domain.model.Cronometro.Splits
 import com.chimallidigital.solucionint.ui.cronometro.dialogue.DialogueLogSplitAdapter
+import com.google.android.gms.ads.AdError
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CronometroActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCronometroBinding
+    private var intersticial: InterstitialAd?= null
     private lateinit var dialogueLogSplitAdapter: DialogueLogSplitAdapter
     private val cronometroViewModel: CronometroViewModel by viewModels()
+    private var countAds= 2
     private var time: Int = 0
     private var lap: Int = 0
     private var stateAnimator = false
@@ -129,9 +137,32 @@ class CronometroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCronometroBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        initAds()
         initUI()
     }
+    private fun initAds(){
+        var adRequest: AdRequest= AdRequest.Builder().build()
 
+        InterstitialAd.load(this, "ca-app-pub-3940256099942544/1033173712", adRequest, object: InterstitialAdLoadCallback(){
+            override fun onAdLoaded(intersticialAd: InterstitialAd) {
+                intersticial= intersticialAd
+            }
+
+            override fun onAdFailedToLoad(p0: LoadAdError) {
+                intersticial= null
+            }
+        })
+    }
+    fun showAds(){
+        intersticial?.show(this)
+    }
+    private fun contadorAds(){
+        if(countAds==3){
+            showAds()
+            countAds=0
+            initAds()
+        }
+    }
     private fun initUI() {
         initListeners()
     }
@@ -139,6 +170,17 @@ class CronometroActivity : AppCompatActivity() {
     @SuppressLint("ClickableViewAccesability")
     private fun initListeners() {
         dialogueLogSplitAdapter = DialogueLogSplitAdapter()
+        intersticial?.fullScreenContentCallback= object: FullScreenContentCallback(){
+            override fun onAdDismissedFullScreenContent() {
+            }
+
+            override fun onAdFailedToShowFullScreenContent(p0: AdError) {
+            }
+
+            override fun onAdShowedFullScreenContent() {
+                intersticial= null
+            }
+        }
         binding.tvUnitTypes.text = getString(R.string.seconds)
         binding.tvBTN1.text = getString(R.string.btnStart)
         binding.tvBTN2.text = getString(R.string.btnRestart)
@@ -436,6 +478,8 @@ class CronometroActivity : AppCompatActivity() {
         binding.tvHours.setTextColor(getColor(R.color.accent))
         binding.tvFinDelMapa.isVisible = false
         binding.tvBTN1.text = getString(R.string.btnStart)
+        countAds+=1
+        contadorAds()
     }
 
     private fun secondsFormatted(time: Int): String {

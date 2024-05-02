@@ -17,8 +17,8 @@ android {
         applicationId = "com.chimallidigital.solucionint"
         minSdk = 24
         targetSdk = 34
-        versionCode = 3
-        versionName = "1.1.001"
+        versionCode = 4
+        versionName = "1.2.000"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -76,6 +76,10 @@ dependencies {
 
     //Crashlytics
     implementation("com.google.firebase:firebase-crashlytics")
+
+    //AdMob
+    implementation ("com.google.android.gms:play-services-ads:23.0.0")
+
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

@@ -40,10 +40,17 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.chimallidigital.solucionint.R
 import com.chimallidigital.solucionint.databinding.ActivityTemporizadorBinding
+import com.chimallidigital.solucionint.domain.StringsCollection.Companion.COUNT_TEMP_ADS
 import com.chimallidigital.solucionint.domain.StringsCollection.Companion.SONIDO_TEMPORIZADOR
 import com.chimallidigital.solucionint.domain.StringsCollection.Companion.TRACK_TEMPORIZADOR
 import com.chimallidigital.solucionint.domain.StringsCollection.Companion.VIBRACION_TEMPORIZADOR
 import com.chimallidigital.solucionint.domain.model.Settings.SettingsModel
+import com.google.android.gms.ads.AdError
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -58,7 +65,9 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "Se
 @AndroidEntryPoint
 class TemporizadorActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTemporizadorBinding
+    private var intersticial: InterstitialAd?= null
 
+    private var countAds= 2
     private var stateAnimator = false
     private var timerSeconds = 0
     private var contSegundos = 0
@@ -161,6 +170,11 @@ class TemporizadorActivity : AppCompatActivity() {
                         vibration(switchState)
                     }
                     resetTimer()
+                    countAds+=1
+                    CoroutineScope(Dispatchers.IO).launch {
+                        guardarIntPreferencias(COUNT_TEMP_ADS, countAds)
+                    }
+                    contadorAds()
                     isFinishState = true
                 }
             }
@@ -172,8 +186,36 @@ class TemporizadorActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityTemporizadorBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        initAds()
         stateSettings()
         initUI()
+    }
+    private fun initAds(){
+        var adRequest: AdRequest = AdRequest.Builder().build()
+
+        InterstitialAd.load(this, "ca-app-pub-3940256099942544/1033173712", adRequest, object: InterstitialAdLoadCallback(){
+            override fun onAdLoaded(intersticialAd: InterstitialAd) {
+                intersticial= intersticialAd
+            }
+
+            override fun onAdFailedToLoad(p0: LoadAdError) {
+                intersticial= null
+            }
+        })
+    }
+    fun showAds(){
+        intersticial?.show(this)
+    }
+    private fun contadorAds(){
+        if(countAds==3){
+            showAds()
+            countAds=0
+            CoroutineScope(Dispatchers.IO).launch {
+                guardarIntPreferencias(COUNT_TEMP_ADS, countAds)
+            }
+            initAds()
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 
     private suspend fun guardarPreferencias(key: String, value: Boolean) {
@@ -196,6 +238,7 @@ class TemporizadorActivity : AppCompatActivity() {
                         switchState = settingsModel.vibracion_temporizador
                         savePosition = settingsModel.sonido_temporizador
                         track = settingsModel.track_temporizador
+                        countAds= settingsModel.count_temp_ads
                         firstTime= !firstTime
                     }
                 }
@@ -208,6 +251,17 @@ class TemporizadorActivity : AppCompatActivity() {
     }
 
     private fun initListeners() {
+        intersticial?.fullScreenContentCallback= object: FullScreenContentCallback(){
+            override fun onAdDismissedFullScreenContent() {
+            }
+
+            override fun onAdFailedToShowFullScreenContent(p0: AdError) {
+            }
+
+            override fun onAdShowedFullScreenContent() {
+                intersticial= null
+            }
+        }
         binding.constBack.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(v: View?, event: MotionEvent?): Boolean {
                 when (event?.action) {
@@ -924,7 +978,8 @@ class TemporizadorActivity : AppCompatActivity() {
             SettingsModel(
                 Preferencias[intPreferencesKey(SONIDO_TEMPORIZADOR)] ?: 0,
                 Preferencias[booleanPreferencesKey(VIBRACION_TEMPORIZADOR)] ?: false,
-                Preferencias[intPreferencesKey(TRACK_TEMPORIZADOR)] ?: -1
+                Preferencias[intPreferencesKey(TRACK_TEMPORIZADOR)] ?: -1,
+                Preferencias[intPreferencesKey(COUNT_TEMP_ADS)] ?: 2
             )
         }
     }

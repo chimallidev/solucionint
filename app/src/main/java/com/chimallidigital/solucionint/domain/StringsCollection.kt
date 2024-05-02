@@ -7,6 +7,7 @@ class StringsCollection(val string: String) {
         const val SONIDO_TEMPORIZADOR= "sonido_temporizador"
         const val VIBRACION_TEMPORIZADOR= "vibracion_temporizador"
         const val TRACK_TEMPORIZADOR="track_temporizador"
+        const val COUNT_TEMP_ADS="count_temp_ads"
 
         const val TT_TIEMPO_TOTAL="tt_tiempo_total"
         const val TT_PREPARACION_HORAS="tt_preparacion_horas"
@@ -49,6 +50,7 @@ class StringsCollection(val string: String) {
         const val TT_POSITION_TRACK_DESCANSO="tt_position_track_descanso"
         const val TT_POSITION_TRACK_DESCANSO_ENTRE="tt_position_track_descanso_entre"
         const val TT_POSITION_TRACK_EJERCICIO="tt_position_track_ejercicio"
+        const val ADS_MAIN_STATE="ads_main_state"
 
 
         const val CICLOS="ciclos"

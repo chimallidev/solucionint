@@ -274,6 +274,12 @@
         <item name="android:textSize">42sp</item>
         <item name="android:textAlignment">center</item>
     </style>
+    <style name="FinishTabataBTN">
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:fontFamily">@font/symtext</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
 <!--Calculators-->
     <style name="IMC">
         <item name="android:fontFamily">@font/symtext</item>
