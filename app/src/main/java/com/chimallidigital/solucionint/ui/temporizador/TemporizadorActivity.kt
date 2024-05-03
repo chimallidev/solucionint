@@ -193,7 +193,7 @@ class TemporizadorActivity : AppCompatActivity() {
     private fun initAds(){
         var adRequest: AdRequest = AdRequest.Builder().build()
 
-        InterstitialAd.load(this, "ca-app-pub-3940256099942544/1033173712", adRequest, object: InterstitialAdLoadCallback(){
+        InterstitialAd.load(this, "ca-app-pub-2853474354867358/5204410312", adRequest, object: InterstitialAdLoadCallback(){
             override fun onAdLoaded(intersticialAd: InterstitialAd) {
                 intersticial= intersticialAd
             }

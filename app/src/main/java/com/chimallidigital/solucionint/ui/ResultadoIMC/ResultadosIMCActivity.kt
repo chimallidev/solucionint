@@ -38,7 +38,7 @@ class ResultadosIMCActivity : AppCompatActivity() {
 
         InterstitialAd.load(
             this,
-            "ca-app-pub-3940256099942544/1033173712",
+            "ca-app-pub-2853474354867358/5204410312",
             adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdLoaded(intersticialAd: InterstitialAd) {
