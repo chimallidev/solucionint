@@ -2,12 +2,15 @@ package com.chimallidigital.solucionint.ui.ResultadoIMC
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.ContextMenu
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.BounceInterpolator
 import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import com.chimallidigital.solucionint.R
 import com.chimallidigital.solucionint.databinding.ActivityResultadosImcactivityBinding
 import com.chimallidigital.solucionint.domain.StringsCollection.Companion.RESULTADOS_IMC
@@ -22,6 +25,23 @@ class ResultadosIMCActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResultadosImcactivityBinding
     private var intersticial: InterstitialAd? = null
 
+    private val handler = Handler(Looper.getMainLooper())
+    private var timerSeconds = 0
+    val runnable2 = object : Runnable {
+        override fun run() {
+            timerSeconds++
+            if (timerSeconds == 4) {
+                showAds()
+                initAds()
+            }
+            if (timerSeconds == 6) {
+                binding.BTNRegresar.isVisible = true
+            }
+
+            handler.postDelayed(this, 1000)
+        }
+    }
+
     private var stateAnimator= false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,8 +50,14 @@ class ResultadosIMCActivity : AppCompatActivity() {
         setContentView(binding.root)
         initAds()
         initUI()
+        waitOnesecond()
+    }
+    override fun onBackPressed() {
+        // Your logic here
         showAds()
         initAds()
+        stopTimer()
+        binding.BTNRegresar.isVisible= true
     }
     private fun initAds() {
         var adRequest: AdRequest = AdRequest.Builder().build()
@@ -55,6 +81,10 @@ class ResultadosIMCActivity : AppCompatActivity() {
         intersticial?.show(this)
     }
 
+    private fun waitOnesecond() {
+        handler.postDelayed(runnable2, 1000)
+    }
+
     private fun initUI() {
         val imc= intent.getFloatExtra(RESULTADOS_IMC,0f)
         initListeners(imc)
@@ -72,6 +102,7 @@ class ResultadosIMCActivity : AppCompatActivity() {
                 intersticial = null
             }
         }
+        binding.BTNRegresar.isVisible= false
         when(imc){
             in 0f.. 18.4f->{
                 binding.tvTitulo.text= getString(R.string.bajo_peso)
@@ -157,6 +188,9 @@ class ResultadosIMCActivity : AppCompatActivity() {
                 return true
             }
         })
+    }
+    private fun stopTimer() {
+        handler.removeCallbacks(runnable2)
     }
     private fun btnPressed(view: View, view2: View) {
         view.animate().apply {
