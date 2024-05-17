@@ -96,6 +96,9 @@
     <string name="art070">EL RENACIMIENTO DE TU CUERPO: DESCUBRE CÓMO EL BEBER AGUA PUEDE TRANSFORMAR TU BIENESTAR</string>
     <string name="art071">¡DULCE Y NUTRITIVA! LOS SECRETOS DE LA SANDÍA (CITRULLUS LANATUS) PARA UNA VIDA SALUDABLE</string>
     <string name="art072">PISTACHES (PISTACIA VERA): EL SNACK PERFECTO PARA POTENCIAR TU ENTRENAMIENTO Y TU DIETA FITNESS</string>
+    <string name="art073">RECETA: SOPA TARASCA</string>
+    <string name="art074">RECETA: MAYONESA</string>
+    <string name="art075">RECETA: ADEREZO ESTILO MAYONESA</string>
 
 
     <string name="art001_url">https://solucionint.com/obesidad-causas-consecuencias-tratamiento-si/</string>
@@ -170,6 +173,9 @@
     <string name="art070_url">https://solucionint.com/renacimiento-cuerpo-beber-agua-bienestar-si/</string>
     <string name="art071_url">https://solucionint.com/sandia-dulce-y-nutritiva-citrullus-lanatus-si/</string>
     <string name="art072_url">https://solucionint.com/pistaches-pistacia-vera-snack-dieta-fitness-si/</string>
+    <string name="art073_url">https://solucionint.com/receta-sopa-tarasca-si/</string>
+    <string name="art074_url">https://solucionint.com/receta-mayonesa-si/</string>
+    <string name="art075_url">https://solucionint.com/receta-aderezo-estilo-mayonesa-si/</string>
 
     <!--Dialogue_ArticlesSelectorActivity-->
     <string name="hint_dialogue_selector">Número</string>
