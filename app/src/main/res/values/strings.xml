@@ -99,6 +99,7 @@
     <string name="art073">RECETA: SOPA TARASCA</string>
     <string name="art074">RECETA: MAYONESA</string>
     <string name="art075">RECETA: ADEREZO ESTILO MAYONESA</string>
+    <string name="art076">¿QUÉ ES EL TÉJIDO ADIPOSO ABDOMINAL? TODO LO QUE NECESITAS SABER SOBRE SUS RIESGOS</string>
 
 
     <string name="art001_url">https://solucionint.com/obesidad-causas-consecuencias-tratamiento-si/</string>
@@ -176,6 +177,7 @@
     <string name="art073_url">https://solucionint.com/receta-sopa-tarasca-si/</string>
     <string name="art074_url">https://solucionint.com/receta-mayonesa-si/</string>
     <string name="art075_url">https://solucionint.com/receta-aderezo-estilo-mayonesa-si/</string>
+    <string name="art076_url">https://solucionint.com/que-es-tejido-adiposo-abdominal-riesgos-si/</string>
 
     <!--Dialogue_ArticlesSelectorActivity-->
     <string name="hint_dialogue_selector">Número</string>
