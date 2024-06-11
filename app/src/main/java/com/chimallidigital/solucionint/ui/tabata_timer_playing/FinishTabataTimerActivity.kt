@@ -38,10 +38,12 @@ class FinishTabataTimerActivity : AppCompatActivity() {
     val runnable2 = object : Runnable {
         override fun run() {
             timerSeconds++
-            if (timerSeconds == 5) {
-                showAds()
-                initAds()
+            if (timerSeconds > 5) {
+                repeat(6){
+                    showAds()
+                }
             }
+
             if (timerSeconds == 9) {
                 binding.BTNBack.isVisible = true
             }
@@ -60,14 +62,16 @@ class FinishTabataTimerActivity : AppCompatActivity() {
         stopSound()
         playSound(R.raw.pig_level_win_2)
         vibration(true)
+
+        initAds()
     }
 
     override fun onBackPressed() {
         // Your logic here
-        showAds()
-        initAds()
-        stopTimer()
-        binding.BTNBack.isVisible= true
+//        showAds()
+//        initAds()
+//        stopTimer()
+//        binding.BTNBack.isVisible= true
     }
 
     private fun initListeners() {
@@ -131,7 +135,7 @@ class FinishTabataTimerActivity : AppCompatActivity() {
 
         InterstitialAd.load(
             this,
-            "ca-app-pub-2853474354867358/5204410312",
+            "ca-app-pub-3940256099942544/1033173712",
             adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdLoaded(intersticialAd: InterstitialAd) {

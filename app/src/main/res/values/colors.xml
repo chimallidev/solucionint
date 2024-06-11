@@ -20,7 +20,9 @@
     <color name="green">#0C7C00</color>
     <color name="green_dark">#074C00</color>
 
-    <color name="bronce">	#CD7F32</color>
+    <color name="bronce">#CD7F32</color>
+    <color name="orange">#C64C13</color>
+    <color name="yellow">#8E7F03</color>
     <color name="dorado">#FFD700</color>
 
     <color name="azul">#6fafff</color>

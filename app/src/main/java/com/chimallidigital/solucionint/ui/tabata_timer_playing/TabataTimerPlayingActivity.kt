@@ -81,6 +81,10 @@ class TabataTimerPlayingActivity : AppCompatActivity() {
                                 stopSound()
                                 playSound(R.raw.robot_saying_3)
                             }
+                            4->{binding.tvSegundos.setTextColor(getColor(R.color.orange))}
+                            5->{binding.tvSegundos.setTextColor(getColor(R.color.orange))}
+                            6->{binding.tvSegundos.setTextColor(getColor(R.color.yellow))}
+                            7->{binding.tvSegundos.setTextColor(getColor(R.color.yellow))}
                         }
                         if (timerSeconds == 0) {
                             if (position != itemsList.size - 1) {
