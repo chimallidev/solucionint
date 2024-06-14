@@ -376,7 +376,11 @@ class TabataTimerPlayingActivity : AppCompatActivity() {
         if (position < itemsList.size) {
             timerSeconds = itemsList.get(position).tiempo
             binding.tvNumber.text = formatZeroZero(position + 1)
-            binding.tvName.text = itemsList.get(position).tipo
+            if (itemsList.get(position).tipo=="descanso entre conjuntos"){
+                binding.tvName.text = getString(R.string.descanso_entre_conjuntos)
+            }else{
+                binding.tvName.text = itemsList.get(position).tipo
+            }
             startTimer()
         }
         if (position == itemsList.size) {
@@ -392,7 +396,11 @@ class TabataTimerPlayingActivity : AppCompatActivity() {
             binding.tvCiclosContador00.text = formatZeroZero(countCiclos00)
             binding.tvConjuntosContador00.text = formatZeroZero(countConjuntos00)
         }
-        binding.tvTituloProximo.text = itemsList.get(position + 1).tipo
+        if (itemsList.get(position + 1).tipo=="descanso entre conjuntos"){
+            binding.tvTituloProximo.text = getString(R.string.descanso_entre_conjuntos)
+        }else{
+            binding.tvTituloProximo.text = itemsList.get(position + 1).tipo
+        }
         position++
     }
 
