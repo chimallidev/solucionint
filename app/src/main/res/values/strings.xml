@@ -101,6 +101,7 @@
     <string name="art075">RECETA: ADEREZO ESTILO MAYONESA</string>
     <string name="art076">¿QUÉ ES EL TÉJIDO ADIPOSO ABDOMINAL? TODO LO QUE NECESITAS SABER SOBRE SUS RIESGOS</string>
     <string name="art077">¿CÓMO EVITAR EL EFECTO REBOTE? MANTENER LA PÉRDIDA DE PESO</string>
+    <string name="art078">¿POR QUÉ SIENTES FATIGA AL HACER EJERCICIO? LA CIENCIA DETRÁS DEL CANSANCIO</string>
 
     <string name="art001_url">https://solucionint.com/obesidad-causas-consecuencias-tratamiento-si/</string>
     <string name="art002_url">https://solucionint.com/cientificos-ejercicios-de-fuerza-grasa-corporal-si/</string>
@@ -179,6 +180,7 @@
     <string name="art075_url">https://solucionint.com/receta-aderezo-estilo-mayonesa-si/</string>
     <string name="art076_url">https://solucionint.com/que-es-tejido-adiposo-abdominal-riesgos-si/</string>
     <string name="art077_url">https://solucionint.com/efecto-rebote-mantener-la-perdida-de-peso-si/</string>
+    <string name="art078_url">https://solucionint.com/por-que-fatiga-ejercicio-ciencia-cansancio-si/</string>
 
     <!--Dialogue_ArticlesSelectorActivity-->
     <string name="hint_dialogue_selector">Número</string>

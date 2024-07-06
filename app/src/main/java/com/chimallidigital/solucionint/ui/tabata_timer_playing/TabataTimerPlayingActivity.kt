@@ -63,23 +63,72 @@ class TabataTimerPlayingActivity : AppCompatActivity() {
                         binding.tvMinutos.isVisible = false
                         binding.tvHoras.isVisible = false
                         binding.tvSegundos.text = formatZeroZero(seconds)
+                        Log.i("posicion_tipo","position itemlist= ${itemsList.get(position-1).tipo}")
                         when (timerSeconds) {
                             1 -> {
-                                binding.tvSegundos.setTextColor(getColor(R.color.red))
-                                stopSound()
-                                playSound(R.raw.robot_saying_1)
+                                when(itemsList.get(position-1).tipo) {
+                                    "ejercicio" -> {
+                                        binding.tvSegundos.setTextColor(getColor(R.color.military_green))
+                                    }
+
+                                    "preparación" -> {
+                                        binding.cvTableroFondo.background =
+                                            AppCompatResources.getDrawable(binding.cvTableroFondo.context, R.color.red)
+                                        binding.cvTableroFondo2.background =
+                                            AppCompatResources.getDrawable(binding.cvTableroFondo2.context, R.color.red)
+                                        binding.tvSegundos.setTextColor(getColor(R.color.white))
+                                    }
+                                    else -> {
+                                        binding.tvSegundos.setTextColor(getColor(R.color.red))
+                                        stopSound()
+                                        playSound(R.raw.robot_saying_1)
+                                    }
+                                }
                             }
 
                             2 -> {
-                                binding.tvSegundos.setTextColor(getColor(R.color.red))
-                                stopSound()
-                                playSound(R.raw.robot_saying_2)
+                                when(itemsList.get(position-1).tipo) {
+                                    "ejercicio" -> {
+                                        binding.tvSegundos.setTextColor(getColor(R.color.military_green))
+                                    }
+
+                                    "preparación" -> {
+                                        binding.cvTableroFondo.background =
+                                            AppCompatResources.getDrawable(binding.cvTableroFondo.context, R.color.red)
+                                        binding.cvTableroFondo2.background =
+                                            AppCompatResources.getDrawable(binding.cvTableroFondo2.context, R.color.red)
+                                        binding.tvSegundos.setTextColor(getColor(R.color.white))
+                                    }
+                                    else -> {
+                                        binding.tvSegundos.setTextColor(getColor(R.color.red))
+                                        stopSound()
+                                        playSound(R.raw.robot_saying_2)
+                                    }
+                                }
                             }
 
                             3 -> {
-                                binding.tvSegundos.setTextColor(getColor(R.color.red))
-                                stopSound()
-                                playSound(R.raw.robot_saying_3)
+                                when(itemsList.get(position-1).tipo){
+                                    "ejercicio" ->{
+                                        binding.tvSegundos.setTextColor(getColor(R.color.military_green))
+                                        stopSound()
+                                        playSound(R.raw.ejercicio_you_win_3)
+                                    }
+                                    "preparación" ->{
+                                        binding.cvTableroFondo.background =
+                                            AppCompatResources.getDrawable(binding.cvTableroFondo.context, R.color.red)
+                                        binding.cvTableroFondo2.background =
+                                            AppCompatResources.getDrawable(binding.cvTableroFondo2.context, R.color.red)
+                                        binding.tvSegundos.setTextColor(getColor(R.color.white))
+                                        stopSound()
+                                        playSound(R.raw.tfl_prep)
+                                    }
+                                    else->{
+                                        binding.tvSegundos.setTextColor(getColor(R.color.red))
+                                        stopSound()
+                                        playSound(R.raw.robot_saying_3)
+                                    }
+                                }
                             }
                             4->{binding.tvSegundos.setTextColor(getColor(R.color.orange))}
                             5->{binding.tvSegundos.setTextColor(getColor(R.color.orange))}
@@ -115,8 +164,8 @@ class TabataTimerPlayingActivity : AppCompatActivity() {
                                     progressBar(timerBetween, timerBetween)
                                 }
                                 vibration(itemsList.get(position).vibration)
-                                stopSound()
                                 if (itemsList.get(position).track != -1) {
+                                    stopSound()
                                     playSound(itemsList.get(position).track)
                                 }
                                 playList(position)

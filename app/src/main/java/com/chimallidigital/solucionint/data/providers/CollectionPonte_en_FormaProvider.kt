@@ -9,6 +9,7 @@ class CollectionPonte_en_FormaProvider @Inject constructor(){
     fun getPonteEnFormaArticlesProvider(): List<CollectionArticles>{
 
         return listOf(
+            Art078,
             Art077,
             Art076,
             Art070,
