@@ -17,8 +17,8 @@ android {
         applicationId = "com.chimallidigital.solucionint"
         minSdk = 24
         targetSdk = 34
-        versionCode = 10
-        versionName = "1.2.005.0"
+        versionCode = 12
+        versionName = "1.2.007.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
