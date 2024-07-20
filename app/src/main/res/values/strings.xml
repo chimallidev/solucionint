@@ -104,6 +104,10 @@
     <string name="art078">¿POR QUÉ SIENTES FATIGA AL HACER EJERCICIO? LA CIENCIA DETRÁS DEL CANSANCIO</string>
     <string name="art079">¿POR QUÉ SUDAMOS? SUDOR, MECANISMO CRUCIAL PARA PRESERVAR TU BIENESTAR</string>
     <string name="art080">ENTRENAMIENTO HIIT: LA CLAVE PARA MEJORAR TU SALUD CARDIOVASCULAR RÁPIDAMENTE</string>
+    <string name="art081">RECETA: TACOS AHOGADOS</string>
+    <string name="art082">RECETA: BARRAS DE AMARANTO CON CHOCOLATE</string>
+    <string name="art083">RECETA: TINGA DE POLLO CON VERDURAS</string>
+    <string name="art084">RECETA: PAN INTEGRAL CON SEMILLAS</string>
 
     <string name="art001_url">https://solucionint.com/obesidad-causas-consecuencias-tratamiento-si/</string>
     <string name="art002_url">https://solucionint.com/cientificos-ejercicios-de-fuerza-grasa-corporal-si/</string>
@@ -185,6 +189,10 @@
     <string name="art078_url">https://solucionint.com/por-que-fatiga-ejercicio-ciencia-cansancio-si/</string>
     <string name="art079_url">https://solucionint.com/por-que-sudamos-sudor-mecanismo-bienestar-si/</string>
     <string name="art080_url">https://solucionint.com/entrenamiento-hiit-salud-cardiovascular-si/</string>
+    <string name="art081_url">https://solucionint.com/receta-tacos-ahogados-si/</string>
+    <string name="art082_url">https://solucionint.com/receta-barras-de-amaranto-con-chocolate-si/</string>
+    <string name="art083_url">https://solucionint.com/receta-tinga-de-pollo-con-verduras-si/</string>
+    <string name="art084_url">https://solucionint.com/receta-pan-integral-con-semillas-si/</string>
 
     <!--Dialogue_ArticlesSelectorActivity-->
     <string name="hint_dialogue_selector">Número</string>
