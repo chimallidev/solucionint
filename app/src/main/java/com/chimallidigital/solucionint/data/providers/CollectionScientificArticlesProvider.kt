@@ -7,6 +7,7 @@ import javax.inject.Inject
 class CollectionScientificArticlesProvider @Inject constructor(){
     fun getArticles(): List<CollectionArticles>{
         return listOf(
+            Art085,
             Art084,
             Art083,
             Art082,

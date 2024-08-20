@@ -8,6 +8,7 @@ import android.app.Dialog
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.TransitionDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
@@ -39,7 +40,6 @@ import com.chimallidigital.solucionint.domain.StringsCollection.Companion.URL
 import com.chimallidigital.solucionint.domain.model.ArticlesSelector.CollectionArticles
 import com.chimallidigital.solucionint.domain.model.scientific_articles.ScientificArticlesCategoriesModel.*
 import com.chimallidigital.solucionint.ui.selector.dialogue.DialogueArticlesSelectorAdapter
-import com.chimallidigital.solucionint.ui.solucionint_web.SolucionintWebActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -55,7 +55,6 @@ class ArticlesSelectorActivity : AppCompatActivity() {
     private var stateDialogAceptarSelector: Boolean = false
     private lateinit var dialogueArticlesSelectorAdapter: DialogueArticlesSelectorAdapter
 
-    private lateinit var navController: NavController
     private val args: ArticlesSelectorActivityArgs by navArgs()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -357,14 +356,15 @@ class ArticlesSelectorActivity : AppCompatActivity() {
 
     private fun titularNavigation(){
         var url: String
-        val intent= Intent(this,SolucionintWebActivity::class.java)
+        url= "https://www.solucionint.com"
+        val openURL= Intent(android.content.Intent.ACTION_VIEW)
         url= when(args.type){
             Soluciones_Inteligentes -> getString(R.string.url_soluciones_inteligentes)
             Ponte_en_Forma -> getString(R.string.url_ponte_en_forma)
             Recetas_de_Cocina -> getString(R.string.url_recetas_de_cocina)
         }
-        intent.putExtra(URL, url)
-        startActivity(intent)
+        openURL.data= Uri.parse(url)
+        startActivity(openURL)
     }
 
     private fun titularCategoriaAnimation(view: View) {
@@ -408,7 +408,8 @@ class ArticlesSelectorActivity : AppCompatActivity() {
 
     private fun btnNavigate() {
         var url: String
-        val intent = Intent(this, SolucionintWebActivity::class.java)
+        url="https://www.solucionint.com"
+        val openURL= Intent(android.content.Intent.ACTION_VIEW)
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 when (args.type) {
@@ -441,7 +442,8 @@ class ArticlesSelectorActivity : AppCompatActivity() {
                 }
             }
         }
-        startActivity(intent)
+        openURL.data= Uri.parse(url)
+        startActivity(openURL)
     }
 
     private fun showDialogueSearch() {
