@@ -109,6 +109,7 @@
     <string name="art083">RECETA: TINGA DE POLLO CON VERDURAS</string>
     <string name="art084">RECETA: PAN INTEGRAL CON SEMILLAS</string>
     <string name="art085">HIGO: UN TESORO NUTRICIONAL CON PROPIEDADES QUÍMICAS IMPRESIONANTES</string>
+    <string name="art086">CHAYOTE: LA JOYA NUTRICIONAL ANCESTRAL MEXICANA QUE REVOLUCIONA LA SALUD MODERNA</string>
 
     <string name="art001_url">https://solucionint.com/obesidad-causas-consecuencias-tratamiento-si/</string>
     <string name="art002_url">https://solucionint.com/cientificos-ejercicios-de-fuerza-grasa-corporal-si/</string>
@@ -195,6 +196,7 @@
     <string name="art083_url">https://solucionint.com/receta-tinga-de-pollo-con-verduras-si/</string>
     <string name="art084_url">https://solucionint.com/receta-pan-integral-con-semillas-si/</string>
     <string name="art085_url">https://solucionint.com/higo-nutricional-propiedades-quimicas-si/</string>
+    <string name="art086_url">https://solucionint.com/chayote-joya-nutricional-ancestral-mexicana-si/</string>
 
     <!--Dialogue_ArticlesSelectorActivity-->
     <string name="hint_dialogue_selector">Número</string>
