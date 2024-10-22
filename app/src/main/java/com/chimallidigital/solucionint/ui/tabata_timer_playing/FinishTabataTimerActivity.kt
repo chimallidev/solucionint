@@ -39,9 +39,7 @@ class FinishTabataTimerActivity : AppCompatActivity() {
         override fun run() {
             timerSeconds++
             if (timerSeconds > 5) {
-                repeat(6){
-                    showAds()
-                }
+                showAds()
             }
 
             if (timerSeconds == 9) {
