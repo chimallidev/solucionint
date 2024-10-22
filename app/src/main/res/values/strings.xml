@@ -115,6 +115,7 @@
     <string name="art089">RECETA: PESCADILLAS DE ATÚN</string>
     <string name="art090">RECETA: TACOS DE ATÚN</string>
     <string name="art091">TODO SOBRE LA CREATINA: ¿QUÉ ES? ¿CÓMO FUNCIONA? ¿PARA QUÉ SIRVE? ¿ES SEGURA?</string>
+    <string name="art092">CALAMBRES MUSCULARES: ¿POR QUÉ OCURREN? ¿SOLO MOLESTOS O SÍNTOMAS DE ALGO MÁS GRAVE?</string>
 
     <string name="art001_url">https://solucionint.com/obesidad-causas-consecuencias-tratamiento-si/</string>
     <string name="art002_url">https://solucionint.com/cientificos-ejercicios-de-fuerza-grasa-corporal-si/</string>
@@ -207,6 +208,7 @@
     <string name="art089_url">https://solucionint.com/receta-pescadillas-de-atun-si/</string>
     <string name="art090_url">https://solucionint.com/receta-tacos-de-atun-si/</string>
     <string name="art091_url">https://solucionint.com/todo-sobre-la-creatina-que-es-como-funciona-si/</string>
+    <string name="art092_url">https://solucionint.com/calambres-musculares-por-que-ocurren-sintomas-si/</string>
 
     <!--Dialogue_ArticlesSelectorActivity-->
     <string name="hint_dialogue_selector">Número</string>
