@@ -117,6 +117,7 @@
     <string name="art091">TODO SOBRE LA CREATINA: ¿QUÉ ES? ¿CÓMO FUNCIONA? ¿PARA QUÉ SIRVE? ¿ES SEGURA?</string>
     <string name="art092">CALAMBRES MUSCULARES: ¿POR QUÉ OCURREN? ¿SOLO MOLESTOS O SÍNTOMAS DE ALGO MÁS GRAVE?</string>
     <string name="art093">¿CÓMO FUNCIONA LA RESPIRACIÓN DURANTE EL EJERCICIO FÍSICO? DESCUBRE LOS ÚLTIMOS HALLAZGOS CIENTÍFICOS</string>
+    <string name="art094">LA CIENCIA DEL CALENTAMIENTO: CÓMO OPTIMIZAR EL RENDIMIENTO DEPORTIVO CON TÉCNICAS EFECTIVAS</string>
 
     <string name="art001_url">https://solucionint.com/obesidad-causas-consecuencias-tratamiento-si/</string>
     <string name="art002_url">https://solucionint.com/cientificos-ejercicios-de-fuerza-grasa-corporal-si/</string>
@@ -211,6 +212,7 @@
     <string name="art091_url">https://solucionint.com/todo-sobre-la-creatina-que-es-como-funciona-si/</string>
     <string name="art092_url">https://solucionint.com/calambres-musculares-por-que-ocurren-sintomas-si/</string>
     <string name="art093_url">https://solucionint.com/como-funciona-respiracion-ejercicio-fisico-si/</string>
+    <string name="art094_url">https://solucionint.com/ciencia-calentamiento-rendimiento-tecnicas-si/</string>
 
     <!--Dialogue_ArticlesSelectorActivity-->
     <string name="hint_dialogue_selector">Número</string>
