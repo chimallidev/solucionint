@@ -8,6 +8,11 @@ class CollectionRecetas_de_CocinaProvider @Inject constructor() {
 
     fun getRecetasDeCocinaArticlesProvider(): List<CollectionArticles>{
         return listOf(
+            Art099,
+            Art098,
+            Art097,
+            Art096,
+            Art095,
             Art090,
             Art089,
             Art088,

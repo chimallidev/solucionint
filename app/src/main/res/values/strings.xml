@@ -118,6 +118,11 @@
     <string name="art092">CALAMBRES MUSCULARES: ¿POR QUÉ OCURREN? ¿SOLO MOLESTOS O SÍNTOMAS DE ALGO MÁS GRAVE?</string>
     <string name="art093">¿CÓMO FUNCIONA LA RESPIRACIÓN DURANTE EL EJERCICIO FÍSICO? DESCUBRE LOS ÚLTIMOS HALLAZGOS CIENTÍFICOS</string>
     <string name="art094">LA CIENCIA DEL CALENTAMIENTO: CÓMO OPTIMIZAR EL RENDIMIENTO DEPORTIVO CON TÉCNICAS EFECTIVAS</string>
+    <string name="art095">RECETA: PAN DE MAÍZ</string>
+    <string name="art096">RECETA: AGUACATES RELLENOS</string>
+    <string name="art097">RECETA: TORTITAS DE ATÚN</string>
+    <string name="art098">RECETA: EMPANADAS DE ATÚN</string>
+    <string name="art099">RECETA: CROQUETAS DE ATÚN CON PICO DE GALLO</string>
 
     <string name="art001_url">https://solucionint.com/obesidad-causas-consecuencias-tratamiento-si/</string>
     <string name="art002_url">https://solucionint.com/cientificos-ejercicios-de-fuerza-grasa-corporal-si/</string>
@@ -213,6 +218,11 @@
     <string name="art092_url">https://solucionint.com/calambres-musculares-por-que-ocurren-sintomas-si/</string>
     <string name="art093_url">https://solucionint.com/como-funciona-respiracion-ejercicio-fisico-si/</string>
     <string name="art094_url">https://solucionint.com/ciencia-calentamiento-rendimiento-tecnicas-si/</string>
+    <string name="art095_url">https://solucionint.com/receta-pan-de-maiz-si/</string>
+    <string name="art096_url">https://solucionint.com/receta-aguacates-rellenos-si/</string>
+    <string name="art097_url">https://solucionint.com/receta-tortitas-de-atun-si/</string>
+    <string name="art098_url">https://solucionint.com/receta-empanadas-de-atun-si/</string>
+    <string name="art099_url">https://solucionint.com/receta-croquetas-de-atun-con-pico-de-gallo-si/</string>
 
     <!--Dialogue_ArticlesSelectorActivity-->
     <string name="hint_dialogue_selector">Número</string>
