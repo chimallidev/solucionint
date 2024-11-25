@@ -102,4 +102,5 @@ sealed class CollectionArticles(val img: Int, val title: Int, val url: Int) {
     data object Art097: CollectionArticles(R.drawable.art097, R.string.art097, R.string.art097_url)
     data object Art098: CollectionArticles(R.drawable.art098, R.string.art098, R.string.art098_url)
     data object Art099: CollectionArticles(R.drawable.art099, R.string.art099, R.string.art099_url)
+    data object Art100: CollectionArticles(R.drawable.art100, R.string.art100, R.string.art100_url)
 }

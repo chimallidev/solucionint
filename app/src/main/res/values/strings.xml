@@ -123,6 +123,7 @@
     <string name="art097">RECETA: TORTITAS DE ATÚN</string>
     <string name="art098">RECETA: EMPANADAS DE ATÚN</string>
     <string name="art099">RECETA: CROQUETAS DE ATÚN CON PICO DE GALLO</string>
+    <string name="art100">CONSUMO DE AZÚCAR: ¿UNA DULCE TENTACIÓN CON AMARGAS CONSECUENCIAS?</string>
 
     <string name="art001_url">https://solucionint.com/obesidad-causas-consecuencias-tratamiento-si/</string>
     <string name="art002_url">https://solucionint.com/cientificos-ejercicios-de-fuerza-grasa-corporal-si/</string>
@@ -223,6 +224,7 @@
     <string name="art097_url">https://solucionint.com/receta-tortitas-de-atun-si/</string>
     <string name="art098_url">https://solucionint.com/receta-empanadas-de-atun-si/</string>
     <string name="art099_url">https://solucionint.com/receta-croquetas-de-atun-con-pico-de-gallo-si/</string>
+    <string name="art100_url">https://solucionint.com/consumo-azucar-dulce-amargas-consecuencias-si/</string>
 
     <!--Dialogue_ArticlesSelectorActivity-->
     <string name="hint_dialogue_selector">Número</string>
