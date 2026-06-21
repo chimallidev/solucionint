@@ -1,6 +1,6 @@
 # <img src="https://media.giphy.com/media/ObNTw8Uzwy6KQ/giphy.gif" width="30px">&nbsp;Aplicación Móvil de Soluciones Inteligentes
 
-![Aplicación Móvil de Soluciones Inteligentes](app/static/img/og_chimallidev_links.png)
+![Aplicación Móvil de Soluciones Inteligentes](screenshots/soluciones_inteligentes.png)
 
 ## Descripción ❚█══█❚
 
@@ -14,7 +14,17 @@ Aplicación móvil Android desarrollada con Kotlin y Android Studio como parte d
 
 ## Vista Previa
 
-![Vista previa página web de enlaces Chimallidev v4](app/static/img/screenshots/vista_previa.png)
+![Vista previa Aplicación Móvil de Soluciones Inteligentes](screenshots/app_soluciones_inteligentes_portafolio.webp)
+
+**Artículos**
+![Artículos](screenshots/articulos.jpg)
+
+**Tiempo**
+![Tiempo](screenshots/tiempo.jpg)
+![Tiempo crnómetro](screenshots/tiempo_crono.jpg)
+
+**Calculadoras**
+![Calculadoras](screenshots/calculadoras.jpg)
 
 ## DEMO, Ver ejemplo en vivo
 
