@@ -16,15 +16,22 @@ Aplicación móvil Android desarrollada con Kotlin y Android Studio como parte d
 
 ![Vista previa Aplicación Móvil de Soluciones Inteligentes](screenshots/app_soluciones_inteligentes_portafolio.webp)
 
-**Artículos**
-![Artículos](screenshots/articulos.jpg)
+### Artículos
 
-**Tiempo**
-![Tiempo](screenshots/tiempo.jpg)
-![Tiempo crnómetro](screenshots/tiempo_crono.jpg)
+<img src="screenshots/articulos.jpg" width="300">
 
-**Calculadoras**
-![Calculadoras](screenshots/calculadoras.jpg)
+### Tiempo
+
+<span>
+  
+<img src="screenshots/tiempo.jpg" width="300">
+<img src="screenshots/tiempo_crono.jpg" width="600" align=top>
+
+</span>
+
+### Calculadoras
+
+<img src="screenshots/calculadoras.jpg" width="300">
 
 ## DEMO, Ver ejemplo en vivo
 
