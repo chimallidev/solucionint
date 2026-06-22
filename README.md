@@ -18,20 +18,20 @@ Aplicación móvil Android desarrollada con Kotlin y Android Studio como parte d
 
 ### Artículos
 
-<img src="screenshots/articulos.jpg" width="300">
+<img src="screenshots/articulos.jpg" width="280">
 
 ### Tiempo
 
 <span>
   
-<img src="screenshots/tiempo.jpg" width="300">
-<img src="screenshots/tiempo_crono.jpg" width="600" align=top>
+<img src="screenshots/tiempo.jpg" width="280"  >
+<img src="screenshots/tiempo_crono.jpg" width="560" align=top >
 
 </span>
 
 ### Calculadoras
 
-<img src="screenshots/calculadoras.jpg" width="300">
+<img src="screenshots/calculadoras.jpg" width="280">
 
 ## DEMO, Ver ejemplo en vivo
 
@@ -53,6 +53,10 @@ Aplicación móvil Android desarrollada con Kotlin y Android Studio como parte d
 
 🧮 **Calculadoras**
 - Índice de Masa Corporal (IMC)
+
+## Documentación
+
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/chimallidev/solucionint)
 
 ## Contratación
 
